@@ -195,7 +195,7 @@ def build_home():
         f'<tr><td><a href="{e(r.get("url") or GH + "/" + r["name"])}" rel="noopener">{e(r["name"])}</a></td><td>{e(r.get("description", ""))}</td>'
         f'<td class="num">{sum(1 for p in PROJECTS if p["repo"] == r["name"])}</td></tr>'
         for r in SITE.get("repositories", []))
-    links = "".join(f'<a class="btn btn-secondary" href="{e(l["url"])}" rel="noopener">{e(l["label"])}</a>' for l in SITE.get("links", []))
+    links = "".join(f'<a class="btn btn-secondary" href="{e(l["url"])}" rel="noopener">Visit my {e(l["label"])} profile</a>' for l in SITE.get("links", []))
     body = f"""<section id="home" class="intro" aria-labelledby="hero-title">
   <div class="container intro-grid">
     <div>

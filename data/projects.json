@@ -21,8 +21,8 @@
       "label": "Linux Administration"
     },
     {
-      "id": "app-web-dev",
-      "label": "App and web development"
+      "id": "application-hosting",
+      "label": "Application Hosting"
     }
   ],
   "projects": [
@@ -2921,7 +2921,7 @@
       "repo": "azure-administrator-labs",
       "folder": "06-azure-compute-and-app-infra",
       "title": "Enterprise Compute and Application Infrastructure",
-      "category": "app-web-dev",
+      "category": "application-hosting",
       "featured": false,
       "status": "Completed",
       "summary": "I set up an Ubuntu 24.04 server in Azure with no public IP. It reaches the internet through a NAT Gateway and I manage it through Azure Bastion. It runs a Flask web portal on Gunicorn with a PostgreSQL 16 database in Docker.",
