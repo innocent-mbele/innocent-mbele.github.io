@@ -5,10 +5,6 @@
       "label": "Azure Networking"
     },
     {
-      "id": "network-automation",
-      "label": "Network Automation"
-    },
-    {
       "id": "azure-compute-storage",
       "label": "Azure Compute & Storage"
     },
@@ -17,8 +13,16 @@
       "label": "Azure Identity & Governance"
     },
     {
+      "id": "network-automation",
+      "label": "Network Automation"
+    },
+    {
       "id": "linux-administration",
       "label": "Linux Administration"
+    },
+    {
+      "id": "app-web-dev",
+      "label": "App and web development"
     }
   ],
   "projects": [
@@ -881,83 +885,6 @@
       ]
     },
     {
-      "slug": "network-automation-python-netmiko",
-      "repo": "network-infrastructure-and-automation",
-      "folder": "",
-      "title": "Network Automation with Python and Netmiko",
-      "category": "network-automation",
-      "featured": true,
-      "status": "In progress. The Python stage is published and the later stages are still to come.",
-      "summary": "My Python scripts connect to a Cisco router with Netmiko, read the device information, tidy it with TextFSM and save a JSON report.",
-      "overview": "I wrote Python scripts that log in to a Cisco IOS router (R1) with Netmiko, run show version and show ip interface brief, turn the interface table into structured data with TextFSM and save it as a JSON report. My later version reads the device details from a JSON inventory file. The repository lists more stages I plan to add, such as Ansible and NETCONF. So far only the Python stage is published.",
-      "objectives": [
-        "Collect device information automatically instead of typing commands by hand.",
-        "Read the devices from an inventory file instead of hard-coding them."
-      ],
-      "technologies": [
-        "Python",
-        "Netmiko",
-        "TextFSM",
-        "JSON",
-        "Cisco IOS"
-      ],
-      "implementation": [
-        "device_info.py connects to R1, runs the show commands and picks out the hostname, IOS version, uptime and interfaces.",
-        "inventory_reader.py and inventory_connection.py read inventory/devices.json and open a Netmiko session.",
-        "collect_device_info.py puts both together and writes api/<hostname>-device-info.json."
-      ],
-      "verification": [
-        "My screenshots show the Netmiko connection to R1 and the structured output.",
-        "The report api/r1-device-info.json shows IOS 17.15.1 and four interfaces with their status."
-      ],
-      "screenshots": [
-        {
-          "title": "Python Device Information Automation",
-          "caption": "Shows Python connecting to Cisco R1 using Netmiko and collecting device information.",
-          "alt": "Python Device Information Automation",
-          "src": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information.webp",
-          "thumb": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information-thumb.webp",
-          "width": 1600,
-          "height": 998,
-          "thumb_width": 720,
-          "thumb_height": 449
-        },
-        {
-          "title": "Structured Device Information",
-          "caption": "Shows the structured device information generated from the Cisco device.",
-          "alt": "Structured Device Information",
-          "src": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information.webp",
-          "thumb": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information-thumb.webp",
-          "width": 1600,
-          "height": 986,
-          "thumb_width": 720,
-          "thumb_height": 444
-        },
-        {
-          "title": "Inventory-Driven Netmiko Connection",
-          "caption": "Shows Python reading the device inventory and successfully establishing a Netmiko connection to Cisco R1.",
-          "alt": "Inventory Netmiko Connection",
-          "src": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection.webp",
-          "thumb": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection-thumb.webp",
-          "width": 1600,
-          "height": 990,
-          "thumb_width": 720,
-          "thumb_height": 446
-        },
-        {
-          "title": "Inventory-Driven Device Information",
-          "caption": "Shows the inventory-driven automation collecting and structuring Cisco R1 device information and generating the JSON report.",
-          "alt": "Inventory Device Information",
-          "src": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information.webp",
-          "thumb": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information-thumb.webp",
-          "width": 1600,
-          "height": 999,
-          "thumb_width": 720,
-          "thumb_height": 450
-        }
-      ]
-    },
-    {
       "slug": "azure-linux-vm-deployment",
       "repo": "azure-basic-labs",
       "folder": "04-azure-linux-vm-deployment",
@@ -1806,6 +1733,83 @@
         }
       ],
       "cover": 4
+    },
+    {
+      "slug": "network-automation-python-netmiko",
+      "repo": "network-infrastructure-and-automation",
+      "folder": "",
+      "title": "Network Automation with Python and Netmiko",
+      "category": "network-automation",
+      "featured": true,
+      "status": "In progress. The Python stage is published and the later stages are still to come.",
+      "summary": "My Python scripts connect to a Cisco router with Netmiko, read the device information, tidy it with TextFSM and save a JSON report.",
+      "overview": "I wrote Python scripts that log in to a Cisco IOS router (R1) with Netmiko, run show version and show ip interface brief, turn the interface table into structured data with TextFSM and save it as a JSON report. My later version reads the device details from a JSON inventory file. The repository lists more stages I plan to add, such as Ansible and NETCONF. So far only the Python stage is published.",
+      "objectives": [
+        "Collect device information automatically instead of typing commands by hand.",
+        "Read the devices from an inventory file instead of hard-coding them."
+      ],
+      "technologies": [
+        "Python",
+        "Netmiko",
+        "TextFSM",
+        "JSON",
+        "Cisco IOS"
+      ],
+      "implementation": [
+        "device_info.py connects to R1, runs the show commands and picks out the hostname, IOS version, uptime and interfaces.",
+        "inventory_reader.py and inventory_connection.py read inventory/devices.json and open a Netmiko session.",
+        "collect_device_info.py puts both together and writes api/<hostname>-device-info.json."
+      ],
+      "verification": [
+        "My screenshots show the Netmiko connection to R1 and the structured output.",
+        "The report api/r1-device-info.json shows IOS 17.15.1 and four interfaces with their status."
+      ],
+      "screenshots": [
+        {
+          "title": "Python Device Information Automation",
+          "caption": "Shows Python connecting to Cisco R1 using Netmiko and collecting device information.",
+          "alt": "Python Device Information Automation",
+          "src": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information-thumb.webp",
+          "width": 1600,
+          "height": 998,
+          "thumb_width": 720,
+          "thumb_height": 449
+        },
+        {
+          "title": "Structured Device Information",
+          "caption": "Shows the structured device information generated from the Cisco device.",
+          "alt": "Structured Device Information",
+          "src": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information-thumb.webp",
+          "width": 1600,
+          "height": 986,
+          "thumb_width": 720,
+          "thumb_height": 444
+        },
+        {
+          "title": "Inventory-Driven Netmiko Connection",
+          "caption": "Shows Python reading the device inventory and successfully establishing a Netmiko connection to Cisco R1.",
+          "alt": "Inventory Netmiko Connection",
+          "src": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection-thumb.webp",
+          "width": 1600,
+          "height": 990,
+          "thumb_width": 720,
+          "thumb_height": 446
+        },
+        {
+          "title": "Inventory-Driven Device Information",
+          "caption": "Shows the inventory-driven automation collecting and structuring Cisco R1 device information and generating the JSON report.",
+          "alt": "Inventory Device Information",
+          "src": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
+      ]
     },
     {
       "slug": "linux-server-health-monitoring",
@@ -2917,7 +2921,7 @@
       "repo": "azure-administrator-labs",
       "folder": "06-azure-compute-and-app-infra",
       "title": "Enterprise Compute and Application Infrastructure",
-      "category": "azure-compute-storage",
+      "category": "app-web-dev",
       "featured": false,
       "status": "Completed",
       "summary": "I set up an Ubuntu 24.04 server in Azure with no public IP. It reaches the internet through a NAT Gateway and I manage it through Azure Bastion. It runs a Flask web portal on Gunicorn with a PostgreSQL 16 database in Docker.",
