@@ -19,9 +19,8 @@ BASE = SITE["base_url"].rstrip("/")
 GH = f"https://github.com/{SITE['github_user']}"
 CATS = {c["id"]: c["label"] for c in DATA["categories"]}
 PROJECTS = DATA["projects"]
-ASSET_V = "3"  # bump to make browsers fetch changed CSS, JS and icons
-MASK_NOTE = ("On these copies I have covered my sign-in email, tenant name and subscription ID in grey. "
-             "The originals are in the repository.")
+ASSET_V = "4"  # bump to make browsers fetch changed CSS, JS and icons
+MASK_NOTE = "I painted over my Azure subscription ID in red. Everything else is as I captured it."
 
 PHOTO_SHAPES = {"square": "1 / 1", "portrait": "4 / 5", "landscape": "4 / 3"}
 PHOTO_SIZES = {"small": 170, "medium": 220, "large": 280}
@@ -196,19 +195,19 @@ def build_home():
         f'<tr><td><a href="{e(r.get("url") or GH + "/" + r["name"])}" rel="noopener">{e(r["name"])}</a></td><td>{e(r.get("description", ""))}</td>'
         f'<td class="num">{sum(1 for p in PROJECTS if p["repo"] == r["name"])}</td></tr>'
         for r in SITE.get("repositories", []))
-    links = " · ".join(f'<a href="{e(l["url"])}" rel="noopener">{e(l["label"])}</a>' for l in SITE.get("links", []))
+    links = "".join(f'<a class="btn btn-secondary" href="{e(l["url"])}" rel="noopener">{e(l["label"])}</a>' for l in SITE.get("links", []))
     body = f"""<section id="home" class="intro" aria-labelledby="hero-title">
   <div class="container intro-grid">
     <div>
       <h1 id="hero-title">{e(SITE['name'])}</h1>
       <p class="role">{e(SITE['role'])}</p>
-      <p class="tagline">{e(SITE['tagline'])}</p>
+      {f'<p class="tagline">{e(SITE["tagline"])}</p>' if SITE.get('tagline') else ''}
       <p class="lead">{e(SITE['intro'])}</p>
       <div class="actions">
         <a class="btn btn-primary" href="#projects">Explore my portfolio projects</a>
         <a class="btn btn-secondary" href="#contact">Contact me</a>
+        {links}
       </div>
-      {f'<p class="profile-links">{links}</p>' if links else ''}
     </div>
     {photo_html()}
   </div>

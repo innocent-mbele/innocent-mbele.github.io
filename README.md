@@ -37,7 +37,7 @@ Commit and push. The Actions workflow publishes it.
 
 - Only my own public, documented work. Every project links to its repository.
 - Text says only what the repository shows. Planned work is never shown as done.
-- Screenshots are checked before publishing. In Azure screenshots I cover my sign-in email, tenant name and subscription ID.
+- Screenshots are checked before publishing. My account names and emails stay visible because they show the work is mine. Only my Azure subscription ID is painted over in red, and no password, key or token is ever shown.
 
 ## Contact form
 

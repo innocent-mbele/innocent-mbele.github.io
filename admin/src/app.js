@@ -355,7 +355,7 @@
         field("Repository address (optional)", p.repo_url, function (v) { if (v) p.repo_url = v; else delete p.repo_url; }, { max: 500, hint: "Only if the project is not in your account." }),
         field("Video link (optional)", p.video, function (v) { if (v) p.video = v; else delete p.video; }, { max: 500 })),
       h("h3", { text: "Screenshots" }),
-      h("p", { class: "warn", text: "Before uploading, check each screenshot for email addresses, subscription or tenant IDs, passwords, keys and anything from your employer." }),
+      h("p", { class: "warn", text: "Before uploading, paint over subscription IDs and check that no password, key, token or employer information is visible." }),
       shotsList,
       h("p", {}, h("button", { type: "button", class: "btn", on: { click: function () { shotInput.click(); } } }, "Add screenshots"), shotInput),
       h("div", { class: "row-right" },

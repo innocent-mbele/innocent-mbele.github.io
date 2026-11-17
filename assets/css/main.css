@@ -98,7 +98,7 @@ p { margin: 0 0 1em; }
 }
 .intro { background: var(--white); border-bottom: 1px solid var(--line); padding: 44px 0 40px; }
 .intro h1 { font-size: 34px; margin-bottom: 4px; }
-.intro .role { font-size: 18px; color: var(--ink-2); margin-bottom: 2px; }
+.intro .role { font-size: 18px; color: var(--ink-2); margin-bottom: 16px; }
 .intro .tagline { color: var(--muted); margin-bottom: 18px; }
 .intro .lead { max-width: 640px; color: var(--ink-2); font-size: 16px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }

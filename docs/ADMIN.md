@@ -152,7 +152,7 @@ Website repository → **Settings** → **Pages** → **Build and deployment** �
 ## Everyday use
 
 - **Change your photo:** Profile and photo → *Upload a new photo* → choose the shape, drag and zoom → *Use this photo*. Pick the size (small, medium, large) and which part stays in view. The preview shows the result.
-- **Add a project:** Projects → *Add a project*. Fill in the fields and use *Add screenshots*. Check every screenshot for emails, subscription or tenant IDs, keys and employer details first.
+- **Add a project:** Projects → *Add a project*. Fill in the fields and use *Add screenshots*. Paint over subscription IDs first and make sure no password, key, token or employer detail shows.
 - **Show a project on the home page:** tick *Show on the home page*.
 - **Add a link or repository:** Links and repositories → *Add*.
 - **Undo a change:** on GitHub open the commit (the admin shows its link) and click **Revert**.
