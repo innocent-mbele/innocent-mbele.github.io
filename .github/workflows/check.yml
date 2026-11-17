@@ -1,0 +1,26 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild pages from data
+        run: python3 tools/build_site.py
+      - name: Generated pages are committed and up to date
+        run: |
+          # sitemap lastmod changes daily, so it is excluded from the diff check
+          git diff --exit-code -- . ':(exclude)sitemap.xml' || (echo "Run python3 tools/build_site.py and commit the result." && exit 1)
+      - name: Internal links and images resolve
+        run: python3 tools/check_site.py

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log Rotation with Logrotate | Innocent Mbele</title>
+<meta name="description" content="Custom logrotate policy with retention, compression and recreation of active logs.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-logrotate/">
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Log Rotation with Logrotate | Innocent Mbele">
+<meta property="og:description" content="Custom logrotate policy with retention, compression and recreation of active logs.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-logrotate/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <div class="card-meta"><span class="badge">Linux Administration</span><span class="status">Completed</span></div>
+    <h1>Log Rotation with Logrotate</h1>
+    <p>Custom logrotate policy with retention, compression and recreation of active logs.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>Automated log rotation was configured and tested with logrotate, including retention, compression and recreation of active log files.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Control log growth automatically.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Implementation</h2><ul class="list"><li>Confirmed the logrotate timer was active.</li><li>Created and validated a custom rotation policy.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots and evidence</h2><p>3 screenshots from the repository, in the order documented. Select an image to view it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-logrotate/01-01-lnx-logrotate-status-and-config.webp" data-caption="Logrotate Status and Configuration: Shows logrotate installed, the scheduled timer active, and existing rotation policies." aria-label="Enlarge screenshot 1: Logrotate Status and Configuration"><img src="/assets/images/projects/linux-logrotate/01-01-lnx-logrotate-status-and-config-thumb.webp" alt="Logrotate Status and Configuration — Shows logrotate installed, the scheduled timer active, and existing rotation policies." width="720" height="444" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>Logrotate Status and Configuration</strong>Shows logrotate installed, the scheduled timer active, and existing rotation policies.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-logrotate/02-02-lnx-logrotate-policy-validation.webp" data-caption="Logrotate Policy Validation: Shows the custom log rotation policy and successful configuration validation." aria-label="Enlarge screenshot 2: Logrotate Policy Validation"><img src="/assets/images/projects/linux-logrotate/02-02-lnx-logrotate-policy-validation-thumb.webp" alt="Logrotate Policy Validation — Shows the custom log rotation policy and successful configuration validation." width="720" height="447" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>Logrotate Policy Validation</strong>Shows the custom log rotation policy and successful configuration validation.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-logrotate/03-03-lnx-logrotate-execution-and-compression.webp" data-caption="Log Rotation and Compression: Shows the log being rotated, compressed historical logs being retained, and a new active log being created." aria-label="Enlarge screenshot 3: Log Rotation and Compression"><img src="/assets/images/projects/linux-logrotate/03-03-lnx-logrotate-execution-and-compression-thumb.webp" alt="Log Rotation and Compression — Shows the log being rotated, compressed historical logs being retained, and a new active log being created." width="720" height="439" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>Log Rotation and Compression</strong>Shows the log being rotated, compressed historical logs being retained, and a new active log being created.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>The log was rotated and compressed, older logs retained and a new active log created.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/linux-projects/tree/main/12-log-rotation-logrotate" rel="noopener">linux-projects/12-log-rotation-logrotate</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-centralized-syslog/"><span>Previous</span>Remote Syslog Logging</a><a href="/projects/linux-server-build/" style="text-align:right"><span>Next</span>Linux Server Build</a></nav></article>
+    <aside class="facts" aria-label="Project facts">
+      <dl>
+        <dt>Category</dt><dd>Linux Administration</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Ubuntu Linux</li><li class="tag">logrotate</li><li class="tag">systemd timers</li></ul></dd>
+        <dt>Evidence</dt><dd>3 screenshots</dd>
+        <dt>Repository</dt><dd>linux-projects</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/12-log-rotation-logrotate" rel="noopener">View on GitHub</a>
+      <a class="btn btn-outline" href="/projects/">All projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Innocent Mbele",
+  "role": "Technology & Digital Innovation",
+  "tagline": "Technology. Innovation. Digital Transformation.",
+  "intro": "Selected technology projects with practical implementations and verification evidence across Microsoft Azure, Linux server administration and network automation. Each project links to its original public GitHub repository.",
+  "base_url": "https://innocent-mbele.github.io",
+  "github_user": "innocent-mbele",
+  "web3forms_access_key": "",
+  "repositories": [
+    {"name": "azure-basic-labs", "title": "Azure Basic Labs", "description": "Azure networking, compute and storage labs."},
+    {"name": "azure-administrator-labs", "title": "Azure Administrator Labs", "description": "Identity, governance, networking and compute administration in Azure."},
+    {"name": "linux-projects", "title": "Linux Projects", "description": "Ubuntu server administration and network services."},
+    {"name": "network-infrastructure-and-automation", "title": "Network Infrastructure & Automation", "description": "Python network automation against Cisco IOS."}
+  ]
+}

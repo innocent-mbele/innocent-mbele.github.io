@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samba File Server | Innocent Mbele</title>
+<meta name="description" content="Authenticated SMB share on Ubuntu accessed from Linux and Windows clients.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-samba-file-server/">
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Samba File Server | Innocent Mbele">
+<meta property="og:description" content="Authenticated SMB share on Ubuntu accessed from Linux and Windows clients.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-samba-file-server/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <div class="card-meta"><span class="badge">Linux Administration</span><span class="status">Completed</span></div>
+    <h1>Samba File Server</h1>
+    <p>Authenticated SMB share on Ubuntu accessed from Linux and Windows clients.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>An Ubuntu server was configured as a Samba file server with an authenticated SMB shared folder, and file access was verified from a Windows client.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Share files from Linux to Windows clients.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Implementation</h2><ul class="list"><li>Created the shared directory and the Shared share.</li><li>Validated the configuration with testparm.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots and evidence</h2><p>7 screenshots from the repository, in the order documented. Select an image to view it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/01-01-lnx-samba-service-status.webp" data-caption="Samba Service Status: Shows the Samba SMB service running successfully on the Ubuntu server." aria-label="Enlarge screenshot 1: Samba Service Status"><img src="/assets/images/projects/linux-samba-file-server/01-01-lnx-samba-service-status-thumb.webp" alt="Samba Service Status — Shows the Samba SMB service running successfully on the Ubuntu server." width="720" height="441" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>Samba Service Status</strong>Shows the Samba SMB service running successfully on the Ubuntu server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/02-02-lnx-samba-shared-directory.webp" data-caption="Shared Directory: Shows the directory created for the Samba shared folder." aria-label="Enlarge screenshot 2: Shared Directory"><img src="/assets/images/projects/linux-samba-file-server/02-02-lnx-samba-shared-directory-thumb.webp" alt="Shared Directory — Shows the directory created for the Samba shared folder." width="720" height="216" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>Shared Directory</strong>Shows the directory created for the Samba shared folder.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/03-03-lnx-samba-share-config.webp" data-caption="Samba Share Configuration: Shows the configured Samba `Shared` network share and its access settings." aria-label="Enlarge screenshot 3: Samba Share Configuration"><img src="/assets/images/projects/linux-samba-file-server/03-03-lnx-samba-share-config-thumb.webp" alt="Samba Share Configuration — Shows the configured Samba `Shared` network share and its access settings." width="720" height="435" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>Samba Share Configuration</strong>Shows the configured Samba `Shared` network share and its access settings.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/04-04-lnx-samba-config-test.webp" data-caption="Configuration Test: Shows the Samba configuration validated successfully using `testparm`." aria-label="Enlarge screenshot 4: Configuration Test"><img src="/assets/images/projects/linux-samba-file-server/04-04-lnx-samba-config-test-thumb.webp" alt="Samba Configuration Test — Shows the Samba configuration validated successfully using `testparm`." width="720" height="447" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">4.</span>Configuration Test</strong>Shows the Samba configuration validated successfully using `testparm`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/05-05-lnx-samba-share-list-and-connection.webp" data-caption="Share List and Connection: Shows the `Shared` SMB share discovered and accessed using `smbclient`." aria-label="Enlarge screenshot 5: Share List and Connection"><img src="/assets/images/projects/linux-samba-file-server/05-05-lnx-samba-share-list-and-connection-thumb.webp" alt="Share List and Connection — Shows the `Shared` SMB share discovered and accessed using `smbclient`." width="720" height="429" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">5.</span>Share List and Connection</strong>Shows the `Shared` SMB share discovered and accessed using `smbclient`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/06-06-lnx-samba-file-transfer.webp" data-caption="File Transfer: Shows successful file transfer through the Samba share." aria-label="Enlarge screenshot 6: File Transfer"><img src="/assets/images/projects/linux-samba-file-server/06-06-lnx-samba-file-transfer-thumb.webp" alt="File Transfer — Shows successful file transfer through the Samba share." width="720" height="424" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">6.</span>File Transfer</strong>Shows successful file transfer through the Samba share.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-samba-file-server/07-07-lnx-samba-windows-share-verification.webp" data-caption="Windows Share Verification: Shows the Samba shared folder successfully accessed from the Windows client." aria-label="Enlarge screenshot 7: Windows Share Verification"><img src="/assets/images/projects/linux-samba-file-server/07-07-lnx-samba-windows-share-verification-thumb.webp" alt="Windows Share Verification — Shows the Samba shared folder successfully accessed from the Windows client." width="720" height="434" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">7.</span>Windows Share Verification</strong>Shows the Samba shared folder successfully accessed from the Windows client.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>smbclient listed and connected to the share and transferred a file.</li><li>The share was accessed from Windows.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/linux-projects/tree/main/06-samba-file-server" rel="noopener">linux-projects/06-samba-file-server</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-nginx-web-server/"><span>Previous</span>Nginx Web Server</a><a href="/projects/linux-dns-server/" style="text-align:right"><span>Next</span>DNS Server (BIND)</a></nav></article>
+    <aside class="facts" aria-label="Project facts">
+      <dl>
+        <dt>Category</dt><dd>Linux Administration</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Ubuntu Linux</li><li class="tag">Samba / SMB</li><li class="tag">smbclient</li><li class="tag">Windows</li></ul></dd>
+        <dt>Evidence</dt><dd>7 screenshots</dd>
+        <dt>Repository</dt><dd>linux-projects</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/06-samba-file-server" rel="noopener">View on GitHub</a>
+      <a class="btn btn-outline" href="/projects/">All projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

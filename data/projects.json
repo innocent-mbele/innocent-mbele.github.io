@@ -1,0 +1,920 @@
+{
+  "categories": [
+    {
+      "id": "azure-networking",
+      "label": "Azure Networking"
+    },
+    {
+      "id": "azure-compute-storage",
+      "label": "Azure Compute & Storage"
+    },
+    {
+      "id": "identity-governance",
+      "label": "Azure Identity & Governance"
+    },
+    {
+      "id": "linux-administration",
+      "label": "Linux Administration"
+    },
+    {
+      "id": "network-automation",
+      "label": "Network Automation"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "azure-enterprise-compute-app-infrastructure",
+      "repo": "azure-administrator-labs",
+      "folder": "06-azure-enterprise-compute-and-app-infra",
+      "title": "Enterprise Compute and Application Infrastructure",
+      "category": "azure-compute-storage",
+      "featured": true,
+      "status": "Completed",
+      "summary": "Ubuntu Server 24.04 VM in Azure behind NAT Gateway and Azure Bastion, running a Flask portal on Gunicorn with PostgreSQL 16 in Docker Compose.",
+      "overview": "An Ubuntu Server 24.04 virtual machine was deployed in Azure to host an internal enterprise application environment. The application subnet and network security rules were configured, outbound connectivity was provided through an Azure NAT Gateway, and graphical access was enabled through Azure Bastion without a public IP on the VM. Docker Engine and Docker Compose were installed to run the application infrastructure in containers, PostgreSQL 16 was deployed as the database service, and the Enterprise Management Portal was built and deployed with Gunicorn as the application server.",
+      "objectives": [
+        "Host an internal application on a VM with no public IP address.",
+        "Provide controlled outbound connectivity and secure administrative access.",
+        "Run the database tier in containers and connect a Python web application to it."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Ubuntu Server 24.04",
+        "Azure NAT Gateway",
+        "Azure Bastion",
+        "Network Security Groups",
+        "Docker Engine",
+        "Docker Compose",
+        "PostgreSQL 16",
+        "Flask",
+        "Gunicorn"
+      ],
+      "implementation": [
+        "Configured the application subnet and its network security group.",
+        "Deployed the Ubuntu Server 24.04 virtual machine and verified the operating system.",
+        "Allocated a Standard static public IP and deployed a NAT Gateway for the application subnet's outbound traffic.",
+        "Accessed the Ubuntu XFCE desktop through Azure Bastion.",
+        "Deployed PostgreSQL 16 with Docker Compose and created the dedicated enterprise_portal database and application account.",
+        "Deployed the Flask-based Enterprise Management Portal behind Gunicorn."
+      ],
+      "verification": [
+        "Application health endpoint, PostgreSQL connectivity and the Gunicorn application server were verified.",
+        "The portal dashboard was opened in Firefox inside the VM at 127.0.0.1:8080.",
+        "Final NSG inbound rules reviewed: SSH access, internal HTTPS, Azure Bastion RDP access and an additional inbound restriction."
+      ],
+      "cover": 12
+    },
+    {
+      "slug": "azure-subscription-governance",
+      "repo": "azure-administrator-labs",
+      "folder": "04-azure-subscription-governance",
+      "title": "Azure Subscription Governance",
+      "category": "identity-governance",
+      "featured": true,
+      "status": "Completed",
+      "summary": "Azure Policy tag enforcement at resource-group scope plus scheduled VM shutdown with an Azure Automation runbook and managed identity.",
+      "overview": "The Azure subscription and resource group configuration were reviewed, and Azure Policy was used to enforce resource tagging. A Require a tag on resources assignment at the rg-rbac-lab scope required the Environment=Lab tag. An Ubuntu VM and its supporting resources were deployed and evaluated for compliance. Automated VM shutdown was then implemented with Azure Automation.",
+      "objectives": [
+        "Enforce a tagging standard on resources with Azure Policy.",
+        "Verify compliance from the Portal, Azure CLI and PowerShell.",
+        "Automate VM shutdown on a schedule to control cost."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Policy",
+        "Azure Automation",
+        "PowerShell runbooks",
+        "Managed identity",
+        "Azure RBAC",
+        "Azure CLI",
+        "Azure PowerShell"
+      ],
+      "implementation": [
+        "Inspected subscription details with Azure CLI queries and JSON output.",
+        "Assigned the Require a tag on resources policy at the rg-rbac-lab scope requiring Environment=Lab.",
+        "Deployed an Ubuntu VM with its network interface, NSG, virtual network and managed OS disk.",
+        "Created the Automation Account aa-rbaclab-shutdown with a system-assigned managed identity holding Virtual Machine Contributor at the VM scope.",
+        "Published the Shutdown-VM-Daily-UAE PowerShell runbook with three daily schedules (2:00 AM, 5:00 PM and 10:00 PM, Asia/Dubai)."
+      ],
+      "verification": [
+        "Policy compliance checked in the Portal, Azure CLI and PowerShell: all five infrastructure resources were compliant.",
+        "A completed Automation job was reviewed and the VM's PowerState/deallocated state was confirmed with PowerShell."
+      ],
+      "cover": 7
+    },
+    {
+      "slug": "azure-manage-virtual-networking",
+      "repo": "azure-administrator-labs",
+      "folder": "05-manage-virtual-networking",
+      "title": "Implement and Manage Virtual Networking",
+      "category": "azure-networking",
+      "featured": true,
+      "status": "Completed",
+      "summary": "Branch VNet with bidirectional peering, NSGs, static IPs, user-defined routes, a storage service endpoint, private DNS and a Standard Load Balancer.",
+      "overview": "An additional subnet and a separate branch virtual network were created, followed by bidirectional VNet peering, network security groups, static private and public IP addresses, a route table with user-defined routes, a Microsoft.Storage service endpoint and a private DNS zone with a virtual network link. A Standard Load Balancer was deployed and Azure Network Watcher was enabled in East Asia. Configuration was verified in the Azure Portal, Azure CLI and PowerShell.",
+      "objectives": [
+        "Extend an existing network with an additional subnet and a branch VNet.",
+        "Control traffic with NSG rules and user-defined routes.",
+        "Provide private name resolution, service endpoints and load balancing."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Virtual Networks",
+        "VNet Peering",
+        "Network Security Groups",
+        "Route Tables / UDR",
+        "Service Endpoints",
+        "Azure Private DNS",
+        "Azure Load Balancer",
+        "Network Watcher",
+        "Azure CLI",
+        "Azure PowerShell"
+      ],
+      "implementation": [
+        "Created an additional subnet and the branch virtual network.",
+        "Configured bidirectional peering between the main and branch VNets.",
+        "Configured nsg-branch-1 with an RDP deny rule and an HTTPS allow rule.",
+        "Assigned the static private IP 10.20.1.10 and a Standard public IP.",
+        "Created route table rt-branch-1 with a route blocking 192.0.2.0/24 and associated it with snet-branch-1.",
+        "Enabled the Microsoft.Storage service endpoint on the branch subnet.",
+        "Created private DNS zone lab.inno.internal with a virtual network link.",
+        "Deployed Standard Load Balancer lb-branch-1 with a TCP health probe and an HTTP port 80 rule."
+      ],
+      "verification": [
+        "Subnet ranges and the NIC's static private IP were verified with Azure CLI and PowerShell.",
+        "Network Watcher confirmed enabled in East Asia."
+      ],
+      "cover": 14
+    },
+    {
+      "slug": "azure-rbac",
+      "repo": "azure-administrator-labs",
+      "folder": "03-azure-rbac",
+      "title": "Azure Role-Based Access Control (RBAC)",
+      "category": "identity-governance",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Built-in role assignments at resource-group scope and a custom VM Operator - Limited role that can start and restart but not delete VMs.",
+      "overview": "Role definitions and subscription-level permissions were reviewed, a resource group was created and role assignments were configured at resource-group scope. Built-in Reader and Virtual Machine Contributor roles were assigned to different users, and a custom role named VM Operator - Limited was created and assigned.",
+      "objectives": [
+        "Apply least-privilege access at resource-group scope.",
+        "Create a custom role that limits VM operations."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure RBAC",
+        "Custom roles",
+        "Microsoft Entra ID"
+      ],
+      "implementation": [
+        "Reviewed the Owner role assignment inherited at subscription scope and built-in role permissions.",
+        "Assigned Reader and Virtual Machine Contributor at the rg-rbac-lab scope.",
+        "Created VM Operator - Limited, allowing users to view, start and restart VMs without permission to delete VMs or assign roles.",
+        "Assigned the custom role to a lab user at the resource-group scope."
+      ],
+      "verification": [
+        "Role assignments, including the custom role, were verified under the rg-rbac-lab resource group."
+      ],
+      "cover": 3
+    },
+    {
+      "slug": "azure-advanced-entra-admin",
+      "repo": "azure-administrator-labs",
+      "folder": "02-advanced-entra-admin",
+      "title": "Advanced Microsoft Entra ID Administration",
+      "category": "identity-governance",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Device settings review, bulk user creation and Microsoft Graph PowerShell automation of user verification, CSV export and group membership.",
+      "overview": "Device join, registration and security settings were inspected in a Microsoft Entra ID tenant. Seven internal users were created with the bulk user creation feature. Because the portal did not clearly confirm the CSV bulk operation's results, Microsoft Graph PowerShell was used, following Microsoft's documentation on bulk operation service limitations, to verify the accounts, export their profiles and automate group membership.",
+      "objectives": [
+        "Review device join, local administrator and device security settings.",
+        "Provision users in bulk and verify the outcome independently.",
+        "Automate group membership with Microsoft Graph PowerShell."
+      ],
+      "technologies": [
+        "Microsoft Entra ID",
+        "Microsoft Graph PowerShell",
+        "Bulk operations (CSV)",
+        "Security groups",
+        "LAPS settings"
+      ],
+      "implementation": [
+        "Reviewed device join and registration settings, local administrator settings and LAPS / BitLocker recovery settings.",
+        "Created seven internal users with Entra ID bulk user creation.",
+        "Established a delegated Microsoft Graph connection and retrieved the seven accounts.",
+        "Exported user profile information to CSV.",
+        "Created the IT-Cloud-Ops-Automation security group with Graph PowerShell and added all seven users."
+      ],
+      "verification": [
+        "The seven users were retrieved with Graph PowerShell, showing UPNs, departments and job titles.",
+        "The exported CSV was imported back into PowerShell to confirm the records.",
+        "Group membership was independently retrieved to confirm all seven users were added."
+      ],
+      "results": [
+        "Problem: the portal did not give clear confirmation of the CSV bulk operation results. Fix: verification was moved to Microsoft Graph PowerShell."
+      ],
+      "cover": 8
+    },
+    {
+      "slug": "azure-entra-identity-access",
+      "repo": "azure-administrator-labs",
+      "folder": "01-azure-identity-and-access",
+      "title": "Microsoft Entra ID Identity Management",
+      "category": "identity-governance",
+      "featured": false,
+      "status": "Completed",
+      "summary": "User and security group administration in Microsoft Entra ID, verified through directory audit logs.",
+      "overview": "Identity and access administration was carried out in a Microsoft Entra ID tenant: inspecting the tenant configuration, verifying the Global Administrator role, creating an internal user with configured attributes and creating a security group with an assigned owner and member. Sign-in logs and directory audit logs were then reviewed to examine the provisioning and membership activity.",
+      "objectives": [
+        "Provision a user and a security group in Entra ID.",
+        "Use audit logs to verify who made each change and what changed."
+      ],
+      "technologies": [
+        "Microsoft Entra ID",
+        "Directory roles",
+        "Security groups",
+        "Audit logs",
+        "Sign-in logs"
+      ],
+      "implementation": [
+        "Reviewed the Default Directory tenant and the Global Administrator role assignment.",
+        "Created an internal user and configured user attributes.",
+        "Created the IT-Cloud-Ops security group with assigned membership, an owner and a member."
+      ],
+      "verification": [
+        "Audit records for Add user and Add member to group were inspected for initiating administrator, target resources, modified properties and status.",
+        "Group membership view confirmed the user was added."
+      ],
+      "cover": 4
+    },
+    {
+      "slug": "azure-application-gateway",
+      "repo": "azure-basic-labs",
+      "folder": "08-azure-application-gateway",
+      "title": "Azure Application Gateway",
+      "category": "azure-networking",
+      "featured": true,
+      "status": "Completed",
+      "summary": "Layer 7 load balancing of HTTP traffic across two Nginx VMs with an Azure Application Gateway, shown in a demo video.",
+      "overview": "An Azure Application Gateway was deployed to distribute HTTP traffic across two Linux virtual machines running Nginx. The work covered the dedicated subnet, frontend configuration, backend pool, listener, backend settings, routing rules, validation, deployment and end-to-end verification.",
+      "objectives": [
+        "Deploy Layer 7 load balancing in front of two web servers."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Application Gateway",
+        "Virtual Networks",
+        "Ubuntu Linux VMs",
+        "Nginx"
+      ],
+      "architecture": "                 Internet\n                     │\n                     ▼\n        Azure Application Gateway\n                     │\n         ┌───────────┴───────────┐\n         ▼                       ▼\n Linux Virtual Machine 1   Linux Virtual Machine 2\n        (Nginx)                  (Nginx)",
+      "implementation": [
+        "Created a dedicated Application Gateway subnet.",
+        "Configured the frontend public IP.",
+        "Added both Linux VMs to the backend pool.",
+        "Configured the HTTP listener, backend settings and routing rule.",
+        "Validated and deployed the gateway."
+      ],
+      "verification": [
+        "Azure validation passed before deployment.",
+        "Refreshing the browser alternated responses between Backend Server 1 and Backend Server 2, confirming Layer 7 load balancing (recorded in the demo video)."
+      ],
+      "video": "https://youtu.be/zt_IU6-aZz0",
+      "cover": 5
+    },
+    {
+      "slug": "azure-load-balancer",
+      "repo": "azure-basic-labs",
+      "folder": "07-azure-load-balancer",
+      "title": "Azure Standard Load Balancer",
+      "category": "azure-networking",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Standard Load Balancer with health probe and HTTP rule distributing traffic across two Ubuntu VMs running Nginx.",
+      "overview": "An Azure Standard Load Balancer was deployed to distribute HTTP traffic across two Ubuntu Linux virtual machines running Nginx, with a frontend public IP, backend pool, HTTP health probe and load-balancing rule.",
+      "objectives": [
+        "Distribute HTTP traffic across two VMs and remove unhealthy instances automatically."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Load Balancer (Standard)",
+        "Health probes",
+        "Ubuntu Linux VMs",
+        "Nginx",
+        "PowerShell"
+      ],
+      "architecture": "                Internet\n                    │\n                    ▼\n      Azure Standard Load Balancer\n                    │\n        ┌───────────┴───────────┐\n        ▼                       ▼\nvm-cloud-labs-linux-001   vm-cloud-labs-linux-002\n       Nginx                    Nginx",
+      "implementation": [
+        "Deployed the Standard Load Balancer with a frontend public IP.",
+        "Added both Ubuntu VMs to the backend pool.",
+        "Created an HTTP health probe and a load-balancing rule.",
+        "Installed Nginx on both VMs."
+      ],
+      "verification": [
+        "Both backend VMs reported healthy in the health probe status.",
+        "PowerShell curl requests were distributed between both VMs.",
+        "The browser showed pages served by vm-cloud-labs-linux-001 and vm-cloud-labs-linux-002."
+      ],
+      "cover": 10
+    },
+    {
+      "slug": "azure-network-security-group",
+      "repo": "azure-basic-labs",
+      "folder": "03-azure-network-security-group",
+      "title": "Azure Network Security Group",
+      "category": "azure-networking",
+      "featured": false,
+      "status": "Completed",
+      "summary": "NSG with SSH and HTTP inbound rules associated with a VNet subnet.",
+      "overview": "An Azure Network Security Group was created to control inbound traffic, with rules allowing SSH (port 22) for administration and HTTP (port 80) for web traffic, and was associated with the virtual network subnet.",
+      "objectives": [
+        "Filter inbound traffic to a subnet."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Network Security Groups",
+        "Virtual Networks"
+      ],
+      "implementation": [
+        "Created the NSG and reviewed its default inbound and outbound rules.",
+        "Added inbound rules for SSH (22) and HTTP (80).",
+        "Associated the NSG with the subnet."
+      ],
+      "verification": [
+        "The subnet view shows it protected by the associated NSG."
+      ]
+    },
+    {
+      "slug": "azure-vnet-peering",
+      "repo": "azure-basic-labs",
+      "folder": "02-azure-vnet-peering",
+      "title": "Azure Virtual Network Peering",
+      "category": "azure-networking",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Peering between two virtual networks for private communication over the Microsoft backbone.",
+      "overview": "VNet peering was configured between two virtual networks so resources can communicate privately over the Microsoft backbone without a VPN or public internet connectivity.",
+      "objectives": [
+        "Connect two VNets privately."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Virtual Networks",
+        "VNet Peering"
+      ],
+      "implementation": [
+        "Configured peering on both virtual networks."
+      ],
+      "verification": [
+        "Both VNets show the peering in a connected state."
+      ]
+    },
+    {
+      "slug": "azure-private-dns",
+      "repo": "azure-basic-labs",
+      "folder": "10-azure-private-dns",
+      "title": "Azure Private DNS",
+      "category": "azure-networking",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Private DNS zone linked to a virtual network for internal name resolution.",
+      "overview": "An Azure Private DNS zone was created and linked to a virtual network to provide private name resolution for Azure resources without exposing records to the public internet.",
+      "objectives": [
+        "Provide internal-only DNS resolution for a VNet."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Private DNS",
+        "Virtual Networks"
+      ],
+      "implementation": [
+        "Created the Private DNS zone.",
+        "Linked the virtual network to the zone."
+      ],
+      "verification": [
+        "The virtual network link shows as linked."
+      ]
+    },
+    {
+      "slug": "azure-vnet-deployment",
+      "repo": "azure-basic-labs",
+      "folder": "01-azure-vnet-deployment",
+      "title": "Azure Virtual Network Deployment",
+      "category": "azure-networking",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Resource group, virtual network and management subnet deployment.",
+      "overview": "An Azure Virtual Network was deployed in a resource group with its address space and a management subnet.",
+      "objectives": [
+        "Create the base network for later labs."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Resource Groups",
+        "Virtual Networks"
+      ],
+      "implementation": [
+        "Deployed the virtual network and its management subnet in a resource group."
+      ],
+      "verification": [
+        "Deployment succeeded; the VNet overview shows the address space and subnet."
+      ]
+    },
+    {
+      "slug": "azure-linux-vm-deployment",
+      "repo": "azure-basic-labs",
+      "folder": "04-azure-linux-vm-deployment",
+      "title": "Azure Linux VM Deployment",
+      "category": "azure-compute-storage",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Ubuntu VM with SSH key authentication hosting a custom Nginx web page.",
+      "overview": "An Ubuntu Linux virtual machine was deployed in Azure with SSH key authentication. Nginx was installed and configured to host a custom web page.",
+      "objectives": [
+        "Deploy and access a Linux VM securely and serve web content."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Virtual Machines",
+        "Ubuntu Linux",
+        "SSH keys",
+        "Nginx"
+      ],
+      "implementation": [
+        "Configured and deployed the VM.",
+        "Connected over SSH with key-based authentication.",
+        "Installed Nginx and created a custom page."
+      ],
+      "verification": [
+        "Nginx was running and the custom page was served by the VM."
+      ]
+    },
+    {
+      "slug": "azure-linux-vm-2-deployment",
+      "repo": "azure-basic-labs",
+      "folder": "06-azure-linux-vm-2-deployment",
+      "title": "Azure Linux VM 2 Deployment",
+      "category": "azure-compute-storage",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Second Ubuntu VM with SSH keys, NSG protection and Nginx, later used as a load-balancer backend.",
+      "overview": "A second Ubuntu Linux VM was deployed in Azure with SSH key authentication, secured with a Network Security Group and prepared to host web applications with Nginx.",
+      "objectives": [
+        "Provide a second web server for load-balancing labs."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Virtual Machines",
+        "Ubuntu Linux",
+        "SSH keys",
+        "Network Security Groups",
+        "Nginx"
+      ],
+      "implementation": [
+        "Reviewed and deployed the VM.",
+        "Connected over SSH with key-based authentication.",
+        "Installed Nginx."
+      ],
+      "verification": [
+        "Nginx served its default page over HTTP."
+      ]
+    },
+    {
+      "slug": "azure-managed-disks",
+      "repo": "azure-basic-labs",
+      "folder": "05-azure-managed-disks",
+      "title": "Azure Managed Disks",
+      "category": "azure-compute-storage",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Managed data disk attached to an Ubuntu VM, then partitioned, formatted and mounted.",
+      "overview": "An Azure Managed Disk was created and attached to an existing Ubuntu VM, then partitioned, formatted and mounted to provide additional persistent storage.",
+      "objectives": [
+        "Add persistent storage to a running VM."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Managed Disks",
+        "Ubuntu Linux"
+      ],
+      "implementation": [
+        "Attached a managed data disk to the VM.",
+        "Partitioned, formatted and mounted it over SSH."
+      ],
+      "verification": [
+        "The disk shows as mounted on the VM."
+      ]
+    },
+    {
+      "slug": "azure-storage-account",
+      "repo": "azure-basic-labs",
+      "folder": "09-azure-storage-account",
+      "title": "Azure Storage Account",
+      "category": "azure-compute-storage",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Storage account and Blob container with a sample file upload.",
+      "overview": "An Azure Storage Account was deployed, a Blob container was created and a sample file was uploaded to verify the storage configuration.",
+      "objectives": [
+        "Store files in Azure Blob Storage."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Storage Account",
+        "Blob Storage"
+      ],
+      "implementation": [
+        "Deployed the storage account.",
+        "Created a Blob container and uploaded a sample file."
+      ],
+      "verification": [
+        "Storage account and container overviews confirm the deployment."
+      ]
+    },
+    {
+      "slug": "linux-server-health-monitoring",
+      "repo": "linux-projects",
+      "folder": "13-linux-server-health-monitoring",
+      "title": "Linux Server Health Monitoring & Scheduled Reporting",
+      "category": "linux-administration",
+      "featured": true,
+      "status": "Completed",
+      "summary": "Bash health-check script scheduled with Cron that checks memory, disk and services and returns a status exit code.",
+      "overview": "A Bash-based server health monitoring system was built that runs automatically with Cron and checks system resources and essential services.",
+      "objectives": [
+        "Automate routine server health checks and report a clear status."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "Bash",
+        "Cron",
+        "systemd services"
+      ],
+      "implementation": [
+        "Checked the Cron environment.",
+        "Ran the health-check script manually to produce a report.",
+        "Scheduled the script with Cron."
+      ],
+      "verification": [
+        "Cron executed the script automatically and generated the report.",
+        "Memory, disk and service checks returned OK with an overall healthy result.",
+        "A simulated failure was detected and returned a warning status.",
+        "The script returned exit code 0 when the system was healthy."
+      ],
+      "cover": 6
+    },
+    {
+      "slug": "linux-nginx-web-server",
+      "repo": "linux-projects",
+      "folder": "05-nginx-web-server",
+      "title": "Nginx Web Server",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Nginx install, custom site configuration, config testing and log review on Ubuntu.",
+      "overview": "Nginx was installed on Ubuntu, a custom HTML page and site configuration were created and enabled, and access and error logs were reviewed.",
+      "objectives": [
+        "Serve a custom site with Nginx and confirm it from a client."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "Nginx",
+        "curl"
+      ],
+      "implementation": [
+        "Installed Nginx and confirmed it listened on TCP 80.",
+        "Created a custom page and site configuration in sites-enabled.",
+        "Tested the configuration syntax and reloaded Nginx."
+      ],
+      "verification": [
+        "curl returned the page locally.",
+        "A browser on the network loaded the custom page by IP.",
+        "Access and error logs recorded the requests."
+      ]
+    },
+    {
+      "slug": "linux-samba-file-server",
+      "repo": "linux-projects",
+      "folder": "06-samba-file-server",
+      "title": "Samba File Server",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Authenticated SMB share on Ubuntu accessed from Linux and Windows clients.",
+      "overview": "An Ubuntu server was configured as a Samba file server with an authenticated SMB shared folder, and file access was verified from a Windows client.",
+      "objectives": [
+        "Share files from Linux to Windows clients."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "Samba / SMB",
+        "smbclient",
+        "Windows"
+      ],
+      "implementation": [
+        "Created the shared directory and the Shared share.",
+        "Validated the configuration with testparm."
+      ],
+      "verification": [
+        "smbclient listed and connected to the share and transferred a file.",
+        "The share was accessed from Windows."
+      ]
+    },
+    {
+      "slug": "linux-dns-server",
+      "repo": "linux-projects",
+      "folder": "07-dns-server",
+      "title": "DNS Server (BIND)",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "BIND forward and reverse zones for inno.local with lookup testing.",
+      "overview": "BIND was installed and configured with a forward zone for inno.local and a matching reverse zone.",
+      "objectives": [
+        "Provide internal name resolution for a lab network."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "BIND9",
+        "DNS"
+      ],
+      "implementation": [
+        "Installed BIND.",
+        "Created an A record for server1.inno.local.",
+        "Created and validated forward and reverse zones."
+      ],
+      "verification": [
+        "server1.inno.local resolved to 192.168.44.232 and the reverse lookup returned server1.inno.local."
+      ]
+    },
+    {
+      "slug": "linux-dhcp-server",
+      "repo": "linux-projects",
+      "folder": "08-dhcp-server",
+      "title": "DHCP Server",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "ISC DHCP server leasing addresses to an Alpine Linux client.",
+      "overview": "An ISC DHCP server was installed on Ubuntu and configured with a subnet, address pool, broadcast address, domain name and DNS server.",
+      "objectives": [
+        "Assign client addresses automatically."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "ISC DHCP Server",
+        "Alpine Linux"
+      ],
+      "implementation": [
+        "Installed and configured the DHCP service and scope."
+      ],
+      "verification": [
+        "The Alpine client received 192.168.150.100.",
+        "The lease database recorded the active lease."
+      ]
+    },
+    {
+      "slug": "linux-ufw-firewall",
+      "repo": "linux-projects",
+      "folder": "09-ufw-firewall",
+      "title": "UFW Firewall",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Default-deny inbound UFW policy allowing only SSH, HTTP and HTTPS, tested from a client.",
+      "overview": "UFW was configured on Ubuntu Server with a default-deny inbound policy allowing only SSH, HTTP and HTTPS, and enforcement was tested from an Alpine Linux client.",
+      "objectives": [
+        "Restrict inbound traffic to required services."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "UFW",
+        "Alpine Linux"
+      ],
+      "implementation": [
+        "Enabled UFW with default-deny inbound and allow rules for SSH, HTTP and HTTPS."
+      ],
+      "verification": [
+        "Port 8080 was blocked, then reachable after a temporary allow rule."
+      ]
+    },
+    {
+      "slug": "linux-ssh-server",
+      "repo": "linux-projects",
+      "folder": "03-ssh-server",
+      "title": "SSH Server Configuration",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "OpenSSH moved to custom port 2222 and verified from a Windows client.",
+      "overview": "OpenSSH Server was installed on Ubuntu and sshd_config was changed to listen on a custom port.",
+      "objectives": [
+        "Enable remote administration on a non-default port."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "OpenSSH",
+        "Windows"
+      ],
+      "implementation": [
+        "Installed OpenSSH Server.",
+        "Changed the listening port from 22 to 2222 in sshd_config."
+      ],
+      "verification": [
+        "The service listened on 2222.",
+        "A Windows client connected over SSH on port 2222."
+      ]
+    },
+    {
+      "slug": "linux-networking",
+      "repo": "linux-projects",
+      "folder": "04-linux-networking",
+      "title": "Linux Networking",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "IP, routing and DNS resolver verification under VirtualBox bridged and NAT networking.",
+      "overview": "Interface addressing, routing and DNS resolution were verified on a Linux VM, and the VM was tested with both VirtualBox Bridged and NAT adapters.",
+      "objectives": [
+        "Confirm addressing, routing and name resolution in different VM network modes."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "iproute2",
+        "resolvectl",
+        "VirtualBox"
+      ],
+      "implementation": [
+        "Inspected IP and route configuration.",
+        "Switched the VM between Bridged and NAT adapters."
+      ],
+      "verification": [
+        "Gateway ping and DNS resolution succeeded.",
+        "Internet and DNS connectivity tested with 0% packet loss."
+      ]
+    },
+    {
+      "slug": "linux-user-group-management",
+      "repo": "linux-projects",
+      "folder": "02-user-and-groups-management",
+      "title": "User & Group Management",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Department groups and directory permissions with chown, chmod, SGID and the sticky bit.",
+      "overview": "Department groups and user accounts were created, memberships assigned and directory access controlled with chown, chmod, SGID and the sticky bit.",
+      "objectives": [
+        "Restrict users to authorised directories."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "Users and groups",
+        "File permissions",
+        "SGID",
+        "Sticky bit"
+      ],
+      "implementation": [
+        "Created groups and users and assigned memberships.",
+        "Set ownership and permissions on department directories.",
+        "Applied SGID and the sticky bit."
+      ],
+      "verification": [
+        "New files inherited group ownership under SGID.",
+        "Users could not delete others' files in the sticky-bit directory."
+      ]
+    },
+    {
+      "slug": "linux-nfs-file-server",
+      "repo": "linux-projects",
+      "folder": "10-nfs-file-server",
+      "title": "NFS File Server",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "NFS export of /srv/nfs/shared mounted by an Alpine client.",
+      "overview": "An NFS server was configured to export /srv/nfs/shared to the lab network.",
+      "objectives": [
+        "Share storage between Linux hosts."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "NFS",
+        "Alpine Linux"
+      ],
+      "implementation": [
+        "Configured the NFS server and export."
+      ],
+      "verification": [
+        "The Alpine client mounted the share and transferred a file."
+      ]
+    },
+    {
+      "slug": "linux-centralized-syslog",
+      "repo": "linux-projects",
+      "folder": "11-centralized-syslog-server",
+      "title": "Remote Syslog Logging",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "rsyslog server receiving remote logs on port 514 from an Alpine client.",
+      "overview": "rsyslog on Ubuntu was configured to receive remote logs.",
+      "objectives": [
+        "Centralise logs from other hosts."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "rsyslog",
+        "Alpine Linux"
+      ],
+      "implementation": [
+        "Configured rsyslog for remote reception and validated the configuration."
+      ],
+      "verification": [
+        "The server listened on port 514.",
+        "A test message from Alpine was recorded on the server."
+      ]
+    },
+    {
+      "slug": "linux-logrotate",
+      "repo": "linux-projects",
+      "folder": "12-log-rotation-logrotate",
+      "title": "Log Rotation with Logrotate",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Custom logrotate policy with retention, compression and recreation of active logs.",
+      "overview": "Automated log rotation was configured and tested with logrotate, including retention, compression and recreation of active log files.",
+      "objectives": [
+        "Control log growth automatically."
+      ],
+      "technologies": [
+        "Ubuntu Linux",
+        "logrotate",
+        "systemd timers"
+      ],
+      "implementation": [
+        "Confirmed the logrotate timer was active.",
+        "Created and validated a custom rotation policy."
+      ],
+      "verification": [
+        "The log was rotated and compressed, older logs retained and a new active log created."
+      ]
+    },
+    {
+      "slug": "linux-server-build",
+      "repo": "linux-projects",
+      "folder": "01-linux-server-build",
+      "title": "Linux Server Build",
+      "category": "linux-administration",
+      "featured": false,
+      "status": "Completed",
+      "summary": "Ubuntu 24.04 LTS VM prepared with hostname, time zone and admin tools.",
+      "overview": "An Ubuntu 24.04 LTS virtual machine was deployed and prepared for administration by setting the hostname and time zone and installing essential tools.",
+      "objectives": [
+        "Prepare a base server for the later Linux labs."
+      ],
+      "technologies": [
+        "Ubuntu 24.04 LTS",
+        "VirtualBox"
+      ],
+      "implementation": [
+        "Set the hostname and time zone and installed administration tools."
+      ],
+      "verification": [
+        "Operating system, kernel, hardware, storage and network configuration were verified."
+      ]
+    },
+    {
+      "slug": "network-automation-python-netmiko",
+      "repo": "network-infrastructure-and-automation",
+      "folder": "",
+      "title": "Network Automation with Python and Netmiko",
+      "category": "network-automation",
+      "featured": true,
+      "status": "In progress: Python / Netmiko stage documented",
+      "summary": "Inventory-driven Python scripts that connect to a Cisco IOS router with Netmiko, parse output with TextFSM and write a JSON device report.",
+      "overview": "Python scripts connect to a Cisco IOS router (R1) with Netmiko, collect show version and show ip interface brief output, parse the interface table with TextFSM and save a structured JSON report. A later version reads connection details from a JSON device inventory. The repository describes a wider plan (Ansible, APIs, NETCONF/RESTCONF); only the Python stage is published so far.",
+      "objectives": [
+        "Collect device information automatically instead of by hand.",
+        "Drive connections from an inventory file rather than hard-coded hosts."
+      ],
+      "technologies": [
+        "Python",
+        "Netmiko",
+        "TextFSM",
+        "JSON",
+        "Cisco IOS"
+      ],
+      "implementation": [
+        "device_info.py connects to R1, runs show commands and extracts hostname, IOS version, uptime and interfaces.",
+        "inventory_reader.py and inventory_connection.py load inventory/devices.json and open a Netmiko session.",
+        "collect_device_info.py combines the inventory with collection and writes api/<hostname>-device-info.json."
+      ],
+      "verification": [
+        "Screenshots show a successful Netmiko connection to R1 and the structured output.",
+        "The generated report api/r1-device-info.json records IOS 17.15.1 and four interfaces with status."
+      ]
+    }
+  ]
+}

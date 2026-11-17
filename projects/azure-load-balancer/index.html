@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Standard Load Balancer | Innocent Mbele</title>
+<meta name="description" content="Standard Load Balancer with health probe and HTTP rule distributing traffic across two Ubuntu VMs running Nginx.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/azure-load-balancer/">
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Azure Standard Load Balancer | Innocent Mbele">
+<meta property="og:description" content="Standard Load Balancer with health probe and HTTP rule distributing traffic across two Ubuntu VMs running Nginx.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/azure-load-balancer/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=azure-networking">Azure Networking</a></p>
+    <div class="card-meta"><span class="badge">Azure Networking</span><span class="status">Completed</span></div>
+    <h1>Azure Standard Load Balancer</h1>
+    <p>Standard Load Balancer with health probe and HTTP rule distributing traffic across two Ubuntu VMs running Nginx.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>An Azure Standard Load Balancer was deployed to distribute HTTP traffic across two Ubuntu Linux virtual machines running Nginx, with a frontend public IP, backend pool, HTTP health probe and load-balancing rule.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Distribute HTTP traffic across two VMs and remove unhealthy instances automatically.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Architecture and design</h2><pre role="img" aria-label="Architecture diagram for Azure Standard Load Balancer from the repository README">                Internet
+                    │
+                    ▼
+      Azure Standard Load Balancer
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+vm-cloud-labs-linux-001   vm-cloud-labs-linux-002
+       Nginx                    Nginx</pre><p class="note">Diagram reproduced from the project README.</p></section><section aria-labelledby="s3"><h2 id="s3">Implementation</h2><ul class="list"><li>Deployed the Standard Load Balancer with a frontend public IP.</li><li>Added both Ubuntu VMs to the backend pool.</li><li>Created an HTTP health probe and a load-balancing rule.</li><li>Installed Nginx on both VMs.</li></ul></section><section aria-labelledby="s4"><h2 id="s4">Screenshots and evidence</h2><p>11 screenshots from the repository, in the order documented. Select an image to view it full size.</p><p class="note">Personal account details visible in the original Azure screenshots (sign-in email addresses, tenant names and subscription identifiers) are masked in these copies.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/01-azure-load-balancer-01-review-and-create.webp" data-caption="Review and Create: Shows the Azure configuration before deploying the Standard Load Balancer." aria-label="Enlarge screenshot 1: Review and Create"><img src="/assets/images/projects/azure-load-balancer/01-azure-load-balancer-01-review-and-create-thumb.webp" alt="Review and Create — Shows the Azure configuration before deploying the Standard Load Balancer." width="720" height="374" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>Review and Create</strong>Shows the Azure configuration before deploying the Standard Load Balancer.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/02-azure-load-balancer-02-deployment-success.webp" data-caption="Deployment Successful: Shows the successful deployment of the Azure Standard Load Balancer." aria-label="Enlarge screenshot 2: Deployment Successful"><img src="/assets/images/projects/azure-load-balancer/02-azure-load-balancer-02-deployment-success-thumb.webp" alt="Deployment Successful — Shows the successful deployment of the Azure Standard Load Balancer." width="720" height="375" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>Deployment Successful</strong>Shows the successful deployment of the Azure Standard Load Balancer.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/03-azure-load-balancer-03-load-balancer-overview.webp" data-caption="Load Balancer Overview: Shows the deployed load balancer and its frontend configuration." aria-label="Enlarge screenshot 3: Load Balancer Overview"><img src="/assets/images/projects/azure-load-balancer/03-azure-load-balancer-03-load-balancer-overview-thumb.webp" alt="Load Balancer Overview — Shows the deployed load balancer and its frontend configuration." width="720" height="376" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>Load Balancer Overview</strong>Shows the deployed load balancer and its frontend configuration.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/04-azure-load-balancer-04-backend-pool.webp" data-caption="Backend Pool: Shows both Ubuntu Linux virtual machines added to the backend pool." aria-label="Enlarge screenshot 4: Backend Pool"><img src="/assets/images/projects/azure-load-balancer/04-azure-load-balancer-04-backend-pool-thumb.webp" alt="Backend Pool — Shows both Ubuntu Linux virtual machines added to the backend pool." width="720" height="382" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">4.</span>Backend Pool</strong>Shows both Ubuntu Linux virtual machines added to the backend pool.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/05-azure-load-balancer-05-health-probe-created.webp" data-caption="Health Probe: Shows the HTTP health probe configured to monitor the availability of the backend virtual machines." aria-label="Enlarge screenshot 5: Health Probe"><img src="/assets/images/projects/azure-load-balancer/05-azure-load-balancer-05-health-probe-created-thumb.webp" alt="Health Probe — Shows the HTTP health probe configured to monitor the availability of the backend virtual machines." width="720" height="378" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">5.</span>Health Probe</strong>Shows the HTTP health probe configured to monitor the availability of the backend virtual machines.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/06-azure-load-balancer-06-load-balancing-rule.webp" data-caption="Load Balancing Rule: Shows the HTTP load balancing rule linking the frontend IP, backend pool and health probe." aria-label="Enlarge screenshot 6: Load Balancing Rule"><img src="/assets/images/projects/azure-load-balancer/06-azure-load-balancer-06-load-balancing-rule-thumb.webp" alt="Load Balancing Rule — Shows the HTTP load balancing rule linking the frontend IP, backend pool and health probe." width="720" height="380" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">6.</span>Load Balancing Rule</strong>Shows the HTTP load balancing rule linking the frontend IP, backend pool and health probe.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/07-azure-load-balancer-07-load-bala-health-probe-status.webp" data-caption="Health Probe Status: Shows both backend virtual machines reporting a healthy status." aria-label="Enlarge screenshot 7: Health Probe Status"><img src="/assets/images/projects/azure-load-balancer/07-azure-load-balancer-07-load-bala-health-probe-status-thumb.webp" alt="Health Probe Status — Shows both backend virtual machines reporting a healthy status." width="720" height="381" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">7.</span>Health Probe Status</strong>Shows both backend virtual machines reporting a healthy status.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/08-azure-load-balancer-08-load-bal-rule.webp" data-caption="Load Balancing Rule Verification: Shows the completed load balancing rule configuration." aria-label="Enlarge screenshot 8: Load Balancing Rule Verification"><img src="/assets/images/projects/azure-load-balancer/08-azure-load-balancer-08-load-bal-rule-thumb.webp" alt="Load Balancing Rule Verification — Shows the completed load balancing rule configuration." width="720" height="370" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">8.</span>Load Balancing Rule Verification</strong>Shows the completed load balancing rule configuration.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/09-azure-load-balancer-09-powershell-curl.webp" data-caption="PowerShell Verification: Shows HTTP requests distributed between both backend virtual machines using PowerShell `curl`." aria-label="Enlarge screenshot 9: PowerShell Verification"><img src="/assets/images/projects/azure-load-balancer/09-azure-load-balancer-09-powershell-curl-thumb.webp" alt="PowerShell Verification — Shows HTTP requests distributed between both backend virtual machines using PowerShell `curl`." width="720" height="447" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">9.</span>PowerShell Verification</strong>Shows HTTP requests distributed between both backend virtual machines using PowerShell `curl`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/10-azure-load-balancer-10-webpage-vm2-shown.webp" data-caption="Browser Verification – VM002: Shows the load balancer routing traffic to **vm-cloud-labs-linux-002**." aria-label="Enlarge screenshot 10: Browser Verification – VM002"><img src="/assets/images/projects/azure-load-balancer/10-azure-load-balancer-10-webpage-vm2-shown-thumb.webp" alt="Browser Verification - VM002 — Shows the load balancer routing traffic to **vm-cloud-labs-linux-002**." width="720" height="448" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">10.</span>Browser Verification – VM002</strong>Shows the load balancer routing traffic to **vm-cloud-labs-linux-002**.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-load-balancer/11-azure-load-balancer-11-webpage-vm1-shown.webp" data-caption="Browser Verification – VM001: Shows the load balancer routing traffic to **vm-cloud-labs-linux-001**." aria-label="Enlarge screenshot 11: Browser Verification – VM001"><img src="/assets/images/projects/azure-load-balancer/11-azure-load-balancer-11-webpage-vm1-shown-thumb.webp" alt="Browser Verification - VM001 — Shows the load balancer routing traffic to **vm-cloud-labs-linux-001**." width="720" height="444" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">11.</span>Browser Verification – VM001</strong>Shows the load balancer routing traffic to **vm-cloud-labs-linux-001**.</figcaption></figure></li></ul></section><section aria-labelledby="s5"><h2 id="s5">Testing and verification</h2><ul class="list"><li>Both backend VMs reported healthy in the health probe status.</li><li>PowerShell curl requests were distributed between both VMs.</li><li>The browser showed pages served by vm-cloud-labs-linux-001 and vm-cloud-labs-linux-002.</li></ul></section><section aria-labelledby="s6"><h2 id="s6">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/07-azure-load-balancer" rel="noopener">azure-basic-labs/07-azure-load-balancer</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-application-gateway/"><span>Previous</span>Azure Application Gateway</a><a href="/projects/azure-network-security-group/" style="text-align:right"><span>Next</span>Azure Network Security Group</a></nav></article>
+    <aside class="facts" aria-label="Project facts">
+      <dl>
+        <dt>Category</dt><dd>Azure Networking</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Microsoft Azure</li><li class="tag">Azure Load Balancer (Standard)</li><li class="tag">Health probes</li><li class="tag">Ubuntu Linux VMs</li><li class="tag">Nginx</li><li class="tag">PowerShell</li></ul></dd>
+        <dt>Evidence</dt><dd>11 screenshots</dd>
+        <dt>Repository</dt><dd>azure-basic-labs</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/07-azure-load-balancer" rel="noopener">View on GitHub</a>
+      <a class="btn btn-outline" href="/projects/">All projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

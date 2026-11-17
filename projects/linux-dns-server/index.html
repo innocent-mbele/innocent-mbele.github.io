@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DNS Server (BIND) | Innocent Mbele</title>
+<meta name="description" content="BIND forward and reverse zones for inno.local with lookup testing.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-dns-server/">
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="DNS Server (BIND) | Innocent Mbele">
+<meta property="og:description" content="BIND forward and reverse zones for inno.local with lookup testing.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-dns-server/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <div class="card-meta"><span class="badge">Linux Administration</span><span class="status">Completed</span></div>
+    <h1>DNS Server (BIND)</h1>
+    <p>BIND forward and reverse zones for inno.local with lookup testing.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>BIND was installed and configured with a forward zone for inno.local and a matching reverse zone.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Provide internal name resolution for a lab network.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Implementation</h2><ul class="list"><li>Installed BIND.</li><li>Created an A record for server1.inno.local.</li><li>Created and validated forward and reverse zones.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots and evidence</h2><p>7 screenshots from the repository, in the order documented. Select an image to view it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/01-01-lnx-dns-installed-service-status.webp" data-caption="BIND Installation and Service: Shows BIND installed and the DNS service running." aria-label="Enlarge screenshot 1: BIND Installation and Service"><img src="/assets/images/projects/linux-dns-server/01-01-lnx-dns-installed-service-status-thumb.webp" alt="BIND Installation and Service — Shows BIND installed and the DNS service running." width="720" height="437" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>BIND Installation and Service</strong>Shows BIND installed and the DNS service running.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/02-02-lnx-dns-server-a-record-created.webp" data-caption="DNS Server A Record: Shows the `server1.inno.local` A record configured." aria-label="Enlarge screenshot 2: DNS Server A Record"><img src="/assets/images/projects/linux-dns-server/02-02-lnx-dns-server-a-record-created-thumb.webp" alt="DNS Server A Record — Shows the `server1.inno.local` A record configured." width="720" height="456" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>DNS Server A Record</strong>Shows the `server1.inno.local` A record configured.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/03-03-lnx-dns-zone-validation.webp" data-caption="Forward Zone Validation: Shows successful validation of the `inno.local` forward zone." aria-label="Enlarge screenshot 3: Forward Zone Validation"><img src="/assets/images/projects/linux-dns-server/03-03-lnx-dns-zone-validation-thumb.webp" alt="Forward Zone Validation — Shows successful validation of the `inno.local` forward zone." width="720" height="544" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>Forward Zone Validation</strong>Shows successful validation of the `inno.local` forward zone.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/04-04-lnx-dns-reverse-zone-validation.webp" data-caption="Reverse Zone Validation: Shows successful validation of the reverse DNS zone." aria-label="Enlarge screenshot 4: Reverse Zone Validation"><img src="/assets/images/projects/linux-dns-server/04-04-lnx-dns-reverse-zone-validation-thumb.webp" alt="Reverse Zone Validation — Shows successful validation of the reverse DNS zone." width="720" height="406" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">4.</span>Reverse Zone Validation</strong>Shows successful validation of the reverse DNS zone.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/05-05-lnx-dns-forward-and-reverse-lookup.webp" data-caption="Forward and Reverse Lookup: Shows successful forward and reverse DNS lookup testing." aria-label="Enlarge screenshot 5: Forward and Reverse Lookup"><img src="/assets/images/projects/linux-dns-server/05-05-lnx-dns-forward-and-reverse-lookup-thumb.webp" alt="Forward and Reverse Lookup — Shows successful forward and reverse DNS lookup testing." width="720" height="461" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">5.</span>Forward and Reverse Lookup</strong>Shows successful forward and reverse DNS lookup testing.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/06-06-lnx-dns-forward-lookup.webp" data-caption="Forward DNS Lookup: Shows `server1.inno.local` resolving to `192.168.44.232`." aria-label="Enlarge screenshot 6: Forward DNS Lookup"><img src="/assets/images/projects/linux-dns-server/06-06-lnx-dns-forward-lookup-thumb.webp" alt="Forward DNS Lookup — Shows `server1.inno.local` resolving to `192.168.44.232`." width="720" height="528" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">6.</span>Forward DNS Lookup</strong>Shows `server1.inno.local` resolving to `192.168.44.232`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dns-server/07-07-lnx-dns-reverse-lookup.webp" data-caption="Reverse DNS Lookup: Shows `192.168.44.232` resolving to `server1.inno.local`." aria-label="Enlarge screenshot 7: Reverse DNS Lookup"><img src="/assets/images/projects/linux-dns-server/07-07-lnx-dns-reverse-lookup-thumb.webp" alt="Reverse DNS Lookup — Shows `192.168.44.232` resolving to `server1.inno.local`." width="720" height="475" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">7.</span>Reverse DNS Lookup</strong>Shows `192.168.44.232` resolving to `server1.inno.local`.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>server1.inno.local resolved to 192.168.44.232 and the reverse lookup returned server1.inno.local.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/linux-projects/tree/main/07-dns-server" rel="noopener">linux-projects/07-dns-server</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-samba-file-server/"><span>Previous</span>Samba File Server</a><a href="/projects/linux-dhcp-server/" style="text-align:right"><span>Next</span>DHCP Server</a></nav></article>
+    <aside class="facts" aria-label="Project facts">
+      <dl>
+        <dt>Category</dt><dd>Linux Administration</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Ubuntu Linux</li><li class="tag">BIND9</li><li class="tag">DNS</li></ul></dd>
+        <dt>Evidence</dt><dd>7 screenshots</dd>
+        <dt>Repository</dt><dd>linux-projects</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/07-dns-server" rel="noopener">View on GitHub</a>
+      <a class="btn btn-outline" href="/projects/">All projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

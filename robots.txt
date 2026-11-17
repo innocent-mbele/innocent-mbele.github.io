@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://innocent-mbele.github.io/sitemap.xml

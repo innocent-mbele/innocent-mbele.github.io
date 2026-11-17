@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Managed Disks | Innocent Mbele</title>
+<meta name="description" content="Managed data disk attached to an Ubuntu VM, then partitioned, formatted and mounted.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/azure-managed-disks/">
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#0b1626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Azure Managed Disks | Innocent Mbele">
+<meta property="og:description" content="Managed data disk attached to an Ubuntu VM, then partitioned, formatted and mounted.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/azure-managed-disks/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=azure-compute-storage">Azure Compute &amp; Storage</a></p>
+    <div class="card-meta"><span class="badge">Azure Compute &amp; Storage</span><span class="status">Completed</span></div>
+    <h1>Azure Managed Disks</h1>
+    <p>Managed data disk attached to an Ubuntu VM, then partitioned, formatted and mounted.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>An Azure Managed Disk was created and attached to an existing Ubuntu VM, then partitioned, formatted and mounted to provide additional persistent storage.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Add persistent storage to a running VM.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Implementation</h2><ul class="list"><li>Attached a managed data disk to the VM.</li><li>Partitioned, formatted and mounted it over SSH.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots and evidence</h2><p>4 screenshots from the repository, in the order documented. Select an image to view it full size.</p><p class="note">Personal account details visible in the original Azure screenshots (sign-in email addresses, tenant names and subscription identifiers) are masked in these copies.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-managed-disks/01-01-disks-overview-in-vm.webp" data-caption="Disks Overview in the VM: Shows the virtual machine disk configuration before attaching an additional managed disk." aria-label="Enlarge screenshot 1: Disks Overview in the VM"><img src="/assets/images/projects/azure-managed-disks/01-01-disks-overview-in-vm-thumb.webp" alt="Disks Overview — Shows the virtual machine disk configuration before attaching an additional managed disk." width="720" height="381" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>Disks Overview in the VM</strong>Shows the virtual machine disk configuration before attaching an additional managed disk.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-managed-disks/02-02-data-disk-attached.webp" data-caption="Data Disk Attached: Shows the managed data disk successfully attached to the virtual machine." aria-label="Enlarge screenshot 2: Data Disk Attached"><img src="/assets/images/projects/azure-managed-disks/02-02-data-disk-attached-thumb.webp" alt="Data Disk Attached — Shows the managed data disk successfully attached to the virtual machine." width="720" height="382" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>Data Disk Attached</strong>Shows the managed data disk successfully attached to the virtual machine.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-managed-disks/03-03-attached-disk-ssh-access.webp" data-caption="SSH Access: Shows a successful SSH connection to the virtual machine for disk configuration." aria-label="Enlarge screenshot 3: SSH Access"><img src="/assets/images/projects/azure-managed-disks/03-03-attached-disk-ssh-access-thumb.webp" alt="SSH Access — Shows a successful SSH connection to the virtual machine for disk configuration." width="720" height="463" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>SSH Access</strong>Shows a successful SSH connection to the virtual machine for disk configuration.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-managed-disks/04-04-disk-partition-mount.webp" data-caption="Disk Partition and Mount: Shows the managed disk partitioned, formatted and mounted successfully." aria-label="Enlarge screenshot 4: Disk Partition and Mount"><img src="/assets/images/projects/azure-managed-disks/04-04-disk-partition-mount-thumb.webp" alt="Disk Partition and Mount — Shows the managed disk partitioned, formatted and mounted successfully." width="720" height="450" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">4.</span>Disk Partition and Mount</strong>Shows the managed disk partitioned, formatted and mounted successfully.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>The disk shows as mounted on the VM.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/05-azure-managed-disks" rel="noopener">azure-basic-labs/05-azure-managed-disks</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-linux-vm-2-deployment/"><span>Previous</span>Azure Linux VM 2 Deployment</a><a href="/projects/azure-storage-account/" style="text-align:right"><span>Next</span>Azure Storage Account</a></nav></article>
+    <aside class="facts" aria-label="Project facts">
+      <dl>
+        <dt>Category</dt><dd>Azure Compute &amp; Storage</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Microsoft Azure</li><li class="tag">Managed Disks</li><li class="tag">Ubuntu Linux</li></ul></dd>
+        <dt>Evidence</dt><dd>4 screenshots</dd>
+        <dt>Repository</dt><dd>azure-basic-labs</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/05-azure-managed-disks" rel="noopener">View on GitHub</a>
+      <a class="btn btn-outline" href="/projects/">All projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
