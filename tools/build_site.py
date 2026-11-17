@@ -19,7 +19,7 @@ BASE = SITE["base_url"].rstrip("/")
 GH = f"https://github.com/{SITE['github_user']}"
 CATS = {c["id"]: c["label"] for c in DATA["categories"]}
 PROJECTS = DATA["projects"]
-ASSET_V = "4"  # bump to make browsers fetch changed CSS, JS and icons
+ASSET_V = "5"  # bump to make browsers fetch changed CSS, JS and icons
 MASK_NOTE = "I painted over my Azure subscription ID in red. Everything else is as I captured it."
 
 PHOTO_SHAPES = {"square": "1 / 1", "portrait": "4 / 5", "landscape": "4 / 3"}
@@ -63,7 +63,10 @@ def page(title, description, path, body, active="", scripts=("main.js",), extra_
     )
     js = "".join(f'<script src="/assets/js/{s}?v={ASSET_V}" defer></script>' for s in scripts)
     full_title = title if title.startswith(SITE["name"]) else f"{title} | {SITE['name']}"
-    links = "".join(f'<li><a href="{e(l["url"])}" rel="noopener">{e(l["label"])}</a></li>' for l in SITE.get("links", []))
+    def short(l):  # footer keeps short names
+        u = l["url"].lower()
+        return "GitHub" if "github.com" in u else "LinkedIn" if "linkedin.com" in u else l["label"]
+    links = "".join(f'<li><a href="{e(l["url"])}" rel="noopener">{e(short(l))}</a></li>' for l in SITE.get("links", []))
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,7 +198,7 @@ def build_home():
         f'<tr><td><a href="{e(r.get("url") or GH + "/" + r["name"])}" rel="noopener">{e(r["name"])}</a></td><td>{e(r.get("description", ""))}</td>'
         f'<td class="num">{sum(1 for p in PROJECTS if p["repo"] == r["name"])}</td></tr>'
         for r in SITE.get("repositories", []))
-    links = "".join(f'<a class="btn btn-secondary" href="{e(l["url"])}" rel="noopener">Visit my {e(l["label"])} profile</a>' for l in SITE.get("links", []))
+    links = "".join(f'<a class="btn btn-secondary" href="{e(l["url"])}" rel="noopener">{e(l["label"])}</a>' for l in SITE.get("links", []))
     body = f"""<section id="home" class="intro" aria-labelledby="hero-title">
   <div class="container intro-grid">
     <div>
