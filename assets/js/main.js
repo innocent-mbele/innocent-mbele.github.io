@@ -20,6 +20,34 @@
     });
   }
 
+  // Close the mobile menu after choosing a section
+  if (nav) {
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a") && nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // Highlight the menu item for the section in view (home page)
+  var sections = ["home", "projects", "contact"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if (sections.length === 3) {
+    var links = document.querySelectorAll("[data-nav]");
+    var mark = function () {
+      var y = window.scrollY + 120;
+      var current = "home";
+      sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = "contact";
+      links.forEach(function (a) {
+        if (a.getAttribute("data-nav") === current) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    window.addEventListener("scroll", mark, { passive: true });
+    mark();
+  }
+
   // Project filters (categories come from the generated buttons, not a hard-coded list)
   var filterBar = document.querySelector("[data-filters]");
   if (filterBar) {

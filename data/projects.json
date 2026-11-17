@@ -30,12 +30,12 @@
       "category": "azure-compute-storage",
       "featured": true,
       "status": "Completed",
-      "summary": "Ubuntu Server 24.04 VM in Azure behind NAT Gateway and Azure Bastion, running a Flask portal on Gunicorn with PostgreSQL 16 in Docker Compose.",
-      "overview": "An Ubuntu Server 24.04 virtual machine was deployed in Azure to host an internal enterprise application environment. The application subnet and network security rules were configured, outbound connectivity was provided through an Azure NAT Gateway, and graphical access was enabled through Azure Bastion without a public IP on the VM. Docker Engine and Docker Compose were installed to run the application infrastructure in containers, PostgreSQL 16 was deployed as the database service, and the Enterprise Management Portal was built and deployed with Gunicorn as the application server.",
+      "summary": "I set up an Ubuntu 24.04 server in Azure with no public IP. It reaches the internet through a NAT Gateway and I manage it through Azure Bastion. It runs a Flask web portal on Gunicorn with a PostgreSQL 16 database in Docker.",
+      "overview": "In this project I built a small internal business application environment in Azure. I deployed an Ubuntu Server 24.04 virtual machine without a public IP address. I configured the application subnet and its security rules, gave the subnet outbound internet access through an Azure NAT Gateway and used Azure Bastion to open the server desktop safely from the portal. On the server I installed Docker and Docker Compose, ran PostgreSQL 16 as the database and deployed my Enterprise Management Portal, a Flask application served by Gunicorn.",
       "objectives": [
-        "Host an internal application on a VM with no public IP address.",
-        "Provide controlled outbound connectivity and secure administrative access.",
-        "Run the database tier in containers and connect a Python web application to it."
+        "Host an internal application on a server that has no public IP address.",
+        "Give the server controlled outbound access and safe admin access.",
+        "Run the database in containers and connect a Python web application to it."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -50,17 +50,162 @@
         "Gunicorn"
       ],
       "implementation": [
-        "Configured the application subnet and its network security group.",
-        "Deployed the Ubuntu Server 24.04 virtual machine and verified the operating system.",
-        "Allocated a Standard static public IP and deployed a NAT Gateway for the application subnet's outbound traffic.",
-        "Accessed the Ubuntu XFCE desktop through Azure Bastion.",
-        "Deployed PostgreSQL 16 with Docker Compose and created the dedicated enterprise_portal database and application account.",
-        "Deployed the Flask-based Enterprise Management Portal behind Gunicorn."
+        "I created the application subnet and its network security group.",
+        "I deployed the Ubuntu Server 24.04 virtual machine and checked the operating system.",
+        "I created a static public IP and a NAT Gateway for the subnet's outbound traffic.",
+        "I opened the Ubuntu desktop through Azure Bastion.",
+        "I deployed PostgreSQL 16 with Docker Compose and created the enterprise_portal database with its own application account.",
+        "I deployed the Flask portal behind Gunicorn."
       ],
       "verification": [
-        "Application health endpoint, PostgreSQL connectivity and the Gunicorn application server were verified.",
-        "The portal dashboard was opened in Firefox inside the VM at 127.0.0.1:8080.",
-        "Final NSG inbound rules reviewed: SSH access, internal HTTPS, Azure Bastion RDP access and an additional inbound restriction."
+        "I checked the application health endpoint, the database connection and the Gunicorn service.",
+        "I opened the portal dashboard in Firefox on the server at 127.0.0.1:8080.",
+        "I reviewed the final inbound security rules for SSH, internal HTTPS and Bastion access."
+      ],
+      "screenshots": [
+        {
+          "title": "Application Subnet and Network Security Group",
+          "caption": "Shows the application subnet and its associated network security group configuration.",
+          "alt": "Application Subnet NSG",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/01-01-azure-compute-application-subnet-nsg.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/01-01-azure-compute-application-subnet-nsg-thumb.webp",
+          "width": 1600,
+          "height": 886,
+          "thumb_width": 720,
+          "thumb_height": 398
+        },
+        {
+          "title": "Initial Application NSG Inbound Rules",
+          "caption": "Shows the initial custom inbound security rules configured for the enterprise application environment.",
+          "alt": "Application NSG Inbound Rules",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/02-02-azure-compute-application-nsg-inbound-rules.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/02-02-azure-compute-application-nsg-inbound-rules-thumb.webp",
+          "width": 1600,
+          "height": 883,
+          "thumb_width": 720,
+          "thumb_height": 397
+        },
+        {
+          "title": "Enterprise Application Virtual Machine",
+          "caption": "Shows the deployed enterprise application virtual machine and its Azure configuration.",
+          "alt": "Enterprise Application VM",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/03-03-azure-compute-enterprise-application-vm-overview.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/03-03-azure-compute-enterprise-application-vm-overview-thumb.webp",
+          "width": 1600,
+          "height": 882,
+          "thumb_width": 720,
+          "thumb_height": 397
+        },
+        {
+          "title": "Ubuntu System Verification",
+          "caption": "Shows the Ubuntu Server environment and the verification of its operating system and system configuration.",
+          "alt": "Ubuntu System Verification",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/04-04-azure-compute-ubuntu-system-verification.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/04-04-azure-compute-ubuntu-system-verification-thumb.webp",
+          "width": 1600,
+          "height": 881,
+          "thumb_width": 720,
+          "thumb_height": 397
+        },
+        {
+          "title": "NAT Gateway Public IP",
+          "caption": "Shows the Standard static public IP address allocated for the application's outbound connectivity through the NAT Gateway.",
+          "alt": "NAT Gateway Public IP",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/05-05-azure-compute-nat-gateway-public-ip.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/05-05-azure-compute-nat-gateway-public-ip-thumb.webp",
+          "width": 1600,
+          "height": 883,
+          "thumb_width": 720,
+          "thumb_height": 397
+        },
+        {
+          "title": "Ubuntu Graphical Desktop Through Azure Bastion",
+          "caption": "Shows the Ubuntu graphical desktop accessed securely through Azure Bastion without assigning a public IP address to the virtual machine.",
+          "alt": "Ubuntu XFCE Through Bastion",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/06-05-azure-compute-ubuntu-xfce-open-with-bastion.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/06-05-azure-compute-ubuntu-xfce-open-with-bastion-thumb.webp",
+          "width": 1600,
+          "height": 991,
+          "thumb_width": 720,
+          "thumb_height": 446
+        },
+        {
+          "title": "NAT Gateway Deployment",
+          "caption": "Shows the deployed NAT Gateway and its configuration for the enterprise application subnet.",
+          "alt": "NAT Gateway Overview",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/07-06-azure-compute-nat-gateway-overview.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/07-06-azure-compute-nat-gateway-overview-thumb.webp",
+          "width": 1600,
+          "height": 901,
+          "thumb_width": 720,
+          "thumb_height": 405
+        },
+        {
+          "title": "Virtual Machine Disk Configuration",
+          "caption": "Shows the operating system disk configuration, including its storage type and capacity.",
+          "alt": "VM Disk Configuration",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/08-07-azure-compute-vm-disk-configuration.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/08-07-azure-compute-vm-disk-configuration-thumb.webp",
+          "width": 1600,
+          "height": 897,
+          "thumb_width": 720,
+          "thumb_height": 404
+        },
+        {
+          "title": "PostgreSQL Container Deployment",
+          "caption": "Shows the deployment of PostgreSQL 16 using Docker Compose as the database service for the enterprise application environment.",
+          "alt": "PostgreSQL Container Deployment",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/09-08-azure-compute-postgresql-container-deployment.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/09-08-azure-compute-postgresql-container-deployment-thumb.webp",
+          "width": 1600,
+          "height": 902,
+          "thumb_width": 720,
+          "thumb_height": 406
+        },
+        {
+          "title": "Enterprise Portal Database",
+          "caption": "Shows the creation and verification of the dedicated enterprise_portal database and its application database account.",
+          "alt": "Enterprise Portal Database",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/10-09-azure-compute-enterprise-portal-database.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/10-09-azure-compute-enterprise-portal-database-thumb.webp",
+          "width": 1600,
+          "height": 888,
+          "thumb_width": 720,
+          "thumb_height": 400
+        },
+        {
+          "title": "Enterprise Portal Deployment and Verification",
+          "caption": "Shows the deployed Flask application and the verification of its health endpoint, PostgreSQL connectivity and Gunicorn application server.",
+          "alt": "Enterprise Portal Deployment Verification",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/11-10-azure-compute-enterprise-portal-deployment-verification.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/11-10-azure-compute-enterprise-portal-deployment-verification-thumb.webp",
+          "width": 1600,
+          "height": 889,
+          "thumb_width": 720,
+          "thumb_height": 400
+        },
+        {
+          "title": "Enterprise Management Portal Dashboard",
+          "caption": "Shows the Enterprise Management Portal dashboard running in Firefox inside the Ubuntu virtual machine. The application is accessed locally through 127.0.0.1:8080.",
+          "alt": "Enterprise Portal Dashboard",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/12-11-azure-compute-enterprise-portal-dashboard.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/12-11-azure-compute-enterprise-portal-dashboard-thumb.webp",
+          "width": 1600,
+          "height": 995,
+          "thumb_width": 720,
+          "thumb_height": 448
+        },
+        {
+          "title": "Final Enterprise Application NSG Inbound Rules",
+          "caption": "Shows the custom and default inbound security rules configured on nsg-enterprise-app-01, including SSH access, internal HTTPS, Azure Bastion RDP access and the additional inbound traffic restriction.",
+          "alt": "Enterprise Application NSG Inbound Rules",
+          "src": "assets/images/projects/azure-enterprise-compute-app-infrastructure/13-12-azure-compute-enterprise-application-nsg-inbound-rules.webp",
+          "thumb": "assets/images/projects/azure-enterprise-compute-app-infrastructure/13-12-azure-compute-enterprise-application-nsg-inbound-rules-thumb.webp",
+          "width": 1600,
+          "height": 900,
+          "thumb_width": 720,
+          "thumb_height": 405
+        }
       ],
       "cover": 12
     },
@@ -72,12 +217,12 @@
       "category": "identity-governance",
       "featured": true,
       "status": "Completed",
-      "summary": "Azure Policy tag enforcement at resource-group scope plus scheduled VM shutdown with an Azure Automation runbook and managed identity.",
-      "overview": "The Azure subscription and resource group configuration were reviewed, and Azure Policy was used to enforce resource tagging. A Require a tag on resources assignment at the rg-rbac-lab scope required the Environment=Lab tag. An Ubuntu VM and its supporting resources were deployed and evaluated for compliance. Automated VM shutdown was then implemented with Azure Automation.",
+      "summary": "I used Azure Policy to make sure every resource carries an Environment tag. I also set up an Azure Automation runbook that shuts the VM down on a schedule to save cost.",
+      "overview": "Here I worked on governance and cost control in my Azure subscription. I assigned the built-in policy Require a tag on resources to my rg-rbac-lab resource group so that every resource must have the tag Environment=Lab. I then deployed an Ubuntu VM with its supporting resources and checked their compliance. Finally I created an Automation Account with a PowerShell runbook that shuts the VM down on a schedule.",
       "objectives": [
-        "Enforce a tagging standard on resources with Azure Policy.",
-        "Verify compliance from the Portal, Azure CLI and PowerShell.",
-        "Automate VM shutdown on a schedule to control cost."
+        "Enforce a tagging rule on resources with Azure Policy.",
+        "Check compliance in the portal, Azure CLI and PowerShell.",
+        "Shut the VM down automatically on a schedule to control cost."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -90,15 +235,138 @@
         "Azure PowerShell"
       ],
       "implementation": [
-        "Inspected subscription details with Azure CLI queries and JSON output.",
-        "Assigned the Require a tag on resources policy at the rg-rbac-lab scope requiring Environment=Lab.",
-        "Deployed an Ubuntu VM with its network interface, NSG, virtual network and managed OS disk.",
-        "Created the Automation Account aa-rbaclab-shutdown with a system-assigned managed identity holding Virtual Machine Contributor at the VM scope.",
-        "Published the Shutdown-VM-Daily-UAE PowerShell runbook with three daily schedules (2:00 AM, 5:00 PM and 10:00 PM, Asia/Dubai)."
+        "I reviewed my subscription details with Azure CLI queries and JSON output.",
+        "I assigned the tag policy to rg-rbac-lab requiring Environment=Lab.",
+        "I deployed an Ubuntu VM with its network interface, NSG, virtual network and disk.",
+        "I created the Automation Account aa-rbaclab-shutdown with a system-assigned managed identity. I gave the identity Virtual Machine Contributor on the VM only.",
+        "I published the Shutdown-VM-Daily-UAE runbook with three daily schedules at 2:00 AM, 5:00 PM and 10:00 PM UAE time."
       ],
       "verification": [
-        "Policy compliance checked in the Portal, Azure CLI and PowerShell: all five infrastructure resources were compliant.",
-        "A completed Automation job was reviewed and the VM's PowerState/deallocated state was confirmed with PowerShell."
+        "Compliance showed all five resources as compliant in the portal, Azure CLI and PowerShell.",
+        "A runbook job completed and PowerShell showed the VM as deallocated."
+      ],
+      "screenshots": [
+        {
+          "title": "Subscription Login and Overview",
+          "caption": "Shows the Azure CLI login, active account and subscription information.",
+          "alt": "Subscription Login and Overview",
+          "src": "assets/images/projects/azure-subscription-governance/01-01-azure-sub-cli-login-subscription-overview.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/01-01-azure-sub-cli-login-subscription-overview-thumb.webp",
+          "width": 1600,
+          "height": 995,
+          "thumb_width": 720,
+          "thumb_height": 448
+        },
+        {
+          "title": "Subscription JSON and CLI Queries",
+          "caption": "Shows subscription information retrieved in JSON format and Azure CLI queries used to inspect subscription details.",
+          "alt": "Subscription JSON and CLI Queries",
+          "src": "assets/images/projects/azure-subscription-governance/02-02-azure-sub-subscription-json-and-cli-queries.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/02-02-azure-sub-subscription-json-and-cli-queries-thumb.webp",
+          "width": 1600,
+          "height": 993,
+          "thumb_width": 720,
+          "thumb_height": 447
+        },
+        {
+          "title": "Subscription and Resource Group Governance",
+          "caption": "Shows the subscription and resource group governance configuration.",
+          "alt": "Subscription and Resource Group Governance",
+          "src": "assets/images/projects/azure-subscription-governance/03-03-azure-subscription-and-resource-group-governance.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/03-03-azure-subscription-and-resource-group-governance-thumb.webp",
+          "width": 1600,
+          "height": 997,
+          "thumb_width": 720,
+          "thumb_height": 449
+        },
+        {
+          "title": "VM Deployment Success",
+          "caption": "Shows the successful deployment of the virtual machine and its supporting Azure infrastructure.",
+          "alt": "VM Deployment Success",
+          "src": "assets/images/projects/azure-subscription-governance/04-04-azure-sub-policy-vm-deployment-success.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/04-04-azure-sub-policy-vm-deployment-success-thumb.webp",
+          "width": 1600,
+          "height": 853,
+          "thumb_width": 720,
+          "thumb_height": 384
+        },
+        {
+          "title": "VM Running Overview",
+          "caption": "Shows the deployed virtual machine and its configuration in the Azure Portal.",
+          "alt": "VM Running Overview",
+          "src": "assets/images/projects/azure-subscription-governance/05-05-azure-sub-policy-vm-running-overview.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/05-05-azure-sub-policy-vm-running-overview-thumb.webp",
+          "width": 1600,
+          "height": 843,
+          "thumb_width": 720,
+          "thumb_height": 379
+        },
+        {
+          "title": "Azure Policy Compliance Dashboard",
+          "caption": "Shows the Azure Policy compliance dashboard and the compliance overview for the resource group.",
+          "alt": "Azure Policy Compliance Dashboard",
+          "src": "assets/images/projects/azure-subscription-governance/06-06-azure-sub-policy-compliance-dashboard.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/06-06-azure-sub-policy-compliance-dashboard-thumb.webp",
+          "width": 1600,
+          "height": 845,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Require a Tag Policy",
+          "caption": "Shows the configured Require a tag on resources policy assignment and its compliance information.",
+          "alt": "Require a Tag Policy",
+          "src": "assets/images/projects/azure-subscription-governance/07-07-azure-sub-policy-require-tag-compliance.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/07-07-azure-sub-policy-require-tag-compliance-thumb.webp",
+          "width": 1600,
+          "height": 845,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Individual Resource Compliance",
+          "caption": "Shows the individual resources evaluated against the Require a tag on resources policy, including their compliance results.",
+          "alt": "Individual Resource Compliance",
+          "src": "assets/images/projects/azure-subscription-governance/08-08-azure-sub-policy-require-tag-resource-compliance.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/08-08-azure-sub-policy-require-tag-resource-compliance-thumb.webp",
+          "width": 1600,
+          "height": 857,
+          "thumb_width": 720,
+          "thumb_height": 386
+        },
+        {
+          "title": "PowerShell Policy Compliance Verification",
+          "caption": "Shows the use of PowerShell to retrieve and inspect Azure Policy compliance results.",
+          "alt": "PowerShell Policy Compliance Verification",
+          "src": "assets/images/projects/azure-subscription-governance/09-09-azure-sub-policy-powershell-compliance-verification.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/09-09-azure-sub-policy-powershell-compliance-verification-thumb.webp",
+          "width": 1600,
+          "height": 998,
+          "thumb_width": 720,
+          "thumb_height": 449
+        },
+        {
+          "title": "Automated VM Shutdown Schedules",
+          "caption": "Shows the three enabled daily shutdown schedules associated with the `Shutdown-VM-Daily-UAE` runbook, configured for 2:00 AM, 5:00 PM and 10:00 PM using Gulf Standard Time (UAE time).",
+          "alt": "Automated VM Shutdown Schedules",
+          "src": "assets/images/projects/azure-subscription-governance/10-10-azure-sub-automation-shutdown-configuration.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/10-10-azure-sub-automation-shutdown-configuration-thumb.webp",
+          "width": 1600,
+          "height": 855,
+          "thumb_width": 720,
+          "thumb_height": 385
+        },
+        {
+          "title": "Automated VM Shutdown Verification",
+          "caption": "Shows the successful execution of the `Shutdown-VM-Daily-UAE` runbook, including the completed Azure Automation job and its execution details. The VM's final `PowerState/deallocated` state was independently verified using PowerShell.",
+          "alt": "Automated VM Shutdown Verification",
+          "src": "assets/images/projects/azure-subscription-governance/11-11-azure-sub-automation-shutdown-verification.webp",
+          "thumb": "assets/images/projects/azure-subscription-governance/11-11-azure-sub-automation-shutdown-verification-thumb.webp",
+          "width": 1600,
+          "height": 853,
+          "thumb_width": 720,
+          "thumb_height": 384
+        }
       ],
       "cover": 7
     },
@@ -110,12 +378,12 @@
       "category": "azure-networking",
       "featured": true,
       "status": "Completed",
-      "summary": "Branch VNet with bidirectional peering, NSGs, static IPs, user-defined routes, a storage service endpoint, private DNS and a Standard Load Balancer.",
-      "overview": "An additional subnet and a separate branch virtual network were created, followed by bidirectional VNet peering, network security groups, static private and public IP addresses, a route table with user-defined routes, a Microsoft.Storage service endpoint and a private DNS zone with a virtual network link. A Standard Load Balancer was deployed and Azure Network Watcher was enabled in East Asia. Configuration was verified in the Azure Portal, Azure CLI and PowerShell.",
+      "summary": "I extended my Azure network with a branch VNet and peering. I added NSGs, static IPs, a custom route table, a storage service endpoint, private DNS and a Standard Load Balancer.",
+      "overview": "In this project I extended an existing Azure network. I added a subnet and created a separate branch virtual network, then connected the two with peering in both directions. I configured security rules, static private and public IP addresses, a route table with my own routes, a service endpoint for Azure Storage and a private DNS zone linked to the network. I also deployed a Standard Load Balancer and enabled Network Watcher in East Asia. I checked the setup in the portal, Azure CLI and PowerShell.",
       "objectives": [
-        "Extend an existing network with an additional subnet and a branch VNet.",
-        "Control traffic with NSG rules and user-defined routes.",
-        "Provide private name resolution, service endpoints and load balancing."
+        "Extend an existing network with a new subnet and a branch network.",
+        "Control traffic with NSG rules and custom routes.",
+        "Add private name resolution, a storage service endpoint and load balancing."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -131,18 +399,196 @@
         "Azure PowerShell"
       ],
       "implementation": [
-        "Created an additional subnet and the branch virtual network.",
-        "Configured bidirectional peering between the main and branch VNets.",
-        "Configured nsg-branch-1 with an RDP deny rule and an HTTPS allow rule.",
-        "Assigned the static private IP 10.20.1.10 and a Standard public IP.",
-        "Created route table rt-branch-1 with a route blocking 192.0.2.0/24 and associated it with snet-branch-1.",
-        "Enabled the Microsoft.Storage service endpoint on the branch subnet.",
-        "Created private DNS zone lab.inno.internal with a virtual network link.",
-        "Deployed Standard Load Balancer lb-branch-1 with a TCP health probe and an HTTP port 80 rule."
+        "I created the extra subnet and the branch virtual network.",
+        "I set up peering between the main and branch networks in both directions.",
+        "I configured nsg-branch-1 with a rule that blocks RDP and a rule that allows HTTPS.",
+        "I set the static private IP 10.20.1.10 and added a Standard public IP.",
+        "I created the route table rt-branch-1 with a route that blocks 192.0.2.0/24 and attached it to snet-branch-1.",
+        "I enabled the Microsoft.Storage service endpoint on the branch subnet.",
+        "I created the private DNS zone lab.inno.internal and linked it to the network.",
+        "I deployed the Standard Load Balancer lb-branch-1 with a TCP health probe and an HTTP rule on port 80."
       ],
       "verification": [
-        "Subnet ranges and the NIC's static private IP were verified with Azure CLI and PowerShell.",
-        "Network Watcher confirmed enabled in East Asia."
+        "I confirmed the subnet ranges and the static private IP with Azure CLI and PowerShell.",
+        "Network Watcher showed as enabled in East Asia."
+      ],
+      "screenshots": [
+        {
+          "title": "Additional Subnet Configuration",
+          "caption": "Shows the creation of an additional subnet in the existing virtual network.",
+          "alt": "Additional Subnet Configuration",
+          "src": "assets/images/projects/azure-manage-virtual-networking/01-01-azure-vnet-additional-subnet-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/01-01-azure-vnet-additional-subnet-configuration-thumb.webp",
+          "width": 1600,
+          "height": 860,
+          "thumb_width": 720,
+          "thumb_height": 387
+        },
+        {
+          "title": "Subnet CLI and PowerShell Verification",
+          "caption": "Shows the subnet address ranges retrieved and verified using Azure CLI and PowerShell.",
+          "alt": "Subnet Verification",
+          "src": "assets/images/projects/azure-manage-virtual-networking/02-02-azure-vnet-subnet-cli-powershell-verification.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/02-02-azure-vnet-subnet-cli-powershell-verification-thumb.webp",
+          "width": 1600,
+          "height": 996,
+          "thumb_width": 720,
+          "thumb_height": 448
+        },
+        {
+          "title": "Branch Network Deployment",
+          "caption": "Shows the deployment of the branch virtual network and its subnet.",
+          "alt": "Branch Network Deployment",
+          "src": "assets/images/projects/azure-manage-virtual-networking/03-03-azure-vnet-branch-network-deployment.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/03-03-azure-vnet-branch-network-deployment-thumb.webp",
+          "width": 1600,
+          "height": 850,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Bidirectional VNet Peering",
+          "caption": "Shows the peering configuration connecting the main virtual network and the branch virtual network.",
+          "alt": "Bidirectional VNet Peering",
+          "src": "assets/images/projects/azure-manage-virtual-networking/04-04-azure-vnet-bidirectional-peering-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/04-04-azure-vnet-bidirectional-peering-configuration-thumb.webp",
+          "width": 1600,
+          "height": 859,
+          "thumb_width": 720,
+          "thumb_height": 386
+        },
+        {
+          "title": "Network Security Group Rules",
+          "caption": "Shows the custom inbound security rules configured on `nsg-branch-1`, including the RDP deny and HTTPS allow rules.",
+          "alt": "NSG Inbound Rules",
+          "src": "assets/images/projects/azure-manage-virtual-networking/05-05-azure-vnet-branch1-custom-nsg-inbound-security-rules.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/05-05-azure-vnet-branch1-custom-nsg-inbound-security-rules-thumb.webp",
+          "width": 1600,
+          "height": 856,
+          "thumb_width": 720,
+          "thumb_height": 385
+        },
+        {
+          "title": "Static Private IP Configuration",
+          "caption": "Shows the static private IP address `10.20.1.10` assigned to the branch network interface.",
+          "alt": "Static Private IP",
+          "src": "assets/images/projects/azure-manage-virtual-networking/06-06-azure-vnet-static-private-ip-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/06-06-azure-vnet-static-private-ip-configuration-thumb.webp",
+          "width": 1600,
+          "height": 898,
+          "thumb_width": 720,
+          "thumb_height": 404
+        },
+        {
+          "title": "Public IP Configuration",
+          "caption": "Shows the Standard public IP address created for the branch networking environment.",
+          "alt": "Public IP Configuration",
+          "src": "assets/images/projects/azure-manage-virtual-networking/07-07-azure-vnet-public-ip-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/07-07-azure-vnet-public-ip-configuration-thumb.webp",
+          "width": 1600,
+          "height": 903,
+          "thumb_width": 720,
+          "thumb_height": 406
+        },
+        {
+          "title": "Private IP CLI and PowerShell Verification",
+          "caption": "Shows the network interface configuration and verification of its static private IP address using Azure CLI and PowerShell.",
+          "alt": "Private IP Verification",
+          "src": "assets/images/projects/azure-manage-virtual-networking/08-08-azure-vnet-static-private-ip-cli-powershell-verification.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/08-08-azure-vnet-static-private-ip-cli-powershell-verification-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        },
+        {
+          "title": "User-Defined Route Configuration",
+          "caption": "Shows the custom route configured to block traffic destined for `192.0.2.0/24`.",
+          "alt": "UDR Configuration",
+          "src": "assets/images/projects/azure-manage-virtual-networking/09-09-azure-vnet-udr-route-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/09-09-azure-vnet-udr-route-configuration-thumb.webp",
+          "width": 1600,
+          "height": 894,
+          "thumb_width": 720,
+          "thumb_height": 402
+        },
+        {
+          "title": "Route Table Deployment",
+          "caption": "Shows the deployed route table `rt-branch-1` and its configuration.",
+          "alt": "Route Table Deployment",
+          "src": "assets/images/projects/azure-manage-virtual-networking/10-10-azure-vnet-route-table-deployment.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/10-10-azure-vnet-route-table-deployment-thumb.webp",
+          "width": 1600,
+          "height": 889,
+          "thumb_width": 720,
+          "thumb_height": 400
+        },
+        {
+          "title": "Route Table Subnet Association",
+          "caption": "Shows the association of the route table with `snet-branch-1`.",
+          "alt": "Route Table Association",
+          "src": "assets/images/projects/azure-manage-virtual-networking/11-11-azure-vnet-udr-subnet-association.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/11-11-azure-vnet-udr-subnet-association-thumb.webp",
+          "width": 1600,
+          "height": 898,
+          "thumb_width": 720,
+          "thumb_height": 404
+        },
+        {
+          "title": "Storage Service Endpoint Configuration",
+          "caption": "Shows the Microsoft.Storage service endpoint selected for the branch subnet.",
+          "alt": "Storage Service Endpoint",
+          "src": "assets/images/projects/azure-manage-virtual-networking/12-12-azure-vnet-storage-service-endpoint-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/12-12-azure-vnet-storage-service-endpoint-configuration-thumb.webp",
+          "width": 1600,
+          "height": 874,
+          "thumb_width": 720,
+          "thumb_height": 393
+        },
+        {
+          "title": "Private DNS Zone and VNet Link",
+          "caption": "Shows the private DNS zone `lab.inno.internal` and its virtual network link.",
+          "alt": "Private DNS Zone",
+          "src": "assets/images/projects/azure-manage-virtual-networking/13-13-azure-vnet-private-dns-zone-and-vnet-link.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/13-13-azure-vnet-private-dns-zone-and-vnet-link-thumb.webp",
+          "width": 1600,
+          "height": 888,
+          "thumb_width": 720,
+          "thumb_height": 400
+        },
+        {
+          "title": "Azure Load Balancer Configuration",
+          "caption": "Shows the deployed Standard Load Balancer `lb-branch-1`, its frontend public IP, backend pool and configured health probe and load-balancing rule.",
+          "alt": "Load Balancer Configuration",
+          "src": "assets/images/projects/azure-manage-virtual-networking/14-14-azure-vnet-load-balancer-configuration.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/14-14-azure-vnet-load-balancer-configuration-thumb.webp",
+          "width": 1600,
+          "height": 889,
+          "thumb_width": 720,
+          "thumb_height": 400
+        },
+        {
+          "title": "Load Balancer Health Probe and Rule",
+          "caption": "Shows the TCP health probe and HTTP port 80 load-balancing rule configured on the Load Balancer.",
+          "alt": "Load Balancer Probe and Rule",
+          "src": "assets/images/projects/azure-manage-virtual-networking/15-15-azure-vnet-load-balancer-probe-and-rule.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/15-15-azure-vnet-load-balancer-probe-and-rule-thumb.webp",
+          "width": 1600,
+          "height": 888,
+          "thumb_width": 720,
+          "thumb_height": 399
+        },
+        {
+          "title": "Azure Network Watcher",
+          "caption": "Shows the enabled Network Watcher resource in the East Asia region.",
+          "alt": "Network Watcher",
+          "src": "assets/images/projects/azure-manage-virtual-networking/16-16-azure-vnet-network-watcher-diagnostic.webp",
+          "thumb": "assets/images/projects/azure-manage-virtual-networking/16-16-azure-vnet-network-watcher-diagnostic-thumb.webp",
+          "width": 1600,
+          "height": 868,
+          "thumb_width": 720,
+          "thumb_height": 391
+        }
       ],
       "cover": 14
     },
@@ -154,11 +600,11 @@
       "category": "identity-governance",
       "featured": false,
       "status": "Completed",
-      "summary": "Built-in role assignments at resource-group scope and a custom VM Operator - Limited role that can start and restart but not delete VMs.",
-      "overview": "Role definitions and subscription-level permissions were reviewed, a resource group was created and role assignments were configured at resource-group scope. Built-in Reader and Virtual Machine Contributor roles were assigned to different users, and a custom role named VM Operator - Limited was created and assigned.",
+      "summary": "I gave users only the access they need at resource group level. I also created a custom role that can start and restart VMs but cannot delete them.",
+      "overview": "Here I practised role-based access control in Azure. I reviewed the roles and permissions on my subscription, created a resource group and assigned roles at that level. I gave different users the built-in Reader and Virtual Machine Contributor roles. I then created my own role called VM Operator - Limited and assigned it to a test user.",
       "objectives": [
-        "Apply least-privilege access at resource-group scope.",
-        "Create a custom role that limits VM operations."
+        "Give least-privilege access at resource group level.",
+        "Create a custom role that limits what a user can do with VMs."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -167,13 +613,70 @@
         "Microsoft Entra ID"
       ],
       "implementation": [
-        "Reviewed the Owner role assignment inherited at subscription scope and built-in role permissions.",
-        "Assigned Reader and Virtual Machine Contributor at the rg-rbac-lab scope.",
-        "Created VM Operator - Limited, allowing users to view, start and restart VMs without permission to delete VMs or assign roles.",
-        "Assigned the custom role to a lab user at the resource-group scope."
+        "I reviewed the Owner role I inherit from the subscription and the built-in role permissions.",
+        "I assigned Reader and Virtual Machine Contributor on rg-rbac-lab.",
+        "I created VM Operator - Limited. It can view, start and restart VMs but cannot delete VMs or assign roles.",
+        "I assigned the custom role to a lab user on the resource group."
       ],
       "verification": [
-        "Role assignments, including the custom role, were verified under the rg-rbac-lab resource group."
+        "The role assignments, including my custom role, showed correctly on rg-rbac-lab."
+      ],
+      "screenshots": [
+        {
+          "title": "Subscription Role Assignments",
+          "caption": "Shows the Owner role assignment inherited at subscription scope.",
+          "alt": "Subscription Role Assignments",
+          "src": "assets/images/projects/azure-rbac/01-01-rbac-subscription-role-assignment.webp",
+          "thumb": "assets/images/projects/azure-rbac/01-01-rbac-subscription-role-assignment-thumb.webp",
+          "width": 1600,
+          "height": 866,
+          "thumb_width": 720,
+          "thumb_height": 390
+        },
+        {
+          "title": "Built-in Role Permissions",
+          "caption": "Shows the permissions associated with the built-in Azure RBAC roles.",
+          "alt": "Built-in Role Permissions",
+          "src": "assets/images/projects/azure-rbac/02-02-rbac-built-in-roles.webp",
+          "thumb": "assets/images/projects/azure-rbac/02-02-rbac-built-in-roles-thumb.webp",
+          "width": 1600,
+          "height": 845,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Resource Group Role Assignments",
+          "caption": "Shows the built-in and custom Azure RBAC roles created and assigned to the respective user accounts at the `rg-rbac-lab` resource-group scope, including Reader, Virtual Machine Contributor and VM Operator - Limited.",
+          "alt": "Resource Group Role Assignments",
+          "src": "assets/images/projects/azure-rbac/03-03-rbac-resource-group-role-assignments.webp",
+          "thumb": "assets/images/projects/azure-rbac/03-03-rbac-resource-group-role-assignments-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Custom Role Creation",
+          "caption": "Shows the creation of the VM Operator - Limited custom role with permissions to read, start and restart virtual machines.",
+          "alt": "Custom Role Creation",
+          "src": "assets/images/projects/azure-rbac/04-04-rbac-custom-role-created.webp",
+          "thumb": "assets/images/projects/azure-rbac/04-04-rbac-custom-role-created-thumb.webp",
+          "width": 1600,
+          "height": 852,
+          "thumb_width": 720,
+          "thumb_height": 383
+        },
+        {
+          "title": "Custom Role Assignment",
+          "caption": "Shows the VM Operator - Limited role assigned to Tinashe Sibanda at the resource-group scope.",
+          "alt": "Custom Role Assignment",
+          "src": "assets/images/projects/azure-rbac/05-05-rbac-custom-role-assignment.webp",
+          "thumb": "assets/images/projects/azure-rbac/05-05-rbac-custom-role-assignment-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        }
       ],
       "cover": 3
     },
@@ -185,11 +688,11 @@
       "category": "identity-governance",
       "featured": false,
       "status": "Completed",
-      "summary": "Device settings review, bulk user creation and Microsoft Graph PowerShell automation of user verification, CSV export and group membership.",
-      "overview": "Device join, registration and security settings were inspected in a Microsoft Entra ID tenant. Seven internal users were created with the bulk user creation feature. Because the portal did not clearly confirm the CSV bulk operation's results, Microsoft Graph PowerShell was used, following Microsoft's documentation on bulk operation service limitations, to verify the accounts, export their profiles and automate group membership.",
+      "summary": "I reviewed device settings in Entra ID and created seven users in bulk. I then used Microsoft Graph PowerShell to check the accounts, export them to CSV and add them to a group.",
+      "overview": "In this project I went deeper into Microsoft Entra ID administration. I reviewed the device join, local administrator and device security settings. I created seven users with the bulk create feature. The portal did not clearly confirm whether the CSV upload had worked, so I followed Microsoft's guidance and used Microsoft Graph PowerShell to check the accounts, export their details and add them to a security group.",
       "objectives": [
-        "Review device join, local administrator and device security settings.",
-        "Provision users in bulk and verify the outcome independently.",
+        "Review device join, local admin and device security settings.",
+        "Create users in bulk and confirm the result myself.",
         "Automate group membership with Microsoft Graph PowerShell."
       ],
       "technologies": [
@@ -200,19 +703,109 @@
         "LAPS settings"
       ],
       "implementation": [
-        "Reviewed device join and registration settings, local administrator settings and LAPS / BitLocker recovery settings.",
-        "Created seven internal users with Entra ID bulk user creation.",
-        "Established a delegated Microsoft Graph connection and retrieved the seven accounts.",
-        "Exported user profile information to CSV.",
-        "Created the IT-Cloud-Ops-Automation security group with Graph PowerShell and added all seven users."
+        "I reviewed device join and registration, local administrator, LAPS and BitLocker recovery settings.",
+        "I created seven internal users with bulk user creation.",
+        "I connected to Microsoft Graph and listed the seven accounts.",
+        "I exported their profile details to CSV.",
+        "I created the IT-Cloud-Ops-Automation security group with Graph PowerShell and added all seven users."
       ],
       "verification": [
-        "The seven users were retrieved with Graph PowerShell, showing UPNs, departments and job titles.",
-        "The exported CSV was imported back into PowerShell to confirm the records.",
-        "Group membership was independently retrieved to confirm all seven users were added."
+        "Graph PowerShell listed the seven users with their UPNs, departments and job titles.",
+        "I imported the exported CSV back into PowerShell to check the records.",
+        "I listed the group members separately to confirm all seven were added."
+      ],
+      "screenshots": [
+        {
+          "title": "Device Join and Registration Settings",
+          "caption": "Shows the Microsoft Entra ID device join and registration configuration, including user permissions, MFA requirements and device limits.",
+          "alt": "Device Join and Registration Settings",
+          "src": "assets/images/projects/azure-advanced-entra-admin/01-01-entra-device-join-registration-settings.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/01-01-entra-device-join-registration-settings-thumb.webp",
+          "width": 1600,
+          "height": 844,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Local Administrator Settings",
+          "caption": "Shows the device local administrator settings configured within Microsoft Entra ID.",
+          "alt": "Local Administrator Settings",
+          "src": "assets/images/projects/azure-advanced-entra-admin/02-02-entra-local-admin-settings.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/02-02-entra-local-admin-settings-thumb.webp",
+          "width": 1600,
+          "height": 852,
+          "thumb_width": 720,
+          "thumb_height": 384
+        },
+        {
+          "title": "Device Security Settings",
+          "caption": "Shows the Microsoft Entra LAPS and BitLocker recovery key security settings.",
+          "alt": "Device Security Settings",
+          "src": "assets/images/projects/azure-advanced-entra-admin/03-03-entra-device-security-settings.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/03-03-entra-device-security-settings-thumb.webp",
+          "width": 1600,
+          "height": 842,
+          "thumb_width": 720,
+          "thumb_height": 379
+        },
+        {
+          "title": "Bulk User Creation",
+          "caption": "Shows the seven internal user accounts created through the Microsoft Entra ID bulk user creation process.",
+          "alt": "Bulk Users Created",
+          "src": "assets/images/projects/azure-advanced-entra-admin/04-04-entra-bulk-users-created.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/04-04-entra-bulk-users-created-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Bulk Operation Preview",
+          "caption": "Shows the uploaded CSV file recorded in the Microsoft Entra ID bulk operation preview.",
+          "alt": "Bulk Operation Preview",
+          "src": "assets/images/projects/azure-advanced-entra-admin/05-05-entra-bulk-operation-preview.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/05-05-entra-bulk-operation-preview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Microsoft Graph User Verification",
+          "caption": "Shows the seven bulk-created user accounts retrieved and verified using Microsoft Graph PowerShell, including their UPNs, departments and job titles.",
+          "alt": "Graph Bulk Users Verification",
+          "src": "assets/images/projects/azure-advanced-entra-admin/06-06-graph-bulk-users-verification.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/06-06-graph-bulk-users-verification-thumb.webp",
+          "width": 1600,
+          "height": 1004,
+          "thumb_width": 720,
+          "thumb_height": 452
+        },
+        {
+          "title": "CSV Export Verification",
+          "caption": "Shows the exported user information imported back into PowerShell, confirming the seven user records and their profile attributes.",
+          "alt": "Graph CSV Export Verification",
+          "src": "assets/images/projects/azure-advanced-entra-admin/07-07-graph-csv-export-verification.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/07-07-graph-csv-export-verification-thumb.webp",
+          "width": 1600,
+          "height": 971,
+          "thumb_width": 720,
+          "thumb_height": 437
+        },
+        {
+          "title": "Automated Group Membership Verification",
+          "caption": "Shows the seven users successfully added to the IT-Cloud-Ops-Automation security group using Microsoft Graph PowerShell and independently retrieved to verify group membership.",
+          "alt": "Graph Group Membership Verification",
+          "src": "assets/images/projects/azure-advanced-entra-admin/08-08-graph-group-membership-verification.webp",
+          "thumb": "assets/images/projects/azure-advanced-entra-admin/08-08-graph-group-membership-verification-thumb.webp",
+          "width": 1600,
+          "height": 986,
+          "thumb_width": 720,
+          "thumb_height": 444
+        }
       ],
       "results": [
-        "Problem: the portal did not give clear confirmation of the CSV bulk operation results. Fix: verification was moved to Microsoft Graph PowerShell."
+        "The portal did not clearly show the result of the CSV bulk upload. I moved the checking to Microsoft Graph PowerShell instead."
       ],
       "cover": 8
     },
@@ -224,11 +817,11 @@
       "category": "identity-governance",
       "featured": false,
       "status": "Completed",
-      "summary": "User and security group administration in Microsoft Entra ID, verified through directory audit logs.",
-      "overview": "Identity and access administration was carried out in a Microsoft Entra ID tenant: inspecting the tenant configuration, verifying the Global Administrator role, creating an internal user with configured attributes and creating a security group with an assigned owner and member. Sign-in logs and directory audit logs were then reviewed to examine the provisioning and membership activity.",
+      "summary": "I created a user and a security group in Microsoft Entra ID. Then I used the audit logs to see exactly who made each change and what changed.",
+      "overview": "Here I practised identity and access administration in Microsoft Entra ID. I reviewed the tenant settings, confirmed the Global Administrator role, created an internal user with its details and created a security group with an owner and a member. I then went through the sign-in logs and directory audit logs to follow the changes I had made.",
       "objectives": [
-        "Provision a user and a security group in Entra ID.",
-        "Use audit logs to verify who made each change and what changed."
+        "Create a user and a security group in Entra ID.",
+        "Use the audit logs to see who made each change and what changed."
       ],
       "technologies": [
         "Microsoft Entra ID",
@@ -238,13 +831,125 @@
         "Sign-in logs"
       ],
       "implementation": [
-        "Reviewed the Default Directory tenant and the Global Administrator role assignment.",
-        "Created an internal user and configured user attributes.",
-        "Created the IT-Cloud-Ops security group with assigned membership, an owner and a member."
+        "I reviewed the Default Directory tenant and the Global Administrator role.",
+        "I created an internal user and filled in the user details.",
+        "I created the IT-Cloud-Ops security group with an owner and a member."
       ],
       "verification": [
-        "Audit records for Add user and Add member to group were inspected for initiating administrator, target resources, modified properties and status.",
-        "Group membership view confirmed the user was added."
+        "I opened the Add user and Add member to group audit records and checked the administrator, target, changed properties and status.",
+        "The group membership page showed the user as a member."
+      ],
+      "screenshots": [
+        {
+          "title": "Default Tenant Overview",
+          "caption": "Shows the Default Directory tenant overview and its Microsoft Entra ID configuration.",
+          "alt": "Default Tenant Overview",
+          "src": "assets/images/projects/azure-entra-identity-access/01-01-entra-tenant-overview.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/01-01-entra-tenant-overview-thumb.webp",
+          "width": 1600,
+          "height": 852,
+          "thumb_width": 720,
+          "thumb_height": 383
+        },
+        {
+          "title": "Global Administrator Role",
+          "caption": "Shows the Global Administrator directory role assigned to the administrator account.",
+          "alt": "Global Administrator Role",
+          "src": "assets/images/projects/azure-entra-identity-access/02-02-entra-global-administrator-role.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/02-02-entra-global-administrator-role-thumb.webp",
+          "width": 1600,
+          "height": 846,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "User Created",
+          "caption": "Shows the Sibusiso Ndlovu internal user account successfully created in Microsoft Entra ID.",
+          "alt": "User Created",
+          "src": "assets/images/projects/azure-entra-identity-access/03-03-entra-user-created.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/03-03-entra-user-created-thumb.webp",
+          "width": 1600,
+          "height": 847,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Security Group Created",
+          "caption": "Shows the IT-Cloud-Ops security group configured with assigned membership, an owner and a member.",
+          "alt": "Security Group Created",
+          "src": "assets/images/projects/azure-entra-identity-access/04-04-entra-security-group-created.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/04-04-entra-security-group-created-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Directory Audit Logs",
+          "caption": "Shows the directory audit log entries generated during user provisioning and security group administration.",
+          "alt": "Directory Audit Logs",
+          "src": "assets/images/projects/azure-entra-identity-access/05-05-entra-audit-logs.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/05-05-entra-audit-logs-thumb.webp",
+          "width": 1600,
+          "height": 853,
+          "thumb_width": 720,
+          "thumb_height": 384
+        },
+        {
+          "title": "User Creation Audit - Target Resources",
+          "caption": "Shows the user object identified as the target of the successful Add user audit operation.",
+          "alt": "User Creation Audit Targets",
+          "src": "assets/images/projects/azure-entra-identity-access/06-06-entra-audit-user-creation-targets.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/06-06-entra-audit-user-creation-targets-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "User Creation Audit - Modified Properties",
+          "caption": "Shows the user attributes recorded in the Modified Properties section of the Add user audit event.",
+          "alt": "User Creation Modified Properties",
+          "src": "assets/images/projects/azure-entra-identity-access/07-07-entra-audit-user-creation-modified-properties.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/07-07-entra-audit-user-creation-modified-properties-thumb.webp",
+          "width": 1600,
+          "height": 844,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Group Membership Audit - Target Resources",
+          "caption": "Shows the user and security group identified as target resources in the Add member to group audit event.",
+          "alt": "Group Membership Audit Targets",
+          "src": "assets/images/projects/azure-entra-identity-access/08-08-entra-audit-group-membership-targets.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/08-08-entra-audit-group-membership-targets-thumb.webp",
+          "width": 1600,
+          "height": 853,
+          "thumb_width": 720,
+          "thumb_height": 384
+        },
+        {
+          "title": "Group Membership Audit - Modified Properties",
+          "caption": "Shows the group object ID and display name recorded in the Modified Properties section of the group membership audit event.",
+          "alt": "Group Membership Modified Properties",
+          "src": "assets/images/projects/azure-entra-identity-access/09-09-entra-audit-group-membership-modified-properties.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/09-09-entra-audit-group-membership-modified-properties-thumb.webp",
+          "width": 1600,
+          "height": 842,
+          "thumb_width": 720,
+          "thumb_height": 379
+        },
+        {
+          "title": "Group Membership Verified",
+          "caption": "Shows the IT-Cloud-Ops group membership view confirming that Sibusiso Ndlovu was successfully added as a member.",
+          "alt": "Group Membership Verified",
+          "src": "assets/images/projects/azure-entra-identity-access/10-10-entra-group-membership-verified.webp",
+          "thumb": "assets/images/projects/azure-entra-identity-access/10-10-entra-group-membership-verified-thumb.webp",
+          "width": 1600,
+          "height": 852,
+          "thumb_width": 720,
+          "thumb_height": 383
+        }
       ],
       "cover": 4
     },
@@ -256,10 +961,10 @@
       "category": "azure-networking",
       "featured": true,
       "status": "Completed",
-      "summary": "Layer 7 load balancing of HTTP traffic across two Nginx VMs with an Azure Application Gateway, shown in a demo video.",
-      "overview": "An Azure Application Gateway was deployed to distribute HTTP traffic across two Linux virtual machines running Nginx. The work covered the dedicated subnet, frontend configuration, backend pool, listener, backend settings, routing rules, validation, deployment and end-to-end verification.",
+      "summary": "I put an Azure Application Gateway in front of two Nginx web servers so that traffic is shared between them. I recorded a short video of it working.",
+      "overview": "In this project I deployed an Azure Application Gateway to share web traffic between two Linux virtual machines running Nginx. I created the gateway's own subnet and set up the frontend, backend pool, listener, backend settings and routing rule. After Azure validated the settings I deployed it and tested it from the browser.",
       "objectives": [
-        "Deploy Layer 7 load balancing in front of two web servers."
+        "Share HTTP traffic between two web servers at layer 7."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -268,19 +973,153 @@
         "Ubuntu Linux VMs",
         "Nginx"
       ],
-      "architecture": "                 Internet\n                     │\n                     ▼\n        Azure Application Gateway\n                     │\n         ┌───────────┴───────────┐\n         ▼                       ▼\n Linux Virtual Machine 1   Linux Virtual Machine 2\n        (Nginx)                  (Nginx)",
       "implementation": [
-        "Created a dedicated Application Gateway subnet.",
-        "Configured the frontend public IP.",
-        "Added both Linux VMs to the backend pool.",
-        "Configured the HTTP listener, backend settings and routing rule.",
-        "Validated and deployed the gateway."
+        "I created a dedicated subnet for the gateway.",
+        "I set up the frontend public IP.",
+        "I added both Linux VMs to the backend pool.",
+        "I configured the HTTP listener, backend settings and routing rule.",
+        "I validated and deployed the gateway."
       ],
       "verification": [
         "Azure validation passed before deployment.",
-        "Refreshing the browser alternated responses between Backend Server 1 and Backend Server 2, confirming Layer 7 load balancing (recorded in the demo video)."
+        "When I refreshed the browser the page switched between Backend Server 1 and Backend Server 2. My demo video shows this."
+      ],
+      "screenshots": [
+        {
+          "title": "Create Application Gateway Subnet",
+          "caption": "Shows the dedicated subnet created for the Azure Application Gateway.",
+          "alt": "Create Application Gateway Subnet",
+          "src": "assets/images/projects/azure-application-gateway/01-azure-application-gateway-01-create-subnet.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/01-azure-application-gateway-01-create-subnet-thumb.webp",
+          "width": 1600,
+          "height": 840,
+          "thumb_width": 720,
+          "thumb_height": 378
+        },
+        {
+          "title": "Subnet Created",
+          "caption": "Shows the successfully created Application Gateway subnet.",
+          "alt": "Subnet Created",
+          "src": "assets/images/projects/azure-application-gateway/02-azure-application-gateway-02-subnet-created.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/02-azure-application-gateway-02-subnet-created-thumb.webp",
+          "width": 1600,
+          "height": 842,
+          "thumb_width": 720,
+          "thumb_height": 379
+        },
+        {
+          "title": "Configure Basic Settings",
+          "caption": "Shows the basic configuration of the Azure Application Gateway.",
+          "alt": "Configure Basic Settings",
+          "src": "assets/images/projects/azure-application-gateway/03-azure-application-gateway-03-basics.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/03-azure-application-gateway-03-basics-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Configure Frontend Public IP",
+          "caption": "Shows the frontend public IP configuration.",
+          "alt": "Configure Frontend Public IP",
+          "src": "assets/images/projects/azure-application-gateway/04-azure-application-gateway-04-frontend-public-ip.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/04-azure-application-gateway-04-frontend-public-ip-thumb.webp",
+          "width": 1600,
+          "height": 862,
+          "thumb_width": 720,
+          "thumb_height": 388
+        },
+        {
+          "title": "Configure Backend Pool",
+          "caption": "Shows both Linux virtual machines added to the backend pool.",
+          "alt": "Configure Backend Pool",
+          "src": "assets/images/projects/azure-application-gateway/05-azure-application-gateway-05-backend-pool.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/05-azure-application-gateway-05-backend-pool-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Configure Routing",
+          "caption": "Shows the routing configuration.",
+          "alt": "Configure Routing",
+          "src": "assets/images/projects/azure-application-gateway/06-azure-application-gateway-06-routing-configuration.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/06-azure-application-gateway-06-routing-configuration-thumb.webp",
+          "width": 1600,
+          "height": 838,
+          "thumb_width": 720,
+          "thumb_height": 377
+        },
+        {
+          "title": "Configure HTTP Listener",
+          "caption": "Shows the HTTP listener configuration.",
+          "alt": "Configure HTTP Listener",
+          "src": "assets/images/projects/azure-application-gateway/07-azure-application-gateway-07-routing-rule-listener.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/07-azure-application-gateway-07-routing-rule-listener-thumb.webp",
+          "width": 1600,
+          "height": 843,
+          "thumb_width": 720,
+          "thumb_height": 379
+        },
+        {
+          "title": "Configure Backend Settings",
+          "caption": "Shows the backend HTTP settings associated with the routing rule.",
+          "alt": "Configure Backend Settings",
+          "src": "assets/images/projects/azure-application-gateway/08-azure-application-gateway-08-routing-rule-backend.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/08-azure-application-gateway-08-routing-rule-backend-thumb.webp",
+          "width": 1600,
+          "height": 850,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Configure Routing Rule",
+          "caption": "Shows the completed routing rule connecting the listener and backend pool.",
+          "alt": "Configure Routing Rule",
+          "src": "assets/images/projects/azure-application-gateway/09-azure-application-gateway-09-routing-rule-created.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/09-azure-application-gateway-09-routing-rule-created-thumb.webp",
+          "width": 1600,
+          "height": 854,
+          "thumb_width": 720,
+          "thumb_height": 384
+        },
+        {
+          "title": "Validation Passed",
+          "caption": "Shows Azure successfully validating the deployment configuration before deployment.",
+          "alt": "Validation Passed",
+          "src": "assets/images/projects/azure-application-gateway/10-azure-application-gateway-10-validation-passed.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/10-azure-application-gateway-10-validation-passed-thumb.webp",
+          "width": 1600,
+          "height": 850,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Deployment Success",
+          "caption": "Shows the successful deployment of the Azure Application Gateway.",
+          "alt": "Deployment Success",
+          "src": "assets/images/projects/azure-application-gateway/11-azure-application-gateway-11-deployment-success.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/11-azure-application-gateway-11-deployment-success-thumb.webp",
+          "width": 1600,
+          "height": 846,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Backend Pool Associated",
+          "caption": "Shows the Application Gateway successfully routing traffic to the backend pool containing both Linux virtual machines.",
+          "alt": "Backend Pool Associated",
+          "src": "assets/images/projects/azure-application-gateway/12-azure-application-gateway-12-backend-pool-associated.webp",
+          "thumb": "assets/images/projects/azure-application-gateway/12-azure-application-gateway-12-backend-pool-associated-thumb.webp",
+          "width": 1600,
+          "height": 865,
+          "thumb_width": 720,
+          "thumb_height": 389
+        }
       ],
       "video": "https://youtu.be/zt_IU6-aZz0",
+      "architecture": "Internet\n                     │\n                     ▼\n        Azure Application Gateway\n                     │\n         ┌───────────┴───────────┐\n         ▼                       ▼\n Linux Virtual Machine 1   Linux Virtual Machine 2\n        (Nginx)                  (Nginx)",
       "cover": 5
     },
     {
@@ -291,10 +1130,10 @@
       "category": "azure-networking",
       "featured": false,
       "status": "Completed",
-      "summary": "Standard Load Balancer with health probe and HTTP rule distributing traffic across two Ubuntu VMs running Nginx.",
-      "overview": "An Azure Standard Load Balancer was deployed to distribute HTTP traffic across two Ubuntu Linux virtual machines running Nginx, with a frontend public IP, backend pool, HTTP health probe and load-balancing rule.",
+      "summary": "I set up an Azure Standard Load Balancer with a health probe to share web traffic between two Ubuntu servers running Nginx.",
+      "overview": "Here I deployed an Azure Standard Load Balancer in front of two Ubuntu virtual machines running Nginx. I configured the frontend public IP, the backend pool, an HTTP health probe and the load balancing rule.",
       "objectives": [
-        "Distribute HTTP traffic across two VMs and remove unhealthy instances automatically."
+        "Share web traffic between two servers and stop sending traffic to a server that is down."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -304,18 +1143,141 @@
         "Nginx",
         "PowerShell"
       ],
-      "architecture": "                Internet\n                    │\n                    ▼\n      Azure Standard Load Balancer\n                    │\n        ┌───────────┴───────────┐\n        ▼                       ▼\nvm-cloud-labs-linux-001   vm-cloud-labs-linux-002\n       Nginx                    Nginx",
       "implementation": [
-        "Deployed the Standard Load Balancer with a frontend public IP.",
-        "Added both Ubuntu VMs to the backend pool.",
-        "Created an HTTP health probe and a load-balancing rule.",
-        "Installed Nginx on both VMs."
+        "I deployed the Standard Load Balancer with a frontend public IP.",
+        "I added both Ubuntu VMs to the backend pool.",
+        "I created an HTTP health probe and a load balancing rule.",
+        "I installed Nginx on both VMs."
       ],
       "verification": [
-        "Both backend VMs reported healthy in the health probe status.",
-        "PowerShell curl requests were distributed between both VMs.",
-        "The browser showed pages served by vm-cloud-labs-linux-001 and vm-cloud-labs-linux-002."
+        "The health probe showed both servers as healthy.",
+        "Repeated curl requests from PowerShell were answered by both VMs.",
+        "In the browser I saw pages from vm-cloud-labs-linux-001 and vm-cloud-labs-linux-002."
       ],
+      "screenshots": [
+        {
+          "title": "Review and Create",
+          "caption": "Shows the Azure configuration before deploying the Standard Load Balancer.",
+          "alt": "Review and Create",
+          "src": "assets/images/projects/azure-load-balancer/01-azure-load-balancer-01-review-and-create.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/01-azure-load-balancer-01-review-and-create-thumb.webp",
+          "width": 1600,
+          "height": 832,
+          "thumb_width": 720,
+          "thumb_height": 374
+        },
+        {
+          "title": "Deployment Successful",
+          "caption": "Shows the successful deployment of the Azure Standard Load Balancer.",
+          "alt": "Deployment Successful",
+          "src": "assets/images/projects/azure-load-balancer/02-azure-load-balancer-02-deployment-success.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/02-azure-load-balancer-02-deployment-success-thumb.webp",
+          "width": 1600,
+          "height": 834,
+          "thumb_width": 720,
+          "thumb_height": 375
+        },
+        {
+          "title": "Load Balancer Overview",
+          "caption": "Shows the deployed load balancer and its frontend configuration.",
+          "alt": "Load Balancer Overview",
+          "src": "assets/images/projects/azure-load-balancer/03-azure-load-balancer-03-load-balancer-overview.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/03-azure-load-balancer-03-load-balancer-overview-thumb.webp",
+          "width": 1600,
+          "height": 836,
+          "thumb_width": 720,
+          "thumb_height": 376
+        },
+        {
+          "title": "Backend Pool",
+          "caption": "Shows both Ubuntu Linux virtual machines added to the backend pool.",
+          "alt": "Backend Pool",
+          "src": "assets/images/projects/azure-load-balancer/04-azure-load-balancer-04-backend-pool.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/04-azure-load-balancer-04-backend-pool-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Health Probe",
+          "caption": "Shows the HTTP health probe configured to monitor the availability of the backend virtual machines.",
+          "alt": "Health Probe",
+          "src": "assets/images/projects/azure-load-balancer/05-azure-load-balancer-05-health-probe-created.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/05-azure-load-balancer-05-health-probe-created-thumb.webp",
+          "width": 1600,
+          "height": 841,
+          "thumb_width": 720,
+          "thumb_height": 378
+        },
+        {
+          "title": "Load Balancing Rule",
+          "caption": "Shows the HTTP load balancing rule linking the frontend IP, backend pool and health probe.",
+          "alt": "Load Balancing Rule",
+          "src": "assets/images/projects/azure-load-balancer/06-azure-load-balancer-06-load-balancing-rule.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/06-azure-load-balancer-06-load-balancing-rule-thumb.webp",
+          "width": 1600,
+          "height": 844,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "Health Probe Status",
+          "caption": "Shows both backend virtual machines reporting a healthy status.",
+          "alt": "Health Probe Status",
+          "src": "assets/images/projects/azure-load-balancer/07-azure-load-balancer-07-load-bala-health-probe-status.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/07-azure-load-balancer-07-load-bala-health-probe-status-thumb.webp",
+          "width": 1600,
+          "height": 846,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Load Balancing Rule Verification",
+          "caption": "Shows the completed load balancing rule configuration.",
+          "alt": "Load Balancing Rule Verification",
+          "src": "assets/images/projects/azure-load-balancer/08-azure-load-balancer-08-load-bal-rule.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/08-azure-load-balancer-08-load-bal-rule-thumb.webp",
+          "width": 1600,
+          "height": 823,
+          "thumb_width": 720,
+          "thumb_height": 370
+        },
+        {
+          "title": "PowerShell Verification",
+          "caption": "Shows HTTP requests distributed between both backend virtual machines using PowerShell `curl`.",
+          "alt": "PowerShell Verification",
+          "src": "assets/images/projects/azure-load-balancer/09-azure-load-balancer-09-powershell-curl.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/09-azure-load-balancer-09-powershell-curl-thumb.webp",
+          "width": 1600,
+          "height": 994,
+          "thumb_width": 720,
+          "thumb_height": 447
+        },
+        {
+          "title": "Browser Verification: VM002",
+          "caption": "Shows the load balancer routing traffic to **vm-cloud-labs-linux-002**.",
+          "alt": "Browser Verification - VM002",
+          "src": "assets/images/projects/azure-load-balancer/10-azure-load-balancer-10-webpage-vm2-shown.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/10-azure-load-balancer-10-webpage-vm2-shown-thumb.webp",
+          "width": 1600,
+          "height": 997,
+          "thumb_width": 720,
+          "thumb_height": 448
+        },
+        {
+          "title": "Browser Verification: VM001",
+          "caption": "Shows the load balancer routing traffic to **vm-cloud-labs-linux-001**.",
+          "alt": "Browser Verification - VM001",
+          "src": "assets/images/projects/azure-load-balancer/11-azure-load-balancer-11-webpage-vm1-shown.webp",
+          "thumb": "assets/images/projects/azure-load-balancer/11-azure-load-balancer-11-webpage-vm1-shown-thumb.webp",
+          "width": 1600,
+          "height": 987,
+          "thumb_width": 720,
+          "thumb_height": 444
+        }
+      ],
+      "architecture": "Internet\n                    │\n                    ▼\n      Azure Standard Load Balancer\n                    │\n        ┌───────────┴───────────┐\n        ▼                       ▼\nvm-cloud-labs-linux-001   vm-cloud-labs-linux-002\n       Nginx                    Nginx",
       "cover": 10
     },
     {
@@ -326,10 +1288,10 @@
       "category": "azure-networking",
       "featured": false,
       "status": "Completed",
-      "summary": "NSG with SSH and HTTP inbound rules associated with a VNet subnet.",
-      "overview": "An Azure Network Security Group was created to control inbound traffic, with rules allowing SSH (port 22) for administration and HTTP (port 80) for web traffic, and was associated with the virtual network subnet.",
+      "summary": "I created a network security group that allows SSH and HTTP and attached it to my subnet.",
+      "overview": "I created an Azure network security group to control incoming traffic. I added rules that allow SSH on port 22 for administration and HTTP on port 80 for web traffic, then attached the group to my subnet.",
       "objectives": [
-        "Filter inbound traffic to a subnet."
+        "Control which traffic can reach the subnet."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -337,12 +1299,102 @@
         "Virtual Networks"
       ],
       "implementation": [
-        "Created the NSG and reviewed its default inbound and outbound rules.",
-        "Added inbound rules for SSH (22) and HTTP (80).",
-        "Associated the NSG with the subnet."
+        "I created the NSG and looked through its default rules.",
+        "I added inbound rules for SSH on port 22 and HTTP on port 80.",
+        "I attached the NSG to the subnet."
       ],
       "verification": [
-        "The subnet view shows it protected by the associated NSG."
+        "The subnet page shows the NSG attached."
+      ],
+      "screenshots": [
+        {
+          "title": "NSG Created",
+          "caption": "Shows the successful deployment of the Azure Network Security Group.",
+          "alt": "NSG Created",
+          "src": "assets/images/projects/azure-network-security-group/01-01-nsg-created.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/01-01-nsg-created-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "NSG Overview",
+          "caption": "Shows the Network Security Group properties and configuration after deployment.",
+          "alt": "NSG Overview",
+          "src": "assets/images/projects/azure-network-security-group/02-02-nsg-overview.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/02-02-nsg-overview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Default Security Rules",
+          "caption": "Shows the default inbound and outbound security rules created with the NSG.",
+          "alt": "Default Rules",
+          "src": "assets/images/projects/azure-network-security-group/03-03-nsg-default-rules.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/03-03-nsg-default-rules-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Creating HTTP Rule",
+          "caption": "Shows the configuration of the inbound HTTP rule to allow web traffic on port 80.",
+          "alt": "Create HTTP Rule",
+          "src": "assets/images/projects/azure-network-security-group/04-04-add-http-rule.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/04-04-add-http-rule-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "HTTP Rule Added",
+          "caption": "Shows the completed HTTP inbound rule successfully added to the Network Security Group.",
+          "alt": "HTTP Rule Added",
+          "src": "assets/images/projects/azure-network-security-group/05-05-http-rule-added.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/05-05-http-rule-added-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Associating NSG with Subnet",
+          "caption": "Shows the Network Security Group being associated with the virtual network subnet.",
+          "alt": "Subnet Association",
+          "src": "assets/images/projects/azure-network-security-group/06-06-subnet-association.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/06-06-subnet-association-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "NSG Association Overview",
+          "caption": "Shows the Network Security Group successfully associated with the subnet.",
+          "alt": "Association Overview",
+          "src": "assets/images/projects/azure-network-security-group/07-07-nsg-associated-overview.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/07-07-nsg-associated-overview-thumb.webp",
+          "width": 1600,
+          "height": 851,
+          "thumb_width": 720,
+          "thumb_height": 383
+        },
+        {
+          "title": "Subnet Protected by NSG",
+          "caption": "Shows the subnet protected by the associated Network Security Group.",
+          "alt": "Subnet with NSG",
+          "src": "assets/images/projects/azure-network-security-group/08-08-subnet-with-nsg.webp",
+          "thumb": "assets/images/projects/azure-network-security-group/08-08-subnet-with-nsg-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        }
       ]
     },
     {
@@ -353,10 +1405,10 @@
       "category": "azure-networking",
       "featured": false,
       "status": "Completed",
-      "summary": "Peering between two virtual networks for private communication over the Microsoft backbone.",
-      "overview": "VNet peering was configured between two virtual networks so resources can communicate privately over the Microsoft backbone without a VPN or public internet connectivity.",
+      "summary": "I connected two virtual networks with peering so they can talk privately over Microsoft's network.",
+      "overview": "I set up peering between two Azure virtual networks so that resources in them can reach each other privately over Microsoft's backbone, without a VPN or the public internet.",
       "objectives": [
-        "Connect two VNets privately."
+        "Connect two virtual networks privately."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -364,10 +1416,34 @@
         "VNet Peering"
       ],
       "implementation": [
-        "Configured peering on both virtual networks."
+        "I configured the peering on both virtual networks."
       ],
       "verification": [
-        "Both VNets show the peering in a connected state."
+        "Both networks show the peering as Connected."
+      ],
+      "screenshots": [
+        {
+          "title": "VNet Cloud Connected",
+          "caption": "Shows the first virtual network successfully configured with VNet peering.",
+          "alt": "VNet Cloud Connected",
+          "src": "assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected.webp",
+          "thumb": "assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "VNet UAE North Connected",
+          "caption": "Shows the second virtual network successfully connected through Azure VNet Peering.",
+          "alt": "VNet UAE North Connected",
+          "src": "assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected.webp",
+          "thumb": "assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        }
       ]
     },
     {
@@ -378,10 +1454,10 @@
       "category": "azure-networking",
       "featured": false,
       "status": "Completed",
-      "summary": "Private DNS zone linked to a virtual network for internal name resolution.",
-      "overview": "An Azure Private DNS zone was created and linked to a virtual network to provide private name resolution for Azure resources without exposing records to the public internet.",
+      "summary": "I created a private DNS zone and linked it to my virtual network for internal name lookups.",
+      "overview": "I created an Azure Private DNS zone and linked it to a virtual network so that my resources can find each other by name without the records being visible on the internet.",
       "objectives": [
-        "Provide internal-only DNS resolution for a VNet."
+        "Give the network its own internal DNS."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -389,11 +1465,57 @@
         "Virtual Networks"
       ],
       "implementation": [
-        "Created the Private DNS zone.",
-        "Linked the virtual network to the zone."
+        "I created the private DNS zone.",
+        "I linked the virtual network to the zone."
       ],
       "verification": [
-        "The virtual network link shows as linked."
+        "The virtual network link shows as Linked."
+      ],
+      "screenshots": [
+        {
+          "title": "Create Private DNS Zone",
+          "caption": "Shows the configuration before creating the Azure Private DNS Zone.",
+          "alt": "Create Private DNS Zone",
+          "src": "assets/images/projects/azure-private-dns/01-private-dns-01-create.webp",
+          "thumb": "assets/images/projects/azure-private-dns/01-private-dns-01-create-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "Private DNS Zone Created",
+          "caption": "Shows the successful deployment of the Azure Private DNS Zone.",
+          "alt": "Private DNS Zone Created",
+          "src": "assets/images/projects/azure-private-dns/02-private-dns-02-created.webp",
+          "thumb": "assets/images/projects/azure-private-dns/02-private-dns-02-created-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "Link Virtual Network",
+          "caption": "Shows the configuration for linking the Azure Virtual Network to the Private DNS Zone.",
+          "alt": "Link Virtual Network",
+          "src": "assets/images/projects/azure-private-dns/03-private-dns-03-link.webp",
+          "thumb": "assets/images/projects/azure-private-dns/03-private-dns-03-link-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "Virtual Network Linked",
+          "caption": "Shows the Azure Virtual Network successfully linked to the Private DNS Zone, enabling private DNS name resolution.",
+          "alt": "Virtual Network Linked",
+          "src": "assets/images/projects/azure-private-dns/04-private-dns-04-linked.webp",
+          "thumb": "assets/images/projects/azure-private-dns/04-private-dns-04-linked-thumb.webp",
+          "width": 1600,
+          "height": 768,
+          "thumb_width": 720,
+          "thumb_height": 346
+        }
       ]
     },
     {
@@ -404,10 +1526,10 @@
       "category": "azure-networking",
       "featured": false,
       "status": "Completed",
-      "summary": "Resource group, virtual network and management subnet deployment.",
-      "overview": "An Azure Virtual Network was deployed in a resource group with its address space and a management subnet.",
+      "summary": "I created a resource group, a virtual network and a management subnet as the base for my other Azure labs.",
+      "overview": "This was my first Azure network. I created a resource group and deployed a virtual network with its address space and a management subnet.",
       "objectives": [
-        "Create the base network for later labs."
+        "Build the base network for my later labs."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -415,10 +1537,56 @@
         "Virtual Networks"
       ],
       "implementation": [
-        "Deployed the virtual network and its management subnet in a resource group."
+        "I deployed the virtual network and its management subnet in a new resource group."
       ],
       "verification": [
-        "Deployment succeeded; the VNet overview shows the address space and subnet."
+        "The deployment succeeded and the network page shows the address space and subnet."
+      ],
+      "screenshots": [
+        {
+          "title": "Deployment Successful",
+          "caption": "Shows the successful deployment of the Azure Virtual Network.",
+          "alt": "Deployment Success",
+          "src": "assets/images/projects/azure-vnet-deployment/01-01-deployment-success.webp",
+          "thumb": "assets/images/projects/azure-vnet-deployment/01-01-deployment-success-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Resource Group",
+          "caption": "Shows the Resource Group containing the deployed Azure networking resources.",
+          "alt": "Resource Group",
+          "src": "assets/images/projects/azure-vnet-deployment/02-02-resource-group.webp",
+          "thumb": "assets/images/projects/azure-vnet-deployment/02-02-resource-group-thumb.webp",
+          "width": 1600,
+          "height": 855,
+          "thumb_width": 720,
+          "thumb_height": 385
+        },
+        {
+          "title": "Virtual Network Overview",
+          "caption": "Shows the Virtual Network configuration, including the address space and associated resources.",
+          "alt": "Virtual Network Overview",
+          "src": "assets/images/projects/azure-vnet-deployment/03-03-vnet-overview.webp",
+          "thumb": "assets/images/projects/azure-vnet-deployment/03-03-vnet-overview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Management Subnet",
+          "caption": "Shows the management subnet configured within the Azure Virtual Network.",
+          "alt": "Subnet Overview",
+          "src": "assets/images/projects/azure-vnet-deployment/04-04-subnet-overview.webp",
+          "thumb": "assets/images/projects/azure-vnet-deployment/04-04-subnet-overview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        }
       ]
     },
     {
@@ -429,10 +1597,10 @@
       "category": "azure-compute-storage",
       "featured": false,
       "status": "Completed",
-      "summary": "Ubuntu VM with SSH key authentication hosting a custom Nginx web page.",
-      "overview": "An Ubuntu Linux virtual machine was deployed in Azure with SSH key authentication. Nginx was installed and configured to host a custom web page.",
+      "summary": "I deployed an Ubuntu VM in Azure, connected with an SSH key and hosted my own web page on Nginx.",
+      "overview": "I deployed an Ubuntu Linux virtual machine in Azure that uses SSH key login. I then installed Nginx and set it up to show a web page I wrote.",
       "objectives": [
-        "Deploy and access a Linux VM securely and serve web content."
+        "Deploy a Linux server, log in safely and serve a web page."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -442,12 +1610,69 @@
         "Nginx"
       ],
       "implementation": [
-        "Configured and deployed the VM.",
-        "Connected over SSH with key-based authentication.",
-        "Installed Nginx and created a custom page."
+        "I configured and deployed the VM.",
+        "I connected over SSH with my key.",
+        "I installed Nginx and created my own page."
       ],
       "verification": [
-        "Nginx was running and the custom page was served by the VM."
+        "Nginx was running and the VM served my page."
+      ],
+      "screenshots": [
+        {
+          "title": "Creating the Virtual Machine",
+          "caption": "Shows the Azure configuration before deploying the Ubuntu Linux virtual machine.",
+          "alt": "Creating VM",
+          "src": "assets/images/projects/azure-linux-vm-deployment/01-01-creating-virtual-machine.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-deployment/01-01-creating-virtual-machine-thumb.webp",
+          "width": 1600,
+          "height": 849,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "Deployment Complete",
+          "caption": "Shows the successful deployment of the Azure Linux virtual machine.",
+          "alt": "Deployment Complete",
+          "src": "assets/images/projects/azure-linux-vm-deployment/02-02-azure-vm-deployment-complete.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-deployment/02-02-azure-vm-deployment-complete-thumb.webp",
+          "width": 1600,
+          "height": 845,
+          "thumb_width": 720,
+          "thumb_height": 380
+        },
+        {
+          "title": "SSH Connection",
+          "caption": "Shows a successful SSH connection to the Azure Linux virtual machine using key-based authentication.",
+          "alt": "SSH Connection",
+          "src": "assets/images/projects/azure-linux-vm-deployment/03-03-ssh-connection-to-vm-on-azure.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-deployment/03-03-ssh-connection-to-vm-on-azure-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        },
+        {
+          "title": "Nginx Running",
+          "caption": "Shows the Nginx web server installed and running successfully on the virtual machine.",
+          "alt": "Nginx Test",
+          "src": "assets/images/projects/azure-linux-vm-deployment/04-04-test-nginx-after-install-to-linux-vm.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-deployment/04-04-test-nginx-after-install-to-linux-vm-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        },
+        {
+          "title": "Custom Web Page",
+          "caption": "Shows the custom web page hosted on the Azure Linux virtual machine, confirming the web server is serving application content successfully.",
+          "alt": "Custom Web Page",
+          "src": "assets/images/projects/azure-linux-vm-deployment/05-05-custom-web-page-created.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-deployment/05-05-custom-web-page-created-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     },
     {
@@ -458,10 +1683,10 @@
       "category": "azure-compute-storage",
       "featured": false,
       "status": "Completed",
-      "summary": "Second Ubuntu VM with SSH keys, NSG protection and Nginx, later used as a load-balancer backend.",
-      "overview": "A second Ubuntu Linux VM was deployed in Azure with SSH key authentication, secured with a Network Security Group and prepared to host web applications with Nginx.",
+      "summary": "I deployed a second Ubuntu VM with SSH key login, an NSG and Nginx. I later used it behind my load balancer.",
+      "overview": "I deployed a second Ubuntu Linux VM in Azure with SSH key login, protected it with a network security group and installed Nginx so it could host web pages.",
       "objectives": [
-        "Provide a second web server for load-balancing labs."
+        "Have a second web server ready for my load balancing labs."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -472,12 +1697,69 @@
         "Nginx"
       ],
       "implementation": [
-        "Reviewed and deployed the VM.",
-        "Connected over SSH with key-based authentication.",
-        "Installed Nginx."
+        "I reviewed and deployed the VM.",
+        "I connected over SSH with my key.",
+        "I installed Nginx."
       ],
       "verification": [
         "Nginx served its default page over HTTP."
+      ],
+      "screenshots": [
+        {
+          "title": "Review and Create",
+          "caption": "Shows the Azure deployment configuration before creating the virtual machine.",
+          "alt": "Review and Create",
+          "src": "assets/images/projects/azure-linux-vm-2-deployment/01-azure-vm002-vm-01-review-and-create.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-2-deployment/01-azure-vm002-vm-01-review-and-create-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "Deployment Successful",
+          "caption": "Shows the successful deployment of the Azure Linux virtual machine.",
+          "alt": "Deployment Successful",
+          "src": "assets/images/projects/azure-linux-vm-2-deployment/02-azure-vm002-vm-02-deployment-success.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-2-deployment/02-azure-vm002-vm-02-deployment-success-thumb.webp",
+          "width": 1600,
+          "height": 773,
+          "thumb_width": 720,
+          "thumb_height": 348
+        },
+        {
+          "title": "Virtual Machine Overview",
+          "caption": "Shows the virtual machine configuration, public IP address and resource details after deployment.",
+          "alt": "VM Overview",
+          "src": "assets/images/projects/azure-linux-vm-2-deployment/03-azure-vm002-vm-deployment-03-vm-overview.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-2-deployment/03-azure-vm002-vm-deployment-03-vm-overview-thumb.webp",
+          "width": 1600,
+          "height": 760,
+          "thumb_width": 720,
+          "thumb_height": 342
+        },
+        {
+          "title": "SSH Remote Access",
+          "caption": "Shows a successful SSH connection to the Azure Linux virtual machine using key-based authentication.",
+          "alt": "SSH Remote Access",
+          "src": "assets/images/projects/azure-linux-vm-2-deployment/04-azure-vm002-vm-04-ssh-remote-access.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-2-deployment/04-azure-vm002-vm-04-ssh-remote-access-thumb.webp",
+          "width": 1600,
+          "height": 984,
+          "thumb_width": 720,
+          "thumb_height": 443
+        },
+        {
+          "title": "Nginx Web Server",
+          "caption": "Shows the Nginx web server running successfully and serving the default web page over HTTP.",
+          "alt": "Nginx Web Server",
+          "src": "assets/images/projects/azure-linux-vm-2-deployment/05-azure-vm002-vm-05-nginx-web-server.webp",
+          "thumb": "assets/images/projects/azure-linux-vm-2-deployment/05-azure-vm002-vm-05-nginx-web-server-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     },
     {
@@ -488,10 +1770,10 @@
       "category": "azure-compute-storage",
       "featured": false,
       "status": "Completed",
-      "summary": "Managed data disk attached to an Ubuntu VM, then partitioned, formatted and mounted.",
-      "overview": "An Azure Managed Disk was created and attached to an existing Ubuntu VM, then partitioned, formatted and mounted to provide additional persistent storage.",
+      "summary": "I added a managed data disk to my Ubuntu VM, then partitioned, formatted and mounted it.",
+      "overview": "I created an Azure managed disk, attached it to my Ubuntu VM and then partitioned, formatted and mounted it to give the server extra storage that stays after a restart.",
       "objectives": [
-        "Add persistent storage to a running VM."
+        "Add extra storage to a running server."
       ],
       "technologies": [
         "Microsoft Azure",
@@ -499,11 +1781,57 @@
         "Ubuntu Linux"
       ],
       "implementation": [
-        "Attached a managed data disk to the VM.",
-        "Partitioned, formatted and mounted it over SSH."
+        "I attached a managed data disk to the VM.",
+        "Over SSH I partitioned, formatted and mounted it."
       ],
       "verification": [
         "The disk shows as mounted on the VM."
+      ],
+      "screenshots": [
+        {
+          "title": "Disks Overview in the VM",
+          "caption": "Shows the virtual machine disk configuration before attaching an additional managed disk.",
+          "alt": "Disks Overview",
+          "src": "assets/images/projects/azure-managed-disks/01-01-disks-overview-in-vm.webp",
+          "thumb": "assets/images/projects/azure-managed-disks/01-01-disks-overview-in-vm-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Data Disk Attached",
+          "caption": "Shows the managed data disk successfully attached to the virtual machine.",
+          "alt": "Data Disk Attached",
+          "src": "assets/images/projects/azure-managed-disks/02-02-data-disk-attached.webp",
+          "thumb": "assets/images/projects/azure-managed-disks/02-02-data-disk-attached-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 382
+        },
+        {
+          "title": "SSH Access",
+          "caption": "Shows a successful SSH connection to the virtual machine for disk configuration.",
+          "alt": "SSH Access",
+          "src": "assets/images/projects/azure-managed-disks/03-03-attached-disk-ssh-access.webp",
+          "thumb": "assets/images/projects/azure-managed-disks/03-03-attached-disk-ssh-access-thumb.webp",
+          "width": 1600,
+          "height": 1029,
+          "thumb_width": 720,
+          "thumb_height": 463
+        },
+        {
+          "title": "Disk Partition and Mount",
+          "caption": "Shows the managed disk partitioned, formatted and mounted successfully.",
+          "alt": "Disk Partition and Mount",
+          "src": "assets/images/projects/azure-managed-disks/04-04-disk-partition-mount.webp",
+          "thumb": "assets/images/projects/azure-managed-disks/04-04-disk-partition-mount-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     },
     {
@@ -514,8 +1842,8 @@
       "category": "azure-compute-storage",
       "featured": false,
       "status": "Completed",
-      "summary": "Storage account and Blob container with a sample file upload.",
-      "overview": "An Azure Storage Account was deployed, a Blob container was created and a sample file was uploaded to verify the storage configuration.",
+      "summary": "I created a storage account and a blob container and uploaded a test file.",
+      "overview": "I deployed an Azure storage account, created a blob container and uploaded a sample file to check that it worked.",
       "objectives": [
         "Store files in Azure Blob Storage."
       ],
@@ -525,11 +1853,68 @@
         "Blob Storage"
       ],
       "implementation": [
-        "Deployed the storage account.",
-        "Created a Blob container and uploaded a sample file."
+        "I deployed the storage account.",
+        "I created a blob container and uploaded a sample file."
       ],
       "verification": [
-        "Storage account and container overviews confirm the deployment."
+        "The storage account and container pages confirm the setup."
+      ],
+      "screenshots": [
+        {
+          "title": "Create Storage Account",
+          "caption": "Shows the configuration before creating the Azure Storage Account.",
+          "alt": "Create Storage Account",
+          "src": "assets/images/projects/azure-storage-account/01-01-create-storage-acc.webp",
+          "thumb": "assets/images/projects/azure-storage-account/01-01-create-storage-acc-thumb.webp",
+          "width": 1600,
+          "height": 850,
+          "thumb_width": 720,
+          "thumb_height": 383
+        },
+        {
+          "title": "Review and Create",
+          "caption": "Shows the Azure deployment summary before creating the Storage Account.",
+          "alt": "Review and Create",
+          "src": "assets/images/projects/azure-storage-account/02-02-review-create-storage.webp",
+          "thumb": "assets/images/projects/azure-storage-account/02-02-review-create-storage-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Storage Deployment Successful",
+          "caption": "Shows the successful deployment of the Azure Storage Account.",
+          "alt": "Deployment Success",
+          "src": "assets/images/projects/azure-storage-account/03-03-storage-deploy-success.webp",
+          "thumb": "assets/images/projects/azure-storage-account/03-03-storage-deploy-success-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Storage Account Overview",
+          "caption": "Shows the Storage Account properties and configuration after deployment.",
+          "alt": "Storage Account Overview",
+          "src": "assets/images/projects/azure-storage-account/04-04-storage-acc-overview.webp",
+          "thumb": "assets/images/projects/azure-storage-account/04-04-storage-acc-overview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        },
+        {
+          "title": "Blob Container Overview",
+          "caption": "Shows the Blob Storage container created within the Storage Account.",
+          "alt": "Storage Container Overview",
+          "src": "assets/images/projects/azure-storage-account/05-05-storage-container-overview.webp",
+          "thumb": "assets/images/projects/azure-storage-account/05-05-storage-container-overview-thumb.webp",
+          "width": 1600,
+          "height": 848,
+          "thumb_width": 720,
+          "thumb_height": 381
+        }
       ]
     },
     {
@@ -540,10 +1925,10 @@
       "category": "linux-administration",
       "featured": true,
       "status": "Completed",
-      "summary": "Bash health-check script scheduled with Cron that checks memory, disk and services and returns a status exit code.",
-      "overview": "A Bash-based server health monitoring system was built that runs automatically with Cron and checks system resources and essential services.",
+      "summary": "I wrote a Bash health check that runs from Cron. It checks memory, disk space and services and returns a clear exit code.",
+      "overview": "I built a server health check in Bash that runs on its own with Cron. It checks memory, disk space and important services and reports the overall health of the server.",
       "objectives": [
-        "Automate routine server health checks and report a clear status."
+        "Run routine server health checks automatically and report a clear result."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -552,15 +1937,116 @@
         "systemd services"
       ],
       "implementation": [
-        "Checked the Cron environment.",
-        "Ran the health-check script manually to produce a report.",
-        "Scheduled the script with Cron."
+        "I checked the Cron setup.",
+        "I ran the script by hand to see the report.",
+        "I scheduled it with Cron."
       ],
       "verification": [
-        "Cron executed the script automatically and generated the report.",
+        "Cron ran the script on schedule and created the report.",
         "Memory, disk and service checks returned OK with an overall healthy result.",
-        "A simulated failure was detected and returned a warning status.",
-        "The script returned exit code 0 when the system was healthy."
+        "When I simulated a failure the script caught it and returned a warning.",
+        "The script returned exit code 0 when the server was healthy."
+      ],
+      "screenshots": [
+        {
+          "title": "Cron Environment Check",
+          "caption": "Shows the Linux environment and Cron service configuration.",
+          "alt": "Cron Environment Check",
+          "src": "assets/images/projects/linux-server-health-monitoring/01-01-lnx-cron-environment-check.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/01-01-lnx-cron-environment-check-thumb.webp",
+          "width": 1600,
+          "height": 984,
+          "thumb_width": 720,
+          "thumb_height": 443
+        },
+        {
+          "title": "Health Check Manual Test",
+          "caption": "Shows the health-check script running manually and generating a system health report.",
+          "alt": "Health Check Manual Test",
+          "src": "assets/images/projects/linux-server-health-monitoring/02-02-lnx-cron-health-check-manual-test.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/02-02-lnx-cron-health-check-manual-test-thumb.webp",
+          "width": 1600,
+          "height": 991,
+          "thumb_width": 720,
+          "thumb_height": 446
+        },
+        {
+          "title": "Scheduled Health Check",
+          "caption": "Shows the Cron schedule configured to run the health-check automatically.",
+          "alt": "Scheduled Health Check",
+          "src": "assets/images/projects/linux-server-health-monitoring/03-03-lnx-cron-scheduled-health-check.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/03-03-lnx-cron-scheduled-health-check-thumb.webp",
+          "width": 1600,
+          "height": 988,
+          "thumb_width": 720,
+          "thumb_height": 445
+        },
+        {
+          "title": "Automatic Execution",
+          "caption": "Shows Cron automatically executing the Linux health-check script.",
+          "alt": "Automatic Execution",
+          "src": "assets/images/projects/linux-server-health-monitoring/04-04-lnx-cron-automatic-execution.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/04-04-lnx-cron-automatic-execution-thumb.webp",
+          "width": 1600,
+          "height": 981,
+          "thumb_width": 720,
+          "thumb_height": 441
+        },
+        {
+          "title": "Automatic Health Check Result",
+          "caption": "Shows the health report generated by the scheduled execution.",
+          "alt": "Automatic Health Check Result",
+          "src": "assets/images/projects/linux-server-health-monitoring/05-05-lnx-cron-health-check-automatic-result.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/05-05-lnx-cron-health-check-automatic-result-thumb.webp",
+          "width": 1600,
+          "height": 985,
+          "thumb_width": 720,
+          "thumb_height": 443
+        },
+        {
+          "title": "Health Check Status Evaluation",
+          "caption": "Shows memory, disk and service checks being evaluated with OK status and an overall healthy result.",
+          "alt": "Health Check Status Evaluation",
+          "src": "assets/images/projects/linux-server-health-monitoring/06-06-lnx-cron-health-check-status-evaluation.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/06-06-lnx-cron-health-check-status-evaluation-thumb.webp",
+          "width": 1600,
+          "height": 979,
+          "thumb_width": 720,
+          "thumb_height": 441
+        },
+        {
+          "title": "Failure Detection",
+          "caption": "Shows the health-check detecting a simulated failure and returning a warning status.",
+          "alt": "Failure Detection",
+          "src": "assets/images/projects/linux-server-health-monitoring/07-07-lnx-cron-failure-detection.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/07-07-lnx-cron-failure-detection-thumb.webp",
+          "width": 1600,
+          "height": 989,
+          "thumb_width": 720,
+          "thumb_height": 445
+        },
+        {
+          "title": "Health Check Exit Code",
+          "caption": "Shows the health-check returning Exit Code 0 when the system is healthy.",
+          "alt": "Health Check Exit Code",
+          "src": "assets/images/projects/linux-server-health-monitoring/08-08-lnx-cron-health-check-exit-code.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/08-08-lnx-cron-health-check-exit-code-thumb.webp",
+          "width": 1600,
+          "height": 971,
+          "thumb_width": 720,
+          "thumb_height": 437
+        },
+        {
+          "title": "Final Verification",
+          "caption": "Shows Cron automatically executing the health-check and the final healthy result with Exit Code 0.",
+          "alt": "Final Verification",
+          "src": "assets/images/projects/linux-server-health-monitoring/09-09-lnx-cron-final-verification.webp",
+          "thumb": "assets/images/projects/linux-server-health-monitoring/09-09-lnx-cron-final-verification-thumb.webp",
+          "width": 1600,
+          "height": 983,
+          "thumb_width": 720,
+          "thumb_height": 442
+        }
       ],
       "cover": 6
     },
@@ -572,10 +2058,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Nginx install, custom site configuration, config testing and log review on Ubuntu.",
-      "overview": "Nginx was installed on Ubuntu, a custom HTML page and site configuration were created and enabled, and access and error logs were reviewed.",
+      "summary": "I installed Nginx on Ubuntu, set up my own site and checked the access and error logs.",
+      "overview": "I installed Nginx on Ubuntu, created my own HTML page and site configuration, enabled the site and then went through the access and error logs.",
       "objectives": [
-        "Serve a custom site with Nginx and confirm it from a client."
+        "Serve my own site with Nginx and open it from another machine."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -583,14 +2069,115 @@
         "curl"
       ],
       "implementation": [
-        "Installed Nginx and confirmed it listened on TCP 80.",
-        "Created a custom page and site configuration in sites-enabled.",
-        "Tested the configuration syntax and reloaded Nginx."
+        "I installed Nginx and confirmed it was listening on port 80.",
+        "I created my page and site configuration in sites-enabled.",
+        "I tested the configuration and reloaded Nginx."
       ],
       "verification": [
-        "curl returned the page locally.",
-        "A browser on the network loaded the custom page by IP.",
-        "Access and error logs recorded the requests."
+        "curl returned the page on the server.",
+        "A browser on the network opened my page by IP address.",
+        "The access and error logs recorded the requests."
+      ],
+      "screenshots": [
+        {
+          "title": "Nginx Server Installation",
+          "caption": "Installed Nginx on the Ubuntu Linux server and verified that the service is active and running.",
+          "alt": "Nginx Server Installed",
+          "src": "assets/images/projects/linux-nginx-web-server/01-01-lnx-nginx-server-installed.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/01-01-lnx-nginx-server-installed-thumb.webp",
+          "width": 1600,
+          "height": 983,
+          "thumb_width": 720,
+          "thumb_height": 442
+        },
+        {
+          "title": "Nginx Port 80 Verification",
+          "caption": "Verified that Nginx is listening for HTTP connections on TCP port 80.",
+          "alt": "Nginx Listening on Port 80",
+          "src": "assets/images/projects/linux-nginx-web-server/02-02-lnx-nginx-listening-port-80.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/02-02-lnx-nginx-listening-port-80-thumb.webp",
+          "width": 1600,
+          "height": 302,
+          "thumb_width": 720,
+          "thumb_height": 136
+        },
+        {
+          "title": "Local Web Server Test",
+          "caption": "Tested the Nginx web server locally using `curl` and confirmed that the web server was responding successfully.",
+          "alt": "Local Web Page Test",
+          "src": "assets/images/projects/linux-nginx-web-server/03-03-lnx-nginx-local-webpage-test.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/03-03-lnx-nginx-local-webpage-test-thumb.webp",
+          "width": 1600,
+          "height": 1011,
+          "thumb_width": 720,
+          "thumb_height": 455
+        },
+        {
+          "title": "Custom Web Page",
+          "caption": "Created a custom HTML page for the Linux server and configured the web content to be served through Nginx.",
+          "alt": "Custom Web Page",
+          "src": "assets/images/projects/linux-nginx-web-server/04-04-lnx-nginx-custom-web-page.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/04-04-lnx-nginx-custom-web-page-thumb.webp",
+          "width": 1600,
+          "height": 1058,
+          "thumb_width": 720,
+          "thumb_height": 476
+        },
+        {
+          "title": "Nginx Configuration Test",
+          "caption": "Tested the Nginx configuration syntax and verified that the configuration was valid.",
+          "alt": "Nginx Configuration Test",
+          "src": "assets/images/projects/linux-nginx-web-server/05-05-lnx-nginx-config-test.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/05-05-lnx-nginx-config-test-thumb.webp",
+          "width": 1600,
+          "height": 912,
+          "thumb_width": 720,
+          "thumb_height": 411
+        },
+        {
+          "title": "Nginx Site Configuration",
+          "caption": "Created a custom Nginx site configuration and enabled it using the `sites-enabled` directory.",
+          "alt": "Nginx Site Configuration",
+          "src": "assets/images/projects/linux-nginx-web-server/06-06-lnx-nginx-site-config-enabled.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/06-06-lnx-nginx-site-config-enabled-thumb.webp",
+          "width": 1600,
+          "height": 1016,
+          "thumb_width": 720,
+          "thumb_height": 457
+        },
+        {
+          "title": "Nginx Reload and Service Verification",
+          "caption": "Reloaded Nginx after applying the configuration changes and verified that the service remained active and running.",
+          "alt": "Nginx Reload and Status",
+          "src": "assets/images/projects/linux-nginx-web-server/07-07-lnx-nginx-reload-status.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/07-07-lnx-nginx-reload-status-thumb.webp",
+          "width": 1600,
+          "height": 918,
+          "thumb_width": 720,
+          "thumb_height": 413
+        },
+        {
+          "title": "Custom Site Verification",
+          "caption": "Accessed the server from a web browser using its IP address and verified that the custom Linux web page was being served successfully.",
+          "alt": "Custom Site Verification",
+          "src": "assets/images/projects/linux-nginx-web-server/08-08-lnx-nginx-custom-site-verification.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/08-08-lnx-nginx-custom-site-verification-thumb.webp",
+          "width": 1600,
+          "height": 1008,
+          "thumb_width": 720,
+          "thumb_height": 454
+        },
+        {
+          "title": "Nginx Access and Error Logs",
+          "caption": "Reviewed the Nginx access and error logs to verify client requests and monitor web server activity.",
+          "alt": "Nginx Access and Error Logs",
+          "src": "assets/images/projects/linux-nginx-web-server/09-09-lnx-nginx-access-and-error-logs.webp",
+          "thumb": "assets/images/projects/linux-nginx-web-server/09-09-lnx-nginx-access-and-error-logs-thumb.webp",
+          "width": 1600,
+          "height": 974,
+          "thumb_width": 720,
+          "thumb_height": 438
+        }
       ]
     },
     {
@@ -601,10 +2188,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Authenticated SMB share on Ubuntu accessed from Linux and Windows clients.",
-      "overview": "An Ubuntu server was configured as a Samba file server with an authenticated SMB shared folder, and file access was verified from a Windows client.",
+      "summary": "I set up a password-protected Samba share on Ubuntu and opened it from Linux and Windows.",
+      "overview": "I configured an Ubuntu server as a Samba file server with a shared folder that needs a login, then opened the share from a Windows computer.",
       "objectives": [
-        "Share files from Linux to Windows clients."
+        "Share files from a Linux server to Windows computers."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -613,12 +2200,91 @@
         "Windows"
       ],
       "implementation": [
-        "Created the shared directory and the Shared share.",
-        "Validated the configuration with testparm."
+        "I created the shared folder and the share named Shared.",
+        "I checked the configuration with testparm."
       ],
       "verification": [
-        "smbclient listed and connected to the share and transferred a file.",
-        "The share was accessed from Windows."
+        "smbclient listed the share, connected and copied a file.",
+        "I opened the share from Windows."
+      ],
+      "screenshots": [
+        {
+          "title": "Samba Service Status",
+          "caption": "Shows the Samba SMB service running successfully on the Ubuntu server.",
+          "alt": "Samba Service Status",
+          "src": "assets/images/projects/linux-samba-file-server/01-01-lnx-samba-service-status.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/01-01-lnx-samba-service-status-thumb.webp",
+          "width": 1600,
+          "height": 980,
+          "thumb_width": 720,
+          "thumb_height": 441
+        },
+        {
+          "title": "Shared Directory",
+          "caption": "Shows the directory created for the Samba shared folder.",
+          "alt": "Shared Directory",
+          "src": "assets/images/projects/linux-samba-file-server/02-02-lnx-samba-shared-directory.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/02-02-lnx-samba-shared-directory-thumb.webp",
+          "width": 1600,
+          "height": 481,
+          "thumb_width": 720,
+          "thumb_height": 216
+        },
+        {
+          "title": "Samba Share Configuration",
+          "caption": "Shows the configured Samba `Shared` network share and its access settings.",
+          "alt": "Samba Share Configuration",
+          "src": "assets/images/projects/linux-samba-file-server/03-03-lnx-samba-share-config.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/03-03-lnx-samba-share-config-thumb.webp",
+          "width": 1600,
+          "height": 966,
+          "thumb_width": 720,
+          "thumb_height": 435
+        },
+        {
+          "title": "Configuration Test",
+          "caption": "Shows the Samba configuration validated successfully using `testparm`.",
+          "alt": "Samba Configuration Test",
+          "src": "assets/images/projects/linux-samba-file-server/04-04-lnx-samba-config-test.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/04-04-lnx-samba-config-test-thumb.webp",
+          "width": 1600,
+          "height": 994,
+          "thumb_width": 720,
+          "thumb_height": 447
+        },
+        {
+          "title": "Share List and Connection",
+          "caption": "Shows the `Shared` SMB share discovered and accessed using `smbclient`.",
+          "alt": "Share List and Connection",
+          "src": "assets/images/projects/linux-samba-file-server/05-05-lnx-samba-share-list-and-connection.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/05-05-lnx-samba-share-list-and-connection-thumb.webp",
+          "width": 1600,
+          "height": 954,
+          "thumb_width": 720,
+          "thumb_height": 429
+        },
+        {
+          "title": "File Transfer",
+          "caption": "Shows successful file transfer through the Samba share.",
+          "alt": "File Transfer",
+          "src": "assets/images/projects/linux-samba-file-server/06-06-lnx-samba-file-transfer.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/06-06-lnx-samba-file-transfer-thumb.webp",
+          "width": 1600,
+          "height": 942,
+          "thumb_width": 720,
+          "thumb_height": 424
+        },
+        {
+          "title": "Windows Share Verification",
+          "caption": "Shows the Samba shared folder successfully accessed from the Windows client.",
+          "alt": "Windows Share Verification",
+          "src": "assets/images/projects/linux-samba-file-server/07-07-lnx-samba-windows-share-verification.webp",
+          "thumb": "assets/images/projects/linux-samba-file-server/07-07-lnx-samba-windows-share-verification-thumb.webp",
+          "width": 1600,
+          "height": 964,
+          "thumb_width": 720,
+          "thumb_height": 434
+        }
       ]
     },
     {
@@ -629,10 +2295,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "BIND forward and reverse zones for inno.local with lookup testing.",
-      "overview": "BIND was installed and configured with a forward zone for inno.local and a matching reverse zone.",
+      "summary": "I set up a BIND DNS server with forward and reverse zones for inno.local and tested the lookups.",
+      "overview": "I installed BIND on Ubuntu and created a forward zone for inno.local and the matching reverse zone.",
       "objectives": [
-        "Provide internal name resolution for a lab network."
+        "Run name resolution for my lab network."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -640,12 +2306,91 @@
         "DNS"
       ],
       "implementation": [
-        "Installed BIND.",
-        "Created an A record for server1.inno.local.",
-        "Created and validated forward and reverse zones."
+        "I installed BIND.",
+        "I added an A record for server1.inno.local.",
+        "I created and checked the forward and reverse zones."
       ],
       "verification": [
         "server1.inno.local resolved to 192.168.44.232 and the reverse lookup returned server1.inno.local."
+      ],
+      "screenshots": [
+        {
+          "title": "BIND Installation and Service",
+          "caption": "Shows BIND installed and the DNS service running.",
+          "alt": "BIND Installation and Service",
+          "src": "assets/images/projects/linux-dns-server/01-01-lnx-dns-installed-service-status.webp",
+          "thumb": "assets/images/projects/linux-dns-server/01-01-lnx-dns-installed-service-status-thumb.webp",
+          "width": 1600,
+          "height": 971,
+          "thumb_width": 720,
+          "thumb_height": 437
+        },
+        {
+          "title": "DNS Server A Record",
+          "caption": "Shows the `server1.inno.local` A record configured.",
+          "alt": "DNS Server A Record",
+          "src": "assets/images/projects/linux-dns-server/02-02-lnx-dns-server-a-record-created.webp",
+          "thumb": "assets/images/projects/linux-dns-server/02-02-lnx-dns-server-a-record-created-thumb.webp",
+          "width": 1600,
+          "height": 1013,
+          "thumb_width": 720,
+          "thumb_height": 456
+        },
+        {
+          "title": "Forward Zone Validation",
+          "caption": "Shows successful validation of the `inno.local` forward zone.",
+          "alt": "Forward Zone Validation",
+          "src": "assets/images/projects/linux-dns-server/03-03-lnx-dns-zone-validation.webp",
+          "thumb": "assets/images/projects/linux-dns-server/03-03-lnx-dns-zone-validation-thumb.webp",
+          "width": 1489,
+          "height": 1125,
+          "thumb_width": 720,
+          "thumb_height": 544
+        },
+        {
+          "title": "Reverse Zone Validation",
+          "caption": "Shows successful validation of the reverse DNS zone.",
+          "alt": "Reverse Zone Validation",
+          "src": "assets/images/projects/linux-dns-server/04-04-lnx-dns-reverse-zone-validation.webp",
+          "thumb": "assets/images/projects/linux-dns-server/04-04-lnx-dns-reverse-zone-validation-thumb.webp",
+          "width": 1432,
+          "height": 808,
+          "thumb_width": 720,
+          "thumb_height": 406
+        },
+        {
+          "title": "Forward and Reverse Lookup",
+          "caption": "Shows successful forward and reverse DNS lookup testing.",
+          "alt": "Forward and Reverse Lookup",
+          "src": "assets/images/projects/linux-dns-server/05-05-lnx-dns-forward-and-reverse-lookup.webp",
+          "thumb": "assets/images/projects/linux-dns-server/05-05-lnx-dns-forward-and-reverse-lookup-thumb.webp",
+          "width": 1600,
+          "height": 1025,
+          "thumb_width": 720,
+          "thumb_height": 461
+        },
+        {
+          "title": "Forward DNS Lookup",
+          "caption": "Shows `server1.inno.local` resolving to `192.168.44.232`.",
+          "alt": "Forward DNS Lookup",
+          "src": "assets/images/projects/linux-dns-server/06-06-lnx-dns-forward-lookup.webp",
+          "thumb": "assets/images/projects/linux-dns-server/06-06-lnx-dns-forward-lookup-thumb.webp",
+          "width": 1579,
+          "height": 1159,
+          "thumb_width": 720,
+          "thumb_height": 528
+        },
+        {
+          "title": "Reverse DNS Lookup",
+          "caption": "Shows `192.168.44.232` resolving to `server1.inno.local`.",
+          "alt": "Reverse DNS Lookup",
+          "src": "assets/images/projects/linux-dns-server/07-07-lnx-dns-reverse-lookup.webp",
+          "thumb": "assets/images/projects/linux-dns-server/07-07-lnx-dns-reverse-lookup-thumb.webp",
+          "width": 1218,
+          "height": 804,
+          "thumb_width": 720,
+          "thumb_height": 475
+        }
       ]
     },
     {
@@ -656,10 +2401,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "ISC DHCP server leasing addresses to an Alpine Linux client.",
-      "overview": "An ISC DHCP server was installed on Ubuntu and configured with a subnet, address pool, broadcast address, domain name and DNS server.",
+      "summary": "I set up an ISC DHCP server on Ubuntu that gave an address to my Alpine Linux client.",
+      "overview": "I installed the ISC DHCP server on Ubuntu and set the subnet, address pool, broadcast address, domain name and DNS server.",
       "objectives": [
-        "Assign client addresses automatically."
+        "Give client machines their IP addresses automatically."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -667,11 +2412,57 @@
         "Alpine Linux"
       ],
       "implementation": [
-        "Installed and configured the DHCP service and scope."
+        "I installed the DHCP service and set up the scope."
       ],
       "verification": [
-        "The Alpine client received 192.168.150.100.",
-        "The lease database recorded the active lease."
+        "My Alpine client received 192.168.150.100.",
+        "The lease file recorded the active lease."
+      ],
+      "screenshots": [
+        {
+          "title": "DHCP Server Installation and Service",
+          "caption": "Shows the ISC DHCP server installed and running on the Ubuntu server.",
+          "alt": "DHCP Server Installation and Service",
+          "src": "assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running.webp",
+          "thumb": "assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running-thumb.webp",
+          "width": 1600,
+          "height": 980,
+          "thumb_width": 720,
+          "thumb_height": 441
+        },
+        {
+          "title": "DHCP Client IP Assignment",
+          "caption": "Shows the Alpine client receiving `192.168.150.100` from the DHCP server.",
+          "alt": "DHCP Client IP Assignment",
+          "src": "assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned.webp",
+          "thumb": "assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned-thumb.webp",
+          "width": 1600,
+          "height": 1003,
+          "thumb_width": 720,
+          "thumb_height": 451
+        },
+        {
+          "title": "DHCP Lease Database",
+          "caption": "Shows the DHCP server recording an active lease for `192.168.150.100`.",
+          "alt": "DHCP Lease Database",
+          "src": "assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database.webp",
+          "thumb": "assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database-thumb.webp",
+          "width": 1600,
+          "height": 996,
+          "thumb_width": 720,
+          "thumb_height": 448
+        },
+        {
+          "title": "DHCP Server Configuration",
+          "caption": "Shows the configured DHCP subnet, address pool, broadcast address, domain name and DNS server.",
+          "alt": "DHCP Server Configuration",
+          "src": "assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration.webp",
+          "thumb": "assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration-thumb.webp",
+          "width": 1600,
+          "height": 986,
+          "thumb_width": 720,
+          "thumb_height": 444
+        }
       ]
     },
     {
@@ -682,10 +2473,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Default-deny inbound UFW policy allowing only SSH, HTTP and HTTPS, tested from a client.",
-      "overview": "UFW was configured on Ubuntu Server with a default-deny inbound policy allowing only SSH, HTTP and HTTPS, and enforcement was tested from an Alpine Linux client.",
+      "summary": "I set UFW to block all incoming traffic except SSH, HTTP and HTTPS and tested it from a client.",
+      "overview": "I configured UFW on Ubuntu Server to block incoming traffic by default and allow only SSH, HTTP and HTTPS. I tested the rules from an Alpine Linux client.",
       "objectives": [
-        "Restrict inbound traffic to required services."
+        "Allow only the services the server needs."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -693,10 +2484,34 @@
         "Alpine Linux"
       ],
       "implementation": [
-        "Enabled UFW with default-deny inbound and allow rules for SSH, HTTP and HTTPS."
+        "I enabled UFW with a default deny for incoming traffic and allow rules for SSH, HTTP and HTTPS."
       ],
       "verification": [
-        "Port 8080 was blocked, then reachable after a temporary allow rule."
+        "Port 8080 was blocked. After I added a temporary allow rule it became reachable."
+      ],
+      "screenshots": [
+        {
+          "title": "UFW Firewall Status & Rules",
+          "caption": "Shows UFW active with SSH, HTTP and HTTPS traffic allowed.",
+          "alt": "UFW Firewall Status & Rules",
+          "src": "assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules.webp",
+          "thumb": "assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules-thumb.webp",
+          "width": 1600,
+          "height": 989,
+          "thumb_width": 720,
+          "thumb_height": 445
+        },
+        {
+          "title": "UFW Port Test",
+          "caption": "Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied.",
+          "alt": "UFW Port Test",
+          "src": "assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test.webp",
+          "thumb": "assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test-thumb.webp",
+          "width": 1600,
+          "height": 997,
+          "thumb_width": 720,
+          "thumb_height": 449
+        }
       ]
     },
     {
@@ -707,10 +2522,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "OpenSSH moved to custom port 2222 and verified from a Windows client.",
-      "overview": "OpenSSH Server was installed on Ubuntu and sshd_config was changed to listen on a custom port.",
+      "summary": "I moved OpenSSH to port 2222 and connected to it from Windows.",
+      "overview": "I installed OpenSSH Server on Ubuntu and changed sshd_config so the service listens on a different port.",
       "objectives": [
-        "Enable remote administration on a non-default port."
+        "Allow remote administration on a non-standard port."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -718,12 +2533,69 @@
         "Windows"
       ],
       "implementation": [
-        "Installed OpenSSH Server.",
-        "Changed the listening port from 22 to 2222 in sshd_config."
+        "I installed OpenSSH Server.",
+        "I changed the port from 22 to 2222 in sshd_config."
       ],
       "verification": [
-        "The service listened on 2222.",
-        "A Windows client connected over SSH on port 2222."
+        "The service was listening on 2222.",
+        "I connected from a Windows computer over SSH on port 2222."
+      ],
+      "screenshots": [
+        {
+          "title": "SSH Server Installation",
+          "caption": "OpenSSH Server was successfully installed on Ubuntu, enabling secure remote administration capabilities.",
+          "alt": "SSH Server Installation",
+          "src": "assets/images/projects/linux-ssh-server/01-01-lnx-ssh-installed.webp",
+          "thumb": "assets/images/projects/linux-ssh-server/01-01-lnx-ssh-installed-thumb.webp",
+          "width": 1600,
+          "height": 1033,
+          "thumb_width": 720,
+          "thumb_height": 465
+        },
+        {
+          "title": "SSH Service Status",
+          "caption": "Verified that the SSH service was running correctly and accepting connections on the default SSH port (22).",
+          "alt": "SSH Service Status",
+          "src": "assets/images/projects/linux-ssh-server/02-02-lnx-ssh-listening-port-22.webp",
+          "thumb": "assets/images/projects/linux-ssh-server/02-02-lnx-ssh-listening-port-22-thumb.webp",
+          "width": 1600,
+          "height": 983,
+          "thumb_width": 720,
+          "thumb_height": 442
+        },
+        {
+          "title": "SSH Configuration Update",
+          "caption": "The SSH server configuration file (`sshd_config`) was updated to change the default SSH listening port.",
+          "alt": "SSH Configuration Update",
+          "src": "assets/images/projects/linux-ssh-server/03-03-lnx-ssh-config-file-updated.webp",
+          "thumb": "assets/images/projects/linux-ssh-server/03-03-lnx-ssh-config-file-updated-thumb.webp",
+          "width": 1600,
+          "height": 989,
+          "thumb_width": 720,
+          "thumb_height": 445
+        },
+        {
+          "title": "Custom SSH Port Verification",
+          "caption": "Confirmed that the SSH service was successfully listening on the new custom port (2222), proving the configuration changes were applied successfully.",
+          "alt": "Custom SSH Port Verification",
+          "src": "assets/images/projects/linux-ssh-server/04-04-lnx-ssh-listening-port-changed-to-2222.webp",
+          "thumb": "assets/images/projects/linux-ssh-server/04-04-lnx-ssh-listening-port-changed-to-2222-thumb.webp",
+          "width": 1600,
+          "height": 1002,
+          "thumb_width": 720,
+          "thumb_height": 451
+        },
+        {
+          "title": "Remote SSH Access from Windows",
+          "caption": "Successfully established a secure SSH connection from a Windows client to the Ubuntu server using the custom SSH port (2222), confirming successful remote administration.",
+          "alt": "Remote SSH Access from Windows",
+          "src": "assets/images/projects/linux-ssh-server/05-05-lnx-ssh-server-remote-access-on-windows.webp",
+          "thumb": "assets/images/projects/linux-ssh-server/05-05-lnx-ssh-server-remote-access-on-windows-thumb.webp",
+          "width": 1600,
+          "height": 941,
+          "thumb_width": 720,
+          "thumb_height": 423
+        }
       ]
     },
     {
@@ -734,10 +2606,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "IP, routing and DNS resolver verification under VirtualBox bridged and NAT networking.",
-      "overview": "Interface addressing, routing and DNS resolution were verified on a Linux VM, and the VM was tested with both VirtualBox Bridged and NAT adapters.",
+      "summary": "I checked IP addressing, routing and DNS on Linux using both VirtualBox bridged and NAT networking.",
+      "overview": "I checked the interface addresses, routes and DNS settings on a Linux VM and tested it with both the VirtualBox bridged and NAT network modes.",
       "objectives": [
-        "Confirm addressing, routing and name resolution in different VM network modes."
+        "Confirm addressing, routing and name lookups in different VM network modes."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -746,12 +2618,91 @@
         "VirtualBox"
       ],
       "implementation": [
-        "Inspected IP and route configuration.",
-        "Switched the VM between Bridged and NAT adapters."
+        "I checked the IP and route settings.",
+        "I switched the VM between bridged and NAT network adapters."
       ],
       "verification": [
-        "Gateway ping and DNS resolution succeeded.",
-        "Internet and DNS connectivity tested with 0% packet loss."
+        "Pings to the gateway and DNS lookups worked.",
+        "Internet and DNS tests had 0% packet loss."
+      ],
+      "screenshots": [
+        {
+          "title": "IP Address and Route Verification",
+          "caption": "Verified the Linux network interface configuration, assigned IP address and default routing information.",
+          "alt": "IP and Route Verification",
+          "src": "assets/images/projects/linux-networking/01-01-lnx-network-ip-route-verification.webp",
+          "thumb": "assets/images/projects/linux-networking/01-01-lnx-network-ip-route-verification-thumb.webp",
+          "width": 1600,
+          "height": 921,
+          "thumb_width": 720,
+          "thumb_height": 414
+        },
+        {
+          "title": "Network Connectivity Verification",
+          "caption": "Verified connectivity to the local network gateway using ICMP ping.",
+          "alt": "Network Connectivity Verification",
+          "src": "assets/images/projects/linux-networking/02-02-lnx-network-connectivity-verification.webp",
+          "thumb": "assets/images/projects/linux-networking/02-02-lnx-network-connectivity-verification-thumb.webp",
+          "width": 1600,
+          "height": 986,
+          "thumb_width": 720,
+          "thumb_height": 444
+        },
+        {
+          "title": "DNS Verification",
+          "caption": "Verified DNS resolution by testing domain name connectivity from the Linux server.",
+          "alt": "DNS Verification",
+          "src": "assets/images/projects/linux-networking/03-03-lnx-network-dns-verification.webp",
+          "thumb": "assets/images/projects/linux-networking/03-03-lnx-network-dns-verification-thumb.webp",
+          "width": 1600,
+          "height": 963,
+          "thumb_width": 720,
+          "thumb_height": 434
+        },
+        {
+          "title": "DNS Resolver Verification",
+          "caption": "Verified the active DNS resolver configuration and configured DNS servers using `resolvectl`.",
+          "alt": "DNS Resolver Verification",
+          "src": "assets/images/projects/linux-networking/04-04-lnx-network-dns-resolver-verification.webp",
+          "thumb": "assets/images/projects/linux-networking/04-04-lnx-network-dns-resolver-verification-thumb.webp",
+          "width": 1600,
+          "height": 951,
+          "thumb_width": 720,
+          "thumb_height": 428
+        },
+        {
+          "title": "VirtualBox Bridged Adapter",
+          "caption": "Configured the VM with a VirtualBox Bridged Adapter and verified the assigned network address and route.",
+          "alt": "VirtualBox Bridged Adapter",
+          "src": "assets/images/projects/linux-networking/05-05-lnx-network-virtualbox-bridged-adapter.webp",
+          "thumb": "assets/images/projects/linux-networking/05-05-lnx-network-virtualbox-bridged-adapter-thumb.webp",
+          "width": 1600,
+          "height": 958,
+          "thumb_width": 720,
+          "thumb_height": 431
+        },
+        {
+          "title": "VirtualBox NAT",
+          "caption": "Switched the VM to NAT networking and verified the new IP address and default gateway.",
+          "alt": "NAT IP and Route",
+          "src": "assets/images/projects/linux-networking/06-06-lnx-network-nat-ip-and-route.webp",
+          "thumb": "assets/images/projects/linux-networking/06-06-lnx-network-nat-ip-and-route-thumb.webp",
+          "width": 1600,
+          "height": 959,
+          "thumb_width": 720,
+          "thumb_height": 431
+        },
+        {
+          "title": "Internet and DNS Connectivity",
+          "caption": "Verified Internet connectivity and DNS resolution with 0% packet loss.",
+          "alt": "Internet and DNS Connectivity",
+          "src": "assets/images/projects/linux-networking/07-07-lnx-network-internet-and-dns-connectivity.webp",
+          "thumb": "assets/images/projects/linux-networking/07-07-lnx-network-internet-and-dns-connectivity-thumb.webp",
+          "width": 1600,
+          "height": 1011,
+          "thumb_width": 720,
+          "thumb_height": 455
+        }
       ]
     },
     {
@@ -762,10 +2713,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Department groups and directory permissions with chown, chmod, SGID and the sticky bit.",
-      "overview": "Department groups and user accounts were created, memberships assigned and directory access controlled with chown, chmod, SGID and the sticky bit.",
+      "summary": "I created department groups and users and controlled folder access with chown, chmod, SGID and the sticky bit.",
+      "overview": "I created department groups and user accounts, added the users to their groups and controlled folder access with chown, chmod, SGID and the sticky bit.",
       "objectives": [
-        "Restrict users to authorised directories."
+        "Make sure each user can only reach the folders they should."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -775,13 +2726,59 @@
         "Sticky bit"
       ],
       "implementation": [
-        "Created groups and users and assigned memberships.",
-        "Set ownership and permissions on department directories.",
-        "Applied SGID and the sticky bit."
+        "I created the groups and users and set their memberships.",
+        "I set owners and permissions on the department folders.",
+        "I applied SGID and the sticky bit."
       ],
       "verification": [
-        "New files inherited group ownership under SGID.",
-        "Users could not delete others' files in the sticky-bit directory."
+        "New files took the folder's group because of SGID.",
+        "Users could not delete each other's files in the sticky bit folder."
+      ],
+      "screenshots": [
+        {
+          "title": "Group Verification",
+          "caption": "Shows the department groups, user accounts and group memberships configured on the Linux server.",
+          "alt": "Group Verification",
+          "src": "assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification.webp",
+          "thumb": "assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification-thumb.webp",
+          "width": 1600,
+          "height": 989,
+          "thumb_width": 720,
+          "thumb_height": 445
+        },
+        {
+          "title": "Directory Permissions",
+          "caption": "Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`.",
+          "alt": "Directory Permissions",
+          "src": "assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions.webp",
+          "thumb": "assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions-thumb.webp",
+          "width": 1600,
+          "height": 985,
+          "thumb_width": 720,
+          "thumb_height": 443
+        },
+        {
+          "title": "SGID Verification",
+          "caption": "Shows SGID configured on department directories, ensuring new files inherit the parent directory's group ownership.",
+          "alt": "SGID Verification",
+          "src": "assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid.webp",
+          "thumb": "assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid-thumb.webp",
+          "width": 1600,
+          "height": 992,
+          "thumb_width": 720,
+          "thumb_height": 447
+        },
+        {
+          "title": "Sticky Bit Verification",
+          "caption": "Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users.",
+          "alt": "Sticky Bit Verification",
+          "src": "assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit.webp",
+          "thumb": "assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     },
     {
@@ -792,10 +2789,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "NFS export of /srv/nfs/shared mounted by an Alpine client.",
-      "overview": "An NFS server was configured to export /srv/nfs/shared to the lab network.",
+      "summary": "I shared /srv/nfs/shared over NFS and mounted it from an Alpine client.",
+      "overview": "I set up an NFS server on Ubuntu to share /srv/nfs/shared with my lab network.",
       "objectives": [
-        "Share storage between Linux hosts."
+        "Share storage between Linux machines."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -803,10 +2800,45 @@
         "Alpine Linux"
       ],
       "implementation": [
-        "Configured the NFS server and export."
+        "I configured the NFS server and the export."
       ],
       "verification": [
-        "The Alpine client mounted the share and transferred a file."
+        "My Alpine client mounted the share and copied a file to it."
+      ],
+      "screenshots": [
+        {
+          "title": "NFS Server Status",
+          "caption": "Shows the NFS server service running successfully.",
+          "alt": "NFS Server Status",
+          "src": "assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status.webp",
+          "thumb": "assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status-thumb.webp",
+          "width": 1600,
+          "height": 1003,
+          "thumb_width": 720,
+          "thumb_height": 452
+        },
+        {
+          "title": "NFS Export",
+          "caption": "Shows the `/srv/nfs/shared` NFS export configured for the lab network.",
+          "alt": "NFS Export",
+          "src": "assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export.webp",
+          "thumb": "assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export-thumb.webp",
+          "width": 1600,
+          "height": 883,
+          "thumb_width": 720,
+          "thumb_height": 397
+        },
+        {
+          "title": "NFS Mount and File Transfer",
+          "caption": "Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount.",
+          "alt": "NFS Mount and File Transfer",
+          "src": "assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer.webp",
+          "thumb": "assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer-thumb.webp",
+          "width": 1600,
+          "height": 995,
+          "thumb_width": 720,
+          "thumb_height": 448
+        }
       ]
     },
     {
@@ -817,10 +2849,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "rsyslog server receiving remote logs on port 514 from an Alpine client.",
-      "overview": "rsyslog on Ubuntu was configured to receive remote logs.",
+      "summary": "I set up rsyslog to receive logs from another machine on port 514.",
+      "overview": "I configured rsyslog on Ubuntu to accept logs sent from other machines.",
       "objectives": [
-        "Centralise logs from other hosts."
+        "Collect logs from other servers in one place."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -828,11 +2860,57 @@
         "Alpine Linux"
       ],
       "implementation": [
-        "Configured rsyslog for remote reception and validated the configuration."
+        "I enabled remote log reception in rsyslog and checked the configuration."
       ],
       "verification": [
-        "The server listened on port 514.",
-        "A test message from Alpine was recorded on the server."
+        "The server was listening on port 514.",
+        "A test message from my Alpine client appeared on the server."
+      ],
+      "screenshots": [
+        {
+          "title": "rsyslog Server Status",
+          "caption": "Shows the rsyslog service running on the Ubuntu server.",
+          "alt": "rsyslog Server Status",
+          "src": "assets/images/projects/linux-centralized-syslog/01-01-lnx-rsyslog-server-status.webp",
+          "thumb": "assets/images/projects/linux-centralized-syslog/01-01-lnx-rsyslog-server-status-thumb.webp",
+          "width": 1600,
+          "height": 974,
+          "thumb_width": 720,
+          "thumb_height": 438
+        },
+        {
+          "title": "Remote Logging Configuration",
+          "caption": "Shows the rsyslog configuration for receiving remote logs.",
+          "alt": "Remote Logging Configuration",
+          "src": "assets/images/projects/linux-centralized-syslog/02-02-lnx-rsyslog-remote-config.webp",
+          "thumb": "assets/images/projects/linux-centralized-syslog/02-02-lnx-rsyslog-remote-config-thumb.webp",
+          "width": 1600,
+          "height": 991,
+          "thumb_width": 720,
+          "thumb_height": 446
+        },
+        {
+          "title": "Configuration Validation and Listening",
+          "caption": "Shows successful rsyslog configuration validation and the server listening on port 514.",
+          "alt": "Configuration Validation and Listening",
+          "src": "assets/images/projects/linux-centralized-syslog/03-03-lnx-rsyslog-validation-and-listening.webp",
+          "thumb": "assets/images/projects/linux-centralized-syslog/03-03-lnx-rsyslog-validation-and-listening-thumb.webp",
+          "width": 1600,
+          "height": 1007,
+          "thumb_width": 720,
+          "thumb_height": 453
+        },
+        {
+          "title": "Remote Log Test",
+          "caption": "Shows a test message sent from Alpine and successfully recorded on the Ubuntu rsyslog server.",
+          "alt": "Remote Log Test",
+          "src": "assets/images/projects/linux-centralized-syslog/04-04-lnx-rsyslog-remote-log-test.webp",
+          "thumb": "assets/images/projects/linux-centralized-syslog/04-04-lnx-rsyslog-remote-log-test-thumb.webp",
+          "width": 1600,
+          "height": 982,
+          "thumb_width": 720,
+          "thumb_height": 442
+        }
       ]
     },
     {
@@ -843,10 +2921,10 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Custom logrotate policy with retention, compression and recreation of active logs.",
-      "overview": "Automated log rotation was configured and tested with logrotate, including retention, compression and recreation of active log files.",
+      "summary": "I wrote a logrotate policy that keeps a set number of old logs, compresses them and creates a fresh log file.",
+      "overview": "I set up automatic log rotation with logrotate, including how many old logs to keep, compression and creating a new active log.",
       "objectives": [
-        "Control log growth automatically."
+        "Stop log files from growing without limit."
       ],
       "technologies": [
         "Ubuntu Linux",
@@ -854,11 +2932,46 @@
         "systemd timers"
       ],
       "implementation": [
-        "Confirmed the logrotate timer was active.",
-        "Created and validated a custom rotation policy."
+        "I confirmed the logrotate timer was running.",
+        "I wrote my own rotation policy and tested it."
       ],
       "verification": [
-        "The log was rotated and compressed, older logs retained and a new active log created."
+        "The log was rotated and compressed, older logs were kept and a new active log was created."
+      ],
+      "screenshots": [
+        {
+          "title": "Logrotate Status and Configuration",
+          "caption": "Shows logrotate installed, the scheduled timer active and existing rotation policies.",
+          "alt": "Logrotate Status and Configuration",
+          "src": "assets/images/projects/linux-logrotate/01-01-lnx-logrotate-status-and-config.webp",
+          "thumb": "assets/images/projects/linux-logrotate/01-01-lnx-logrotate-status-and-config-thumb.webp",
+          "width": 1600,
+          "height": 987,
+          "thumb_width": 720,
+          "thumb_height": 444
+        },
+        {
+          "title": "Logrotate Policy Validation",
+          "caption": "Shows the custom log rotation policy and successful configuration validation.",
+          "alt": "Logrotate Policy Validation",
+          "src": "assets/images/projects/linux-logrotate/02-02-lnx-logrotate-policy-validation.webp",
+          "thumb": "assets/images/projects/linux-logrotate/02-02-lnx-logrotate-policy-validation-thumb.webp",
+          "width": 1600,
+          "height": 994,
+          "thumb_width": 720,
+          "thumb_height": 447
+        },
+        {
+          "title": "Log Rotation and Compression",
+          "caption": "Shows the log being rotated, compressed historical logs being retained and a new active log being created.",
+          "alt": "Log Rotation and Compression",
+          "src": "assets/images/projects/linux-logrotate/03-03-lnx-logrotate-execution-and-compression.webp",
+          "thumb": "assets/images/projects/linux-logrotate/03-03-lnx-logrotate-execution-and-compression-thumb.webp",
+          "width": 1600,
+          "height": 975,
+          "thumb_width": 720,
+          "thumb_height": 439
+        }
       ]
     },
     {
@@ -869,20 +2982,44 @@
       "category": "linux-administration",
       "featured": false,
       "status": "Completed",
-      "summary": "Ubuntu 24.04 LTS VM prepared with hostname, time zone and admin tools.",
-      "overview": "An Ubuntu 24.04 LTS virtual machine was deployed and prepared for administration by setting the hostname and time zone and installing essential tools.",
+      "summary": "I built an Ubuntu 24.04 server VM and set its hostname, time zone and admin tools.",
+      "overview": "I installed Ubuntu 24.04 LTS in a virtual machine and got it ready for the rest of my Linux labs by setting the hostname and time zone and installing the tools I needed.",
       "objectives": [
-        "Prepare a base server for the later Linux labs."
+        "Prepare a base server for my Linux labs."
       ],
       "technologies": [
         "Ubuntu 24.04 LTS",
         "VirtualBox"
       ],
       "implementation": [
-        "Set the hostname and time zone and installed administration tools."
+        "I set the hostname and time zone and installed admin tools."
       ],
       "verification": [
-        "Operating system, kernel, hardware, storage and network configuration were verified."
+        "I checked the operating system, kernel, hardware, storage and network settings."
+      ],
+      "screenshots": [
+        {
+          "title": "System Verification",
+          "caption": "Shows the Ubuntu server configuration, operating system, kernel version, hostname and system information.",
+          "alt": "System Verification",
+          "src": "assets/images/projects/linux-server-build/01-01-linux-server-build-system-verification.webp",
+          "thumb": "assets/images/projects/linux-server-build/01-01-linux-server-build-system-verification-thumb.webp",
+          "width": 1600,
+          "height": 967,
+          "thumb_width": 720,
+          "thumb_height": 435
+        },
+        {
+          "title": "Network Verification",
+          "caption": "Shows the server network configuration, storage and connectivity verification.",
+          "alt": "Network Verification",
+          "src": "assets/images/projects/linux-server-build/02-02-linux-server-build-system-verification2.webp",
+          "thumb": "assets/images/projects/linux-server-build/02-02-linux-server-build-system-verification2-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     },
     {
@@ -892,12 +3029,12 @@
       "title": "Network Automation with Python and Netmiko",
       "category": "network-automation",
       "featured": true,
-      "status": "In progress. The Python and Netmiko stage is published; later stages are not yet.",
-      "summary": "Inventory-driven Python scripts that connect to a Cisco IOS router with Netmiko, parse output with TextFSM and write a JSON device report.",
-      "overview": "Python scripts connect to a Cisco IOS router (R1) with Netmiko, collect show version and show ip interface brief output, parse the interface table with TextFSM and save a structured JSON report. A later version reads connection details from a JSON device inventory. The repository describes a wider plan (Ansible, APIs, NETCONF/RESTCONF); only the Python stage is published so far.",
+      "status": "In progress. The Python stage is published and the later stages are still to come.",
+      "summary": "My Python scripts connect to a Cisco router with Netmiko, read the device information, tidy it with TextFSM and save a JSON report.",
+      "overview": "I wrote Python scripts that log in to a Cisco IOS router (R1) with Netmiko, run show version and show ip interface brief, turn the interface table into structured data with TextFSM and save it as a JSON report. My later version reads the device details from a JSON inventory file. The repository lists more stages I plan to add, such as Ansible and NETCONF. So far only the Python stage is published.",
       "objectives": [
-        "Collect device information automatically instead of by hand.",
-        "Drive connections from an inventory file rather than hard-coded hosts."
+        "Collect device information automatically instead of typing commands by hand.",
+        "Read the devices from an inventory file instead of hard-coding them."
       ],
       "technologies": [
         "Python",
@@ -907,13 +3044,59 @@
         "Cisco IOS"
       ],
       "implementation": [
-        "device_info.py connects to R1, runs show commands and extracts hostname, IOS version, uptime and interfaces.",
-        "inventory_reader.py and inventory_connection.py load inventory/devices.json and open a Netmiko session.",
-        "collect_device_info.py combines the inventory with collection and writes api/<hostname>-device-info.json."
+        "device_info.py connects to R1, runs the show commands and picks out the hostname, IOS version, uptime and interfaces.",
+        "inventory_reader.py and inventory_connection.py read inventory/devices.json and open a Netmiko session.",
+        "collect_device_info.py puts both together and writes api/<hostname>-device-info.json."
       ],
       "verification": [
-        "Screenshots show a successful Netmiko connection to R1 and the structured output.",
-        "The generated report api/r1-device-info.json records IOS 17.15.1 and four interfaces with status."
+        "My screenshots show the Netmiko connection to R1 and the structured output.",
+        "The report api/r1-device-info.json shows IOS 17.15.1 and four interfaces with their status."
+      ],
+      "screenshots": [
+        {
+          "title": "Python Device Information Automation",
+          "caption": "Shows Python connecting to Cisco R1 using Netmiko and collecting device information.",
+          "alt": "Python Device Information Automation",
+          "src": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/01-01-netauto-python-device-information-thumb.webp",
+          "width": 1600,
+          "height": 998,
+          "thumb_width": 720,
+          "thumb_height": 449
+        },
+        {
+          "title": "Structured Device Information",
+          "caption": "Shows the structured device information generated from the Cisco device.",
+          "alt": "Structured Device Information",
+          "src": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/02-02-netauto-structured-device-information-thumb.webp",
+          "width": 1600,
+          "height": 986,
+          "thumb_width": 720,
+          "thumb_height": 444
+        },
+        {
+          "title": "Inventory-Driven Netmiko Connection",
+          "caption": "Shows Python reading the device inventory and successfully establishing a Netmiko connection to Cisco R1.",
+          "alt": "Inventory Netmiko Connection",
+          "src": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/03-03-netauto-inventory-netmiko-connection-thumb.webp",
+          "width": 1600,
+          "height": 990,
+          "thumb_width": 720,
+          "thumb_height": 446
+        },
+        {
+          "title": "Inventory-Driven Device Information",
+          "caption": "Shows the inventory-driven automation collecting and structuring Cisco R1 device information and generating the JSON report.",
+          "alt": "Inventory Device Information",
+          "src": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information.webp",
+          "thumb": "assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information-thumb.webp",
+          "width": 1600,
+          "height": 999,
+          "thumb_width": 720,
+          "thumb_height": 450
+        }
       ]
     }
   ]

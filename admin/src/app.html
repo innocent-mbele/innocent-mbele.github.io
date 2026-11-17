@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Innocent Mbele</title>
+<style>/*__APP_CSS__*/</style>
+</head>
+<body>
+<header class="top">
+  <strong>Website admin</strong>
+  <div class="who" id="who" hidden><span id="who-name"></span> <button type="button" class="link" id="signout">Sign out</button></div>
+</header>
+
+<main id="signin" class="panel narrow" hidden>
+  <h1>Sign in</h1>
+  <p>Sign in with your Microsoft account. You will be asked to approve the sign-in with Microsoft Authenticator or your security key.</p>
+  <a class="btn primary" href="/inno/auth/login">Sign in with Microsoft</a>
+</main>
+
+<div id="app" hidden>
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" data-tab="profile" aria-selected="true">Profile and photo</button>
+    <button type="button" data-tab="links" aria-selected="false">Links and repositories</button>
+    <button type="button" data-tab="projects" aria-selected="false">Projects</button>
+    <button type="button" data-tab="settings" aria-selected="false">Settings</button>
+  </nav>
+
+  <div class="publish-bar">
+    <span id="changes">No changes yet</span>
+    <input id="note" type="text" maxlength="120" placeholder="Short note about the change (optional)" aria-label="Change note">
+    <button type="button" class="btn primary" id="publish" disabled>Publish changes</button>
+  </div>
+  <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+  <section id="tab-profile" class="panel"></section>
+  <section id="tab-links" class="panel" hidden></section>
+  <section id="tab-projects" class="panel" hidden></section>
+  <section id="tab-settings" class="panel" hidden></section>
+</div>
+
+<dialog id="crop" aria-label="Crop photo">
+  <h2>Crop your photo</h2>
+  <div class="crop-row">
+    <label>Shape
+      <select id="crop-shape"><option value="square">Square</option><option value="portrait">Portrait 4:5</option><option value="landscape">Landscape 4:3</option></select>
+    </label>
+    <label>Zoom <input id="crop-zoom" type="range" min="1" max="4" step="0.01" value="1"></label>
+  </div>
+  <div class="crop-stage"><canvas id="crop-canvas" width="480" height="480"></canvas></div>
+  <p class="hint">Drag the photo to move it. Use the slider to zoom.</p>
+  <div class="row-right">
+    <button type="button" class="btn" id="crop-cancel">Cancel</button>
+    <button type="button" class="btn primary" id="crop-ok">Use this photo</button>
+  </div>
+</dialog>
+
+<script>/*__APP_JS__*/</script>
+</body>
+</html>

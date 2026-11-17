@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Innocent Mbele | Technology &amp; Digital Innovation</title>
-<meta name="description" content="Innocent Mbele: Technology &amp; Digital Innovation. Documented projects in Microsoft Azure, Linux administration and network automation.">
+<meta name="description" content="Innocent Mbele: Technology &amp; Digital Innovation. My hands-on projects in Microsoft Azure, Linux administration and network automation.">
 <link rel="canonical" href="https://innocent-mbele.github.io/">
+
 <meta name="author" content="Innocent Mbele">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="Innocent Mbele | Technology &amp; Digital Innovation">
-<meta property="og:description" content="Innocent Mbele: Technology &amp; Digital Innovation. Documented projects in Microsoft Azure, Linux administration and network automation.">
+<meta property="og:description" content="Innocent Mbele: Technology &amp; Digital Innovation. My hands-on projects in Microsoft Azure, Linux administration and network automation.">
 <meta property="og:url" content="https://innocent-mbele.github.io/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" href="/assets/icons/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=3">
+<link rel="stylesheet" href="/assets/css/main.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -26,35 +27,41 @@
   <div class="container">
     <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/" aria-current="page">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="#home" data-nav="home" aria-current="page">Home</a></li><li><a href="#projects" data-nav="projects">Projects</a></li><li><a href="#contact" data-nav="contact">Contact me</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
-<section class="intro" aria-labelledby="hero-title">
-  <div class="container">
-    <h1 id="hero-title">Innocent Mbele</h1>
-    <p class="role">Technology &amp; Digital Innovation</p>
-    <p class="tagline">Technology. Innovation. Digital Transformation.</p>
-    <p class="lead">Hands-on projects I have built and documented while developing my skills in Microsoft Azure, Linux server administration and network automation. Each one has screenshots of the work, the checks I ran, and a link to the original repository on GitHub.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="/projects/">Explore Projects</a>
-      <a class="btn btn-secondary" href="/contact/">Contact me</a>
+<section id="home" class="intro" aria-labelledby="hero-title">
+  <div class="container intro-grid">
+    <div>
+      <h1 id="hero-title">Innocent Mbele</h1>
+      <p class="role">Technology &amp; Digital Innovation</p>
+      <p class="tagline">Technology. Innovation. Digital Transformation.</p>
+      <p class="lead">Welcome to my portfolio. These are hands-on projects I built while growing my skills in Microsoft Azure, Linux server administration and network automation. For each one I show screenshots of my work and how I tested it. You can also open the original code and notes on my GitHub.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">Explore my portfolio projects</a>
+        <a class="btn btn-secondary" href="#contact">Contact me</a>
+      </div>
+      <p class="profile-links"><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></p>
     </div>
+    <figure class="profile-photo" style="width:220px;aspect-ratio:1 / 1"><img src="/assets/images/profile/profile.webp" alt="Innocent Mbele working on a laptop at a network lab bench with switches, a server screen and an IP phone" style="object-position:50% 50%" width="220" height="220"></figure>
   </div>
 </section>
-<section class="section" aria-labelledby="featured-title">
+<section id="projects" class="section anchor" aria-labelledby="projects-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="featured-title">Selected projects</h2>
-      <a href="/projects/">See all 30 projects</a>
+      <h2 id="projects-title">My projects</h2>
+      <p>Pick an area to see only those projects. Open any project to see my screenshots and how I tested it.</p>
     </div>
+    <ul class="filters" data-filters><li><button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All<span class="n">30</span></button></li><li><button type="button" class="filter-btn" data-filter="azure-networking" aria-pressed="false">Azure Networking<span class="n">7</span></button></li><li><button type="button" class="filter-btn" data-filter="azure-compute-storage" aria-pressed="false">Azure Compute &amp; Storage<span class="n">5</span></button></li><li><button type="button" class="filter-btn" data-filter="identity-governance" aria-pressed="false">Azure Identity &amp; Governance<span class="n">4</span></button></li><li><button type="button" class="filter-btn" data-filter="linux-administration" aria-pressed="false">Linux Administration<span class="n">13</span></button></li><li><button type="button" class="filter-btn" data-filter="network-automation" aria-pressed="false">Network Automation<span class="n">1</span></button></li></ul>
+    <p class="result-count" data-result-count aria-live="polite">30 projects</p>
     <div class="grid"><article class="card" data-category="azure-compute-storage">
   <a class="card-media" href="/projects/azure-enterprise-compute-app-infrastructure/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-enterprise-compute-app-infrastructure/12-11-azure-compute-enterprise-portal-dashboard-thumb.webp" alt="" width="720" height="448" decoding="async"></a>
   <div class="card-body">
     <div class="card-cat">Azure Compute &amp; Storage</div>
     <h3><a href="/projects/azure-enterprise-compute-app-infrastructure/">Enterprise Compute and Application Infrastructure</a></h3>
-    <p>Ubuntu Server 24.04 VM in Azure behind NAT Gateway and Azure Bastion, running a Flask portal on Gunicorn with PostgreSQL 16 in Docker Compose.</p>
-    <div class="tech">Microsoft Azure, Ubuntu Server 24.04, Azure NAT Gateway, Azure Bastion, Network Security Groups…</div>
+    <p>I set up an Ubuntu 24.04 server in Azure with no public IP. It reaches the internet through a NAT Gateway and I manage it through Azure Bastion. It runs a Flask web portal on Gunicorn with a PostgreSQL 16 database in Docker.</p>
+    <div class="tech">Microsoft Azure, Ubuntu Server 24.04, Azure NAT Gateway, Azure Bastion, Network Security Groups and more</div>
     <div class="card-links"><a href="/projects/azure-enterprise-compute-app-infrastructure/">View project<span class="visually-hidden">: Enterprise Compute and Application Infrastructure</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/06-azure-enterprise-compute-and-app-infra" rel="noopener">GitHub repository<span class="visually-hidden"> for Enterprise Compute and Application Infrastructure</span></a></div>
   </div>
 </article><article class="card" data-category="identity-governance">
@@ -62,8 +69,8 @@
   <div class="card-body">
     <div class="card-cat">Azure Identity &amp; Governance</div>
     <h3><a href="/projects/azure-subscription-governance/">Azure Subscription Governance</a></h3>
-    <p>Azure Policy tag enforcement at resource-group scope plus scheduled VM shutdown with an Azure Automation runbook and managed identity.</p>
-    <div class="tech">Microsoft Azure, Azure Policy, Azure Automation, PowerShell runbooks, Managed identity…</div>
+    <p>I used Azure Policy to make sure every resource carries an Environment tag. I also set up an Azure Automation runbook that shuts the VM down on a schedule to save cost.</p>
+    <div class="tech">Microsoft Azure, Azure Policy, Azure Automation, PowerShell runbooks, Managed identity and more</div>
     <div class="card-links"><a href="/projects/azure-subscription-governance/">View project<span class="visually-hidden">: Azure Subscription Governance</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/04-azure-subscription-governance" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Subscription Governance</span></a></div>
   </div>
 </article><article class="card" data-category="azure-networking">
@@ -71,53 +78,309 @@
   <div class="card-body">
     <div class="card-cat">Azure Networking</div>
     <h3><a href="/projects/azure-manage-virtual-networking/">Implement and Manage Virtual Networking</a></h3>
-    <p>Branch VNet with bidirectional peering, NSGs, static IPs, user-defined routes, a storage service endpoint, private DNS and a Standard Load Balancer.</p>
-    <div class="tech">Microsoft Azure, Virtual Networks, VNet Peering, Network Security Groups, Route Tables / UDR…</div>
+    <p>I extended my Azure network with a branch VNet and peering. I added NSGs, static IPs, a custom route table, a storage service endpoint, private DNS and a Standard Load Balancer.</p>
+    <div class="tech">Microsoft Azure, Virtual Networks, VNet Peering, Network Security Groups, Route Tables / UDR and more</div>
     <div class="card-links"><a href="/projects/azure-manage-virtual-networking/">View project<span class="visually-hidden">: Implement and Manage Virtual Networking</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/05-manage-virtual-networking" rel="noopener">GitHub repository<span class="visually-hidden"> for Implement and Manage Virtual Networking</span></a></div>
+  </div>
+</article><article class="card" data-category="identity-governance">
+  <a class="card-media" href="/projects/azure-rbac/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-rbac/03-03-rbac-resource-group-role-assignments-thumb.webp" alt="" width="720" height="382" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Identity &amp; Governance</div>
+    <h3><a href="/projects/azure-rbac/">Azure Role-Based Access Control (RBAC)</a></h3>
+    <p>I gave users only the access they need at resource group level. I also created a custom role that can start and restart VMs but cannot delete them.</p>
+    <div class="tech">Microsoft Azure, Azure RBAC, Custom roles, Microsoft Entra ID</div>
+    <div class="card-links"><a href="/projects/azure-rbac/">View project<span class="visually-hidden">: Azure Role-Based Access Control (RBAC)</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/03-azure-rbac" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Role-Based Access Control (RBAC)</span></a></div>
+  </div>
+</article><article class="card" data-category="identity-governance">
+  <a class="card-media" href="/projects/azure-advanced-entra-admin/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-advanced-entra-admin/08-08-graph-group-membership-verification-thumb.webp" alt="" width="720" height="444" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Identity &amp; Governance</div>
+    <h3><a href="/projects/azure-advanced-entra-admin/">Advanced Microsoft Entra ID Administration</a></h3>
+    <p>I reviewed device settings in Entra ID and created seven users in bulk. I then used Microsoft Graph PowerShell to check the accounts, export them to CSV and add them to a group.</p>
+    <div class="tech">Microsoft Entra ID, Microsoft Graph PowerShell, Bulk operations (CSV), Security groups, LAPS settings</div>
+    <div class="card-links"><a href="/projects/azure-advanced-entra-admin/">View project<span class="visually-hidden">: Advanced Microsoft Entra ID Administration</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/02-advanced-entra-admin" rel="noopener">GitHub repository<span class="visually-hidden"> for Advanced Microsoft Entra ID Administration</span></a></div>
+  </div>
+</article><article class="card" data-category="identity-governance">
+  <a class="card-media" href="/projects/azure-entra-identity-access/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-entra-identity-access/04-04-entra-security-group-created-thumb.webp" alt="" width="720" height="381" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Identity &amp; Governance</div>
+    <h3><a href="/projects/azure-entra-identity-access/">Microsoft Entra ID Identity Management</a></h3>
+    <p>I created a user and a security group in Microsoft Entra ID. Then I used the audit logs to see exactly who made each change and what changed.</p>
+    <div class="tech">Microsoft Entra ID, Directory roles, Security groups, Audit logs, Sign-in logs</div>
+    <div class="card-links"><a href="/projects/azure-entra-identity-access/">View project<span class="visually-hidden">: Microsoft Entra ID Identity Management</span></a><a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/01-azure-identity-and-access" rel="noopener">GitHub repository<span class="visually-hidden"> for Microsoft Entra ID Identity Management</span></a></div>
   </div>
 </article><article class="card" data-category="azure-networking">
   <a class="card-media" href="/projects/azure-application-gateway/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-application-gateway/05-azure-application-gateway-05-backend-pool-thumb.webp" alt="" width="720" height="382" loading="lazy" decoding="async"></a>
   <div class="card-body">
     <div class="card-cat">Azure Networking</div>
     <h3><a href="/projects/azure-application-gateway/">Azure Application Gateway</a></h3>
-    <p>Layer 7 load balancing of HTTP traffic across two Nginx VMs with an Azure Application Gateway, shown in a demo video.</p>
+    <p>I put an Azure Application Gateway in front of two Nginx web servers so that traffic is shared between them. I recorded a short video of it working.</p>
     <div class="tech">Microsoft Azure, Azure Application Gateway, Virtual Networks, Ubuntu Linux VMs, Nginx</div>
     <div class="card-links"><a href="/projects/azure-application-gateway/">View project<span class="visually-hidden">: Azure Application Gateway</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/08-azure-application-gateway" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Application Gateway</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-networking">
+  <a class="card-media" href="/projects/azure-load-balancer/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-load-balancer/10-azure-load-balancer-10-webpage-vm2-shown-thumb.webp" alt="" width="720" height="448" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Networking</div>
+    <h3><a href="/projects/azure-load-balancer/">Azure Standard Load Balancer</a></h3>
+    <p>I set up an Azure Standard Load Balancer with a health probe to share web traffic between two Ubuntu servers running Nginx.</p>
+    <div class="tech">Microsoft Azure, Azure Load Balancer (Standard), Health probes, Ubuntu Linux VMs, Nginx and more</div>
+    <div class="card-links"><a href="/projects/azure-load-balancer/">View project<span class="visually-hidden">: Azure Standard Load Balancer</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/07-azure-load-balancer" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Standard Load Balancer</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-networking">
+  <a class="card-media" href="/projects/azure-network-security-group/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-network-security-group/08-08-subnet-with-nsg-thumb.webp" alt="" width="720" height="382" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Networking</div>
+    <h3><a href="/projects/azure-network-security-group/">Azure Network Security Group</a></h3>
+    <p>I created a network security group that allows SSH and HTTP and attached it to my subnet.</p>
+    <div class="tech">Microsoft Azure, Network Security Groups, Virtual Networks</div>
+    <div class="card-links"><a href="/projects/azure-network-security-group/">View project<span class="visually-hidden">: Azure Network Security Group</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/03-azure-network-security-group" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Network Security Group</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-networking">
+  <a class="card-media" href="/projects/azure-vnet-peering/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected-thumb.webp" alt="" width="720" height="348" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Networking</div>
+    <h3><a href="/projects/azure-vnet-peering/">Azure Virtual Network Peering</a></h3>
+    <p>I connected two virtual networks with peering so they can talk privately over Microsoft&#x27;s network.</p>
+    <div class="tech">Microsoft Azure, Virtual Networks, VNet Peering</div>
+    <div class="card-links"><a href="/projects/azure-vnet-peering/">View project<span class="visually-hidden">: Azure Virtual Network Peering</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/02-azure-vnet-peering" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Virtual Network Peering</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-networking">
+  <a class="card-media" href="/projects/azure-private-dns/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-private-dns/04-private-dns-04-linked-thumb.webp" alt="" width="720" height="346" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Networking</div>
+    <h3><a href="/projects/azure-private-dns/">Azure Private DNS</a></h3>
+    <p>I created a private DNS zone and linked it to my virtual network for internal name lookups.</p>
+    <div class="tech">Microsoft Azure, Azure Private DNS, Virtual Networks</div>
+    <div class="card-links"><a href="/projects/azure-private-dns/">View project<span class="visually-hidden">: Azure Private DNS</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/10-azure-private-dns" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Private DNS</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-networking">
+  <a class="card-media" href="/projects/azure-vnet-deployment/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-vnet-deployment/04-04-subnet-overview-thumb.webp" alt="" width="720" height="382" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Networking</div>
+    <h3><a href="/projects/azure-vnet-deployment/">Azure Virtual Network Deployment</a></h3>
+    <p>I created a resource group, a virtual network and a management subnet as the base for my other Azure labs.</p>
+    <div class="tech">Microsoft Azure, Resource Groups, Virtual Networks</div>
+    <div class="card-links"><a href="/projects/azure-vnet-deployment/">View project<span class="visually-hidden">: Azure Virtual Network Deployment</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/01-azure-vnet-deployment" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Virtual Network Deployment</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-compute-storage">
+  <a class="card-media" href="/projects/azure-linux-vm-deployment/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-linux-vm-deployment/05-05-custom-web-page-created-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Compute &amp; Storage</div>
+    <h3><a href="/projects/azure-linux-vm-deployment/">Azure Linux VM Deployment</a></h3>
+    <p>I deployed an Ubuntu VM in Azure, connected with an SSH key and hosted my own web page on Nginx.</p>
+    <div class="tech">Microsoft Azure, Azure Virtual Machines, Ubuntu Linux, SSH keys, Nginx</div>
+    <div class="card-links"><a href="/projects/azure-linux-vm-deployment/">View project<span class="visually-hidden">: Azure Linux VM Deployment</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/04-azure-linux-vm-deployment" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Linux VM Deployment</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-compute-storage">
+  <a class="card-media" href="/projects/azure-linux-vm-2-deployment/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-linux-vm-2-deployment/05-azure-vm002-vm-05-nginx-web-server-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Compute &amp; Storage</div>
+    <h3><a href="/projects/azure-linux-vm-2-deployment/">Azure Linux VM 2 Deployment</a></h3>
+    <p>I deployed a second Ubuntu VM with SSH key login, an NSG and Nginx. I later used it behind my load balancer.</p>
+    <div class="tech">Microsoft Azure, Azure Virtual Machines, Ubuntu Linux, SSH keys, Network Security Groups and more</div>
+    <div class="card-links"><a href="/projects/azure-linux-vm-2-deployment/">View project<span class="visually-hidden">: Azure Linux VM 2 Deployment</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/06-azure-linux-vm-2-deployment" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Linux VM 2 Deployment</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-compute-storage">
+  <a class="card-media" href="/projects/azure-managed-disks/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-managed-disks/04-04-disk-partition-mount-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Compute &amp; Storage</div>
+    <h3><a href="/projects/azure-managed-disks/">Azure Managed Disks</a></h3>
+    <p>I added a managed data disk to my Ubuntu VM, then partitioned, formatted and mounted it.</p>
+    <div class="tech">Microsoft Azure, Managed Disks, Ubuntu Linux</div>
+    <div class="card-links"><a href="/projects/azure-managed-disks/">View project<span class="visually-hidden">: Azure Managed Disks</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/05-azure-managed-disks" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Managed Disks</span></a></div>
+  </div>
+</article><article class="card" data-category="azure-compute-storage">
+  <a class="card-media" href="/projects/azure-storage-account/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/azure-storage-account/05-05-storage-container-overview-thumb.webp" alt="" width="720" height="381" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Azure Compute &amp; Storage</div>
+    <h3><a href="/projects/azure-storage-account/">Azure Storage Account</a></h3>
+    <p>I created a storage account and a blob container and uploaded a test file.</p>
+    <div class="tech">Microsoft Azure, Azure Storage Account, Blob Storage</div>
+    <div class="card-links"><a href="/projects/azure-storage-account/">View project<span class="visually-hidden">: Azure Storage Account</span></a><a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/09-azure-storage-account" rel="noopener">GitHub repository<span class="visually-hidden"> for Azure Storage Account</span></a></div>
   </div>
 </article><article class="card" data-category="linux-administration">
   <a class="card-media" href="/projects/linux-server-health-monitoring/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-server-health-monitoring/06-06-lnx-cron-health-check-status-evaluation-thumb.webp" alt="" width="720" height="441" loading="lazy" decoding="async"></a>
   <div class="card-body">
     <div class="card-cat">Linux Administration</div>
     <h3><a href="/projects/linux-server-health-monitoring/">Linux Server Health Monitoring &amp; Scheduled Reporting</a></h3>
-    <p>Bash health-check script scheduled with Cron that checks memory, disk and services and returns a status exit code.</p>
+    <p>I wrote a Bash health check that runs from Cron. It checks memory, disk space and services and returns a clear exit code.</p>
     <div class="tech">Ubuntu Linux, Bash, Cron, systemd services</div>
     <div class="card-links"><a href="/projects/linux-server-health-monitoring/">View project<span class="visually-hidden">: Linux Server Health Monitoring &amp; Scheduled Reporting</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/13-linux-server-health-monitoring" rel="noopener">GitHub repository<span class="visually-hidden"> for Linux Server Health Monitoring &amp; Scheduled Reporting</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-nginx-web-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-nginx-web-server/09-09-lnx-nginx-access-and-error-logs-thumb.webp" alt="" width="720" height="438" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-nginx-web-server/">Nginx Web Server</a></h3>
+    <p>I installed Nginx on Ubuntu, set up my own site and checked the access and error logs.</p>
+    <div class="tech">Ubuntu Linux, Nginx, curl</div>
+    <div class="card-links"><a href="/projects/linux-nginx-web-server/">View project<span class="visually-hidden">: Nginx Web Server</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/05-nginx-web-server" rel="noopener">GitHub repository<span class="visually-hidden"> for Nginx Web Server</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-samba-file-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-samba-file-server/07-07-lnx-samba-windows-share-verification-thumb.webp" alt="" width="720" height="434" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-samba-file-server/">Samba File Server</a></h3>
+    <p>I set up a password-protected Samba share on Ubuntu and opened it from Linux and Windows.</p>
+    <div class="tech">Ubuntu Linux, Samba / SMB, smbclient, Windows</div>
+    <div class="card-links"><a href="/projects/linux-samba-file-server/">View project<span class="visually-hidden">: Samba File Server</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/06-samba-file-server" rel="noopener">GitHub repository<span class="visually-hidden"> for Samba File Server</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-dns-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-dns-server/07-07-lnx-dns-reverse-lookup-thumb.webp" alt="" width="720" height="475" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-dns-server/">DNS Server (BIND)</a></h3>
+    <p>I set up a BIND DNS server with forward and reverse zones for inno.local and tested the lookups.</p>
+    <div class="tech">Ubuntu Linux, BIND9, DNS</div>
+    <div class="card-links"><a href="/projects/linux-dns-server/">View project<span class="visually-hidden">: DNS Server (BIND)</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/07-dns-server" rel="noopener">GitHub repository<span class="visually-hidden"> for DNS Server (BIND)</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-dhcp-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration-thumb.webp" alt="" width="720" height="444" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-dhcp-server/">DHCP Server</a></h3>
+    <p>I set up an ISC DHCP server on Ubuntu that gave an address to my Alpine Linux client.</p>
+    <div class="tech">Ubuntu Linux, ISC DHCP Server, Alpine Linux</div>
+    <div class="card-links"><a href="/projects/linux-dhcp-server/">View project<span class="visually-hidden">: DHCP Server</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/08-dhcp-server" rel="noopener">GitHub repository<span class="visually-hidden"> for DHCP Server</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-ufw-firewall/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test-thumb.webp" alt="" width="720" height="449" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-ufw-firewall/">UFW Firewall</a></h3>
+    <p>I set UFW to block all incoming traffic except SSH, HTTP and HTTPS and tested it from a client.</p>
+    <div class="tech">Ubuntu Linux, UFW, Alpine Linux</div>
+    <div class="card-links"><a href="/projects/linux-ufw-firewall/">View project<span class="visually-hidden">: UFW Firewall</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/09-ufw-firewall" rel="noopener">GitHub repository<span class="visually-hidden"> for UFW Firewall</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-ssh-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-ssh-server/05-05-lnx-ssh-server-remote-access-on-windows-thumb.webp" alt="" width="720" height="423" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-ssh-server/">SSH Server Configuration</a></h3>
+    <p>I moved OpenSSH to port 2222 and connected to it from Windows.</p>
+    <div class="tech">Ubuntu Linux, OpenSSH, Windows</div>
+    <div class="card-links"><a href="/projects/linux-ssh-server/">View project<span class="visually-hidden">: SSH Server Configuration</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/03-ssh-server" rel="noopener">GitHub repository<span class="visually-hidden"> for SSH Server Configuration</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-networking/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-networking/07-07-lnx-network-internet-and-dns-connectivity-thumb.webp" alt="" width="720" height="455" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-networking/">Linux Networking</a></h3>
+    <p>I checked IP addressing, routing and DNS on Linux using both VirtualBox bridged and NAT networking.</p>
+    <div class="tech">Ubuntu Linux, iproute2, resolvectl, VirtualBox</div>
+    <div class="card-links"><a href="/projects/linux-networking/">View project<span class="visually-hidden">: Linux Networking</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/04-linux-networking" rel="noopener">GitHub repository<span class="visually-hidden"> for Linux Networking</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-user-group-management/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-user-group-management/">User &amp; Group Management</a></h3>
+    <p>I created department groups and users and controlled folder access with chown, chmod, SGID and the sticky bit.</p>
+    <div class="tech">Ubuntu Linux, Users and groups, File permissions, SGID, Sticky bit</div>
+    <div class="card-links"><a href="/projects/linux-user-group-management/">View project<span class="visually-hidden">: User &amp; Group Management</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/02-user-and-groups-management" rel="noopener">GitHub repository<span class="visually-hidden"> for User &amp; Group Management</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-nfs-file-server/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer-thumb.webp" alt="" width="720" height="448" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-nfs-file-server/">NFS File Server</a></h3>
+    <p>I shared /srv/nfs/shared over NFS and mounted it from an Alpine client.</p>
+    <div class="tech">Ubuntu Linux, NFS, Alpine Linux</div>
+    <div class="card-links"><a href="/projects/linux-nfs-file-server/">View project<span class="visually-hidden">: NFS File Server</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/10-nfs-file-server" rel="noopener">GitHub repository<span class="visually-hidden"> for NFS File Server</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-centralized-syslog/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-centralized-syslog/04-04-lnx-rsyslog-remote-log-test-thumb.webp" alt="" width="720" height="442" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-centralized-syslog/">Remote Syslog Logging</a></h3>
+    <p>I set up rsyslog to receive logs from another machine on port 514.</p>
+    <div class="tech">Ubuntu Linux, rsyslog, Alpine Linux</div>
+    <div class="card-links"><a href="/projects/linux-centralized-syslog/">View project<span class="visually-hidden">: Remote Syslog Logging</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/11-centralized-syslog-server" rel="noopener">GitHub repository<span class="visually-hidden"> for Remote Syslog Logging</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-logrotate/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-logrotate/03-03-lnx-logrotate-execution-and-compression-thumb.webp" alt="" width="720" height="439" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-logrotate/">Log Rotation with Logrotate</a></h3>
+    <p>I wrote a logrotate policy that keeps a set number of old logs, compresses them and creates a fresh log file.</p>
+    <div class="tech">Ubuntu Linux, logrotate, systemd timers</div>
+    <div class="card-links"><a href="/projects/linux-logrotate/">View project<span class="visually-hidden">: Log Rotation with Logrotate</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/12-log-rotation-logrotate" rel="noopener">GitHub repository<span class="visually-hidden"> for Log Rotation with Logrotate</span></a></div>
+  </div>
+</article><article class="card" data-category="linux-administration">
+  <a class="card-media" href="/projects/linux-server-build/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/linux-server-build/02-02-linux-server-build-system-verification2-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
+  <div class="card-body">
+    <div class="card-cat">Linux Administration</div>
+    <h3><a href="/projects/linux-server-build/">Linux Server Build</a></h3>
+    <p>I built an Ubuntu 24.04 server VM and set its hostname, time zone and admin tools.</p>
+    <div class="tech">Ubuntu 24.04 LTS, VirtualBox</div>
+    <div class="card-links"><a href="/projects/linux-server-build/">View project<span class="visually-hidden">: Linux Server Build</span></a><a href="https://github.com/innocent-mbele/linux-projects/tree/main/01-linux-server-build" rel="noopener">GitHub repository<span class="visually-hidden"> for Linux Server Build</span></a></div>
   </div>
 </article><article class="card" data-category="network-automation">
   <a class="card-media" href="/projects/network-automation-python-netmiko/" tabindex="-1" aria-hidden="true"><img src="/assets/images/projects/network-automation-python-netmiko/04-04-netauto-inventory-device-information-thumb.webp" alt="" width="720" height="450" loading="lazy" decoding="async"></a>
   <div class="card-body">
     <div class="card-cat">Network Automation</div>
     <h3><a href="/projects/network-automation-python-netmiko/">Network Automation with Python and Netmiko</a></h3>
-    <p>Inventory-driven Python scripts that connect to a Cisco IOS router with Netmiko, parse output with TextFSM and write a JSON device report.</p>
-    <p class="state-note">Work in progress</p><div class="tech">Python, Netmiko, TextFSM, JSON, Cisco IOS</div>
+    <p>My Python scripts connect to a Cisco router with Netmiko, read the device information, tidy it with TextFSM and save a JSON report.</p>
+    <p class="state-note">Still in progress</p><div class="tech">Python, Netmiko, TextFSM, JSON, Cisco IOS</div>
     <div class="card-links"><a href="/projects/network-automation-python-netmiko/">View project<span class="visually-hidden">: Network Automation with Python and Netmiko</span></a><a href="https://github.com/innocent-mbele/network-infrastructure-and-automation" rel="noopener">GitHub repository<span class="visually-hidden"> for Network Automation with Python and Netmiko</span></a></div>
   </div>
 </article></div>
+    <div class="repos">
+      <h3>Where the projects come from</h3>
+      <table><thead><tr><th scope="col">Repository</th><th scope="col">What is in it</th><th scope="col" class="num">Projects</th></tr></thead><tbody><tr><td><a href="https://github.com/innocent-mbele/azure-basic-labs" rel="noopener">azure-basic-labs</a></td><td>My first Azure labs on networking, virtual machines and storage.</td><td class="num">10</td></tr><tr><td><a href="https://github.com/innocent-mbele/azure-administrator-labs" rel="noopener">azure-administrator-labs</a></td><td>Azure administration work on identity, governance, networking and compute.</td><td class="num">6</td></tr><tr><td><a href="https://github.com/innocent-mbele/linux-projects" rel="noopener">linux-projects</a></td><td>Ubuntu server administration and network services.</td><td class="num">13</td></tr><tr><td><a href="https://github.com/innocent-mbele/network-infrastructure-and-automation" rel="noopener">network-infrastructure-and-automation</a></td><td>Python network automation against a Cisco router.</td><td class="num">1</td></tr></tbody></table>
+    </div>
   </div>
 </section>
-<section class="section" aria-labelledby="areas-title">
+<section id="contact" class="section anchor contact-section" aria-labelledby="contact-title">
   <div class="container">
-    <div class="section-head"><h2 id="areas-title">Browse by area</h2></div>
-    <ul class="areas"><li><a href="/projects/?category=azure-networking">Azure Networking<span>7 projects</span></a></li><li><a href="/projects/?category=azure-compute-storage">Azure Compute &amp; Storage<span>5 projects</span></a></li><li><a href="/projects/?category=identity-governance">Azure Identity &amp; Governance<span>4 projects</span></a></li><li><a href="/projects/?category=linux-administration">Linux Administration<span>13 projects</span></a></li><li><a href="/projects/?category=network-automation">Network Automation<span>1 project</span></a></li></ul>
+    <h2 id="contact-title">Contact me</h2>
+    <p class="intro-text">If you would like to talk about my work or an opportunity, send me a message here and I will reply by email.</p>
+    <div class="form-card">
+      <form id="contact-form" novalidate data-access-key="" action="https://api.web3forms.com/submit" method="post">
+        <div class="row-2">
+          <div class="field">
+            <label for="name">Preferred name <span class="req" aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="name-error">
+            <p class="error" id="name-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150" aria-describedby="email-error">
+            <p class="error" id="email-error" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="subject">Subject <span class="req" aria-hidden="true">*</span></label>
+          <input id="subject" name="subject" type="text" required minlength="3" maxlength="150" aria-describedby="subject-error">
+          <p class="error" id="subject-error" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" required minlength="10" maxlength="5000" aria-describedby="message-error"></textarea>
+          <p class="error" id="message-error" aria-live="polite"></p>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          <input type="checkbox" name="botcheck" tabindex="-1">
+        </div>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span><span class="label">Send message</span></button>
+          <p class="small-note">Please fill in every field. I only use your details to reply to you.</p>
+        </div>
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
   </div>
 </section>
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
-    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
   </div>
 </footer>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=3" defer></script><script src="/assets/js/contact.js?v=3" defer></script>
 </body>
 </html>

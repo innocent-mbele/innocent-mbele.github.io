@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NFS File Server | Innocent Mbele</title>
-<meta name="description" content="NFS export of /srv/nfs/shared mounted by an Alpine client.">
+<meta name="description" content="I shared /srv/nfs/shared over NFS and mounted it from an Alpine client.">
 <link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-nfs-file-server/">
+
 <meta name="author" content="Innocent Mbele">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="NFS File Server | Innocent Mbele">
-<meta property="og:description" content="NFS export of /srv/nfs/shared mounted by an Alpine client.">
+<meta property="og:description" content="I shared /srv/nfs/shared over NFS and mounted it from an Alpine client.">
 <meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-nfs-file-server/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" href="/assets/icons/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=3">
+<link rel="stylesheet" href="/assets/css/main.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -26,30 +27,30 @@
   <div class="container">
     <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
 <section class="page-head">
   <div class="container">
-    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Linux Administration</p>
     <h1>NFS File Server</h1>
-    <p>NFS export of /srv/nfs/shared mounted by an Alpine client.</p>
+    <p>I shared /srv/nfs/shared over NFS and mounted it from an Alpine client.</p>
   </div>
 </section>
 <div class="section">
   <div class="container detail">
-    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>An NFS server was configured to export /srv/nfs/shared to the lab network.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Share storage between Linux hosts.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What was done</h2><ul class="list"><li>Configured the NFS server and export.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">In the order they appear in the repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status.webp" data-caption="NFS Server Status. Shows the NFS server service running successfully." aria-label="Open screenshot 1: NFS Server Status"><img src="/assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status-thumb.webp" alt="NFS Server Status. Shows the NFS server service running successfully." width="720" height="452" loading="lazy" decoding="async"></button><figcaption><strong>1. NFS Server Status</strong>Shows the NFS server service running successfully.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export.webp" data-caption="NFS Export. Shows the `/srv/nfs/shared` NFS export configured for the lab network." aria-label="Open screenshot 2: NFS Export"><img src="/assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export-thumb.webp" alt="NFS Export. Shows the `/srv/nfs/shared` NFS export configured for the lab network." width="720" height="397" loading="lazy" decoding="async"></button><figcaption><strong>2. NFS Export</strong>Shows the `/srv/nfs/shared` NFS export configured for the lab network.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer.webp" data-caption="NFS Mount and File Transfer. Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount." aria-label="Open screenshot 3: NFS Mount and File Transfer"><img src="/assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer-thumb.webp" alt="NFS Mount and File Transfer. Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount." width="720" height="448" loading="lazy" decoding="async"></button><figcaption><strong>3. NFS Mount and File Transfer</strong>Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>The Alpine client mounted the share and transferred a file.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>Full write-up and original screenshots: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/10-nfs-file-server" rel="noopener">linux-projects/10-nfs-file-server</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-user-group-management/"><span>Previous</span>User &amp; Group Management</a><a href="/projects/linux-centralized-syslog/" style="text-align:right"><span>Next</span>Remote Syslog Logging</a></nav></article>
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I set up an NFS server on Ubuntu to share /srv/nfs/shared with my lab network.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Share storage between Linux machines.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I configured the NFS server and the export.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status.webp" data-caption="NFS Server Status. Shows the NFS server service running successfully." aria-label="Open screenshot 1: NFS Server Status"><img src="/assets/images/projects/linux-nfs-file-server/01-01-lnx-nfs-server-status-thumb.webp" alt="NFS Server Status" width="720" height="452" loading="lazy" decoding="async"></button><figcaption><strong>1. NFS Server Status</strong>Shows the NFS server service running successfully.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export.webp" data-caption="NFS Export. Shows the `/srv/nfs/shared` NFS export configured for the lab network." aria-label="Open screenshot 2: NFS Export"><img src="/assets/images/projects/linux-nfs-file-server/02-02-lnx-nfs-export-thumb.webp" alt="NFS Export" width="720" height="397" loading="lazy" decoding="async"></button><figcaption><strong>2. NFS Export</strong>Shows the `/srv/nfs/shared` NFS export configured for the lab network.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer.webp" data-caption="NFS Mount and File Transfer. Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount." aria-label="Open screenshot 3: NFS Mount and File Transfer"><img src="/assets/images/projects/linux-nfs-file-server/03-03-lnx-nfs-mount-and-file-transfer-thumb.webp" alt="NFS Mount and File Transfer" width="720" height="448" loading="lazy" decoding="async"></button><figcaption><strong>3. NFS Mount and File Transfer</strong>Shows the Alpine client mounting the NFS share and successfully transferring a file through the NFS mount.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>My Alpine client mounted the share and copied a file to it.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/10-nfs-file-server" rel="noopener">linux-projects/10-nfs-file-server</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-user-group-management/"><span>Previous</span>User &amp; Group Management</a><a href="/projects/linux-centralized-syslog/" style="text-align:right"><span>Next</span>Remote Syslog Logging</a></nav></article>
     <aside class="facts" aria-label="Project details">
       <dl>
         <dt>Area</dt><dd>Linux Administration</dd>
         <dt>Status</dt><dd>Completed</dd>
-        <dt>Technologies</dt><dd>Ubuntu Linux, NFS, Alpine Linux</dd>
+        <dt>Tools and services</dt><dd>Ubuntu Linux, NFS, Alpine Linux</dd>
         <dt>Screenshots</dt><dd>3</dd>
         <dt>Repository</dt><dd>linux-projects</dd>
       </dl>
       <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/10-nfs-file-server" rel="noopener">View on GitHub</a>
-      <a class="btn btn-secondary" href="/projects/">All projects</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
     </aside>
   </div>
 </div>
@@ -65,10 +66,10 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
-    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
   </div>
 </footer>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>

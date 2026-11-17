@@ -3,8 +3,9 @@
 For each project in data/projects.json this reads the project's README in a
 local clone of its repository, collects every screenshot in README order with
 its heading and caption, writes optimised WebP copies (full size and
-thumbnail) under assets/images/projects/<slug>/, and records the result in
-data/evidence.json.
+thumbnail) under assets/images/projects/<slug>/ and saves the list as the
+project's "screenshots" in data/projects.json. Add --only <slug> for one project.
+For a single new project the admin page is usually easier.
 
 usage:
   python3 tools/import_evidence.py SOURCE_DIR [IMAGE_DIR]
@@ -60,11 +61,16 @@ def save_webp(src, dest, width):
 
 
 def main():
-    source = Path(sys.argv[1])
-    masked = Path(sys.argv[2]) if len(sys.argv) > 2 else None
+    args = sys.argv[1:]
+    only = None
+    if "--only" in args:
+        i = args.index("--only"); only = args[i + 1]; del args[i:i + 2]
+    source = Path(args[0])
+    masked = Path(args[1]) if len(args) > 1 else None
     data = json.loads((ROOT / "data/projects.json").read_text())
-    evidence = {}
     for p in data["projects"]:
+        if only and p["slug"] != only:
+            continue
         base = source / p["repo"] / p["folder"] if p["folder"] else source / p["repo"]
         items = parse_readme((base / "README.md").read_text(encoding="utf-8"))
         out = []
@@ -85,9 +91,9 @@ def main():
                 "original": f"https://github.com/innocent-mbele/{rel_path.as_posix()}".replace(
                     f"innocent-mbele/{p['repo']}/", f"innocent-mbele/{p['repo']}/blob/main/"),
             })
-        evidence[p["slug"]] = out
+        p["screenshots"] = out
         print(f"{p['slug']}: {len(out)} images")
-    (ROOT / "data/evidence.json").write_text(json.dumps(evidence, indent=1, ensure_ascii=False))
+    (ROOT / "data/projects.json").write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":

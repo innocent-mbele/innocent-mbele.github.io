@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UFW Firewall | Innocent Mbele</title>
-<meta name="description" content="Default-deny inbound UFW policy allowing only SSH, HTTP and HTTPS, tested from a client.">
+<meta name="description" content="I set UFW to block all incoming traffic except SSH, HTTP and HTTPS and tested it from a client.">
 <link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-ufw-firewall/">
+
 <meta name="author" content="Innocent Mbele">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="UFW Firewall | Innocent Mbele">
-<meta property="og:description" content="Default-deny inbound UFW policy allowing only SSH, HTTP and HTTPS, tested from a client.">
+<meta property="og:description" content="I set UFW to block all incoming traffic except SSH, HTTP and HTTPS and tested it from a client.">
 <meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-ufw-firewall/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" href="/assets/icons/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=3">
+<link rel="stylesheet" href="/assets/css/main.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -26,30 +27,30 @@
   <div class="container">
     <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
 <section class="page-head">
   <div class="container">
-    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Linux Administration</p>
     <h1>UFW Firewall</h1>
-    <p>Default-deny inbound UFW policy allowing only SSH, HTTP and HTTPS, tested from a client.</p>
+    <p>I set UFW to block all incoming traffic except SSH, HTTP and HTTPS and tested it from a client.</p>
   </div>
 </section>
 <div class="section">
   <div class="container detail">
-    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>UFW was configured on Ubuntu Server with a default-deny inbound policy allowing only SSH, HTTP and HTTPS, and enforcement was tested from an Alpine Linux client.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Restrict inbound traffic to required services.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What was done</h2><ul class="list"><li>Enabled UFW with default-deny inbound and allow rules for SSH, HTTP and HTTPS.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">In the order they appear in the repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules.webp" data-caption="UFW Firewall Status &amp; Rules. Shows UFW active with SSH, HTTP and HTTPS traffic allowed." aria-label="Open screenshot 1: UFW Firewall Status &amp; Rules"><img src="/assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules-thumb.webp" alt="UFW Firewall Status &amp; Rules. Shows UFW active with SSH, HTTP and HTTPS traffic allowed." width="720" height="445" loading="lazy" decoding="async"></button><figcaption><strong>1. UFW Firewall Status &amp; Rules</strong>Shows UFW active with SSH, HTTP and HTTPS traffic allowed.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test.webp" data-caption="UFW Port Test. Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied." aria-label="Open screenshot 2: UFW Port Test"><img src="/assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test-thumb.webp" alt="UFW Port Test. Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied." width="720" height="449" loading="lazy" decoding="async"></button><figcaption><strong>2. UFW Port Test</strong>Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>Port 8080 was blocked, then reachable after a temporary allow rule.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>Full write-up and original screenshots: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/09-ufw-firewall" rel="noopener">linux-projects/09-ufw-firewall</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-dhcp-server/"><span>Previous</span>DHCP Server</a><a href="/projects/linux-ssh-server/" style="text-align:right"><span>Next</span>SSH Server Configuration</a></nav></article>
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I configured UFW on Ubuntu Server to block incoming traffic by default and allow only SSH, HTTP and HTTPS. I tested the rules from an Alpine Linux client.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Allow only the services the server needs.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I enabled UFW with a default deny for incoming traffic and allow rules for SSH, HTTP and HTTPS.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules.webp" data-caption="UFW Firewall Status &amp; Rules. Shows UFW active with SSH, HTTP and HTTPS traffic allowed." aria-label="Open screenshot 1: UFW Firewall Status &amp; Rules"><img src="/assets/images/projects/linux-ufw-firewall/01-01-lnx-ufw-firewall-status-rules-thumb.webp" alt="UFW Firewall Status &amp; Rules" width="720" height="445" loading="lazy" decoding="async"></button><figcaption><strong>1. UFW Firewall Status &amp; Rules</strong>Shows UFW active with SSH, HTTP and HTTPS traffic allowed.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test.webp" data-caption="UFW Port Test. Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied." aria-label="Open screenshot 2: UFW Port Test"><img src="/assets/images/projects/linux-ufw-firewall/02-02-lnx-ufw-port-test-thumb.webp" alt="UFW Port Test" width="720" height="449" loading="lazy" decoding="async"></button><figcaption><strong>2. UFW Port Test</strong>Shows port 8080 being blocked by UFW and subsequently reachable after a temporary allow rule was applied.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>Port 8080 was blocked. After I added a temporary allow rule it became reachable.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/09-ufw-firewall" rel="noopener">linux-projects/09-ufw-firewall</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-dhcp-server/"><span>Previous</span>DHCP Server</a><a href="/projects/linux-ssh-server/" style="text-align:right"><span>Next</span>SSH Server Configuration</a></nav></article>
     <aside class="facts" aria-label="Project details">
       <dl>
         <dt>Area</dt><dd>Linux Administration</dd>
         <dt>Status</dt><dd>Completed</dd>
-        <dt>Technologies</dt><dd>Ubuntu Linux, UFW, Alpine Linux</dd>
+        <dt>Tools and services</dt><dd>Ubuntu Linux, UFW, Alpine Linux</dd>
         <dt>Screenshots</dt><dd>2</dd>
         <dt>Repository</dt><dd>linux-projects</dd>
       </dl>
       <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/09-ufw-firewall" rel="noopener">View on GitHub</a>
-      <a class="btn btn-secondary" href="/projects/">All projects</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
     </aside>
   </div>
 </div>
@@ -65,10 +66,10 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
-    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
   </div>
 </footer>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>

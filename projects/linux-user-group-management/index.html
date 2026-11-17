@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>User &amp; Group Management | Innocent Mbele</title>
-<meta name="description" content="Department groups and directory permissions with chown, chmod, SGID and the sticky bit.">
+<meta name="description" content="I created department groups and users and controlled folder access with chown, chmod, SGID and the sticky bit.">
 <link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-user-group-management/">
+
 <meta name="author" content="Innocent Mbele">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="User &amp; Group Management | Innocent Mbele">
-<meta property="og:description" content="Department groups and directory permissions with chown, chmod, SGID and the sticky bit.">
+<meta property="og:description" content="I created department groups and users and controlled folder access with chown, chmod, SGID and the sticky bit.">
 <meta property="og:url" content="https://innocent-mbele.github.io/projects/linux-user-group-management/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" href="/assets/icons/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=3">
+<link rel="stylesheet" href="/assets/css/main.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -26,30 +27,30 @@
   <div class="container">
     <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
 <section class="page-head">
   <div class="container">
-    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Linux Administration</p>
     <h1>User &amp; Group Management</h1>
-    <p>Department groups and directory permissions with chown, chmod, SGID and the sticky bit.</p>
+    <p>I created department groups and users and controlled folder access with chown, chmod, SGID and the sticky bit.</p>
   </div>
 </section>
 <div class="section">
   <div class="container detail">
-    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>Department groups and user accounts were created, memberships assigned and directory access controlled with chown, chmod, SGID and the sticky bit.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Restrict users to authorised directories.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What was done</h2><ul class="list"><li>Created groups and users and assigned memberships.</li><li>Set ownership and permissions on department directories.</li><li>Applied SGID and the sticky bit.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">In the order they appear in the repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification.webp" data-caption="Group Verification. Shows the department groups, user accounts and group memberships configured on the Linux server." aria-label="Open screenshot 1: Group Verification"><img src="/assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification-thumb.webp" alt="Group Verification. Shows the department groups, user accounts and group memberships configured on the Linux server." width="720" height="445" loading="lazy" decoding="async"></button><figcaption><strong>1. Group Verification</strong>Shows the department groups, user accounts and group memberships configured on the Linux server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions.webp" data-caption="Directory Permissions. Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`." aria-label="Open screenshot 2: Directory Permissions"><img src="/assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions-thumb.webp" alt="Directory Permissions. Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`." width="720" height="443" loading="lazy" decoding="async"></button><figcaption><strong>2. Directory Permissions</strong>Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid.webp" data-caption="SGID Verification. Shows SGID configured on department directories, ensuring new files inherit the parent directory&#x27;s group ownership." aria-label="Open screenshot 3: SGID Verification"><img src="/assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid-thumb.webp" alt="SGID Verification. Shows SGID configured on department directories, ensuring new files inherit the parent directory&#x27;s group ownership." width="720" height="447" loading="lazy" decoding="async"></button><figcaption><strong>3. SGID Verification</strong>Shows SGID configured on department directories, ensuring new files inherit the parent directory&#x27;s group ownership.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit.webp" data-caption="Sticky Bit Verification. Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users." aria-label="Open screenshot 4: Sticky Bit Verification"><img src="/assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit-thumb.webp" alt="Sticky Bit Verification. Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users." width="720" height="450" loading="lazy" decoding="async"></button><figcaption><strong>4. Sticky Bit Verification</strong>Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>New files inherited group ownership under SGID.</li><li>Users could not delete others&#x27; files in the sticky-bit directory.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>Full write-up and original screenshots: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/02-user-and-groups-management" rel="noopener">linux-projects/02-user-and-groups-management</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-networking/"><span>Previous</span>Linux Networking</a><a href="/projects/linux-nfs-file-server/" style="text-align:right"><span>Next</span>NFS File Server</a></nav></article>
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I created department groups and user accounts, added the users to their groups and controlled folder access with chown, chmod, SGID and the sticky bit.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Make sure each user can only reach the folders they should.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I created the groups and users and set their memberships.</li><li>I set owners and permissions on the department folders.</li><li>I applied SGID and the sticky bit.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification.webp" data-caption="Group Verification. Shows the department groups, user accounts and group memberships configured on the Linux server." aria-label="Open screenshot 1: Group Verification"><img src="/assets/images/projects/linux-user-group-management/01-01-user-group-manag-groups-verification-thumb.webp" alt="Group Verification" width="720" height="445" loading="lazy" decoding="async"></button><figcaption><strong>1. Group Verification</strong>Shows the department groups, user accounts and group memberships configured on the Linux server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions.webp" data-caption="Directory Permissions. Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`." aria-label="Open screenshot 2: Directory Permissions"><img src="/assets/images/projects/linux-user-group-management/02-02-user-group-manag-permissions-thumb.webp" alt="Directory Permissions" width="720" height="443" loading="lazy" decoding="async"></button><figcaption><strong>2. Directory Permissions</strong>Shows the department directory structure, ownership and Linux file permissions configured using `chown` and `chmod`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid.webp" data-caption="SGID Verification. Shows SGID configured on department directories, ensuring new files inherit the parent directory&#x27;s group ownership." aria-label="Open screenshot 3: SGID Verification"><img src="/assets/images/projects/linux-user-group-management/03-03-user-group-manag-sgid-thumb.webp" alt="SGID Verification" width="720" height="447" loading="lazy" decoding="async"></button><figcaption><strong>3. SGID Verification</strong>Shows SGID configured on department directories, ensuring new files inherit the parent directory&#x27;s group ownership.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit.webp" data-caption="Sticky Bit Verification. Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users." aria-label="Open screenshot 4: Sticky Bit Verification"><img src="/assets/images/projects/linux-user-group-management/04-04-user-group-manag-sticky-bit-thumb.webp" alt="Sticky Bit Verification" width="720" height="450" loading="lazy" decoding="async"></button><figcaption><strong>4. Sticky Bit Verification</strong>Shows the shared directory configured with the Sticky Bit, allowing users to create files while preventing them from deleting files owned by other users.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>New files took the folder&#x27;s group because of SGID.</li><li>Users could not delete each other&#x27;s files in the sticky bit folder.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/02-user-and-groups-management" rel="noopener">linux-projects/02-user-and-groups-management</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-networking/"><span>Previous</span>Linux Networking</a><a href="/projects/linux-nfs-file-server/" style="text-align:right"><span>Next</span>NFS File Server</a></nav></article>
     <aside class="facts" aria-label="Project details">
       <dl>
         <dt>Area</dt><dd>Linux Administration</dd>
         <dt>Status</dt><dd>Completed</dd>
-        <dt>Technologies</dt><dd>Ubuntu Linux, Users and groups, File permissions, SGID, Sticky bit</dd>
+        <dt>Tools and services</dt><dd>Ubuntu Linux, Users and groups, File permissions, SGID, Sticky bit</dd>
         <dt>Screenshots</dt><dd>4</dd>
         <dt>Repository</dt><dd>linux-projects</dd>
       </dl>
       <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/02-user-and-groups-management" rel="noopener">View on GitHub</a>
-      <a class="btn btn-secondary" href="/projects/">All projects</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
     </aside>
   </div>
 </div>
@@ -65,10 +66,10 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
-    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
   </div>
 </footer>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>

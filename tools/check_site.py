@@ -22,7 +22,7 @@ class Refs(HTMLParser):
 
 
 problems = []
-pages = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts]
+pages = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "admin" not in p.parts]
 for page in pages:
     parser = Refs()
     parser.feed(page.read_text(encoding="utf-8"))

@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Azure Virtual Network Peering | Innocent Mbele</title>
-<meta name="description" content="Peering between two virtual networks for private communication over the Microsoft backbone.">
+<meta name="description" content="I connected two virtual networks with peering so they can talk privately over Microsoft&#x27;s network.">
 <link rel="canonical" href="https://innocent-mbele.github.io/projects/azure-vnet-peering/">
+
 <meta name="author" content="Innocent Mbele">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="Azure Virtual Network Peering | Innocent Mbele">
-<meta property="og:description" content="Peering between two virtual networks for private communication over the Microsoft backbone.">
+<meta property="og:description" content="I connected two virtual networks with peering so they can talk privately over Microsoft&#x27;s network.">
 <meta property="og:url" content="https://innocent-mbele.github.io/projects/azure-vnet-peering/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" href="/assets/icons/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=3">
+<link rel="stylesheet" href="/assets/css/main.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -26,30 +27,30 @@
   <div class="container">
     <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
 <section class="page-head">
   <div class="container">
-    <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=azure-networking">Azure Networking</a></p>
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Azure Networking</p>
     <h1>Azure Virtual Network Peering</h1>
-    <p>Peering between two virtual networks for private communication over the Microsoft backbone.</p>
+    <p>I connected two virtual networks with peering so they can talk privately over Microsoft&#x27;s network.</p>
   </div>
 </section>
 <div class="section">
   <div class="container detail">
-    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>VNet peering was configured between two virtual networks so resources can communicate privately over the Microsoft backbone without a VPN or public internet connectivity.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Connect two VNets privately.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What was done</h2><ul class="list"><li>Configured peering on both virtual networks.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">In the order they appear in the repository. Click one to see it full size.</p><p class="small-note">On these copies my sign-in email, tenant name and subscription ID are covered in grey. The originals are in the repository.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected.webp" data-caption="VNet Cloud Connected. Shows the first virtual network successfully configured with VNet peering." aria-label="Open screenshot 1: VNet Cloud Connected"><img src="/assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected-thumb.webp" alt="VNet Cloud Connected. Shows the first virtual network successfully configured with VNet peering." width="720" height="348" loading="lazy" decoding="async"></button><figcaption><strong>1. VNet Cloud Connected</strong>Shows the first virtual network successfully configured with VNet peering.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected.webp" data-caption="VNet UAE North Connected. Shows the second virtual network successfully connected through Azure VNet Peering." aria-label="Open screenshot 2: VNet UAE North Connected"><img src="/assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected-thumb.webp" alt="VNet UAE North Connected. Shows the second virtual network successfully connected through Azure VNet Peering." width="720" height="348" loading="lazy" decoding="async"></button><figcaption><strong>2. VNet UAE North Connected</strong>Shows the second virtual network successfully connected through Azure VNet Peering.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>Both VNets show the peering in a connected state.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>Full write-up and original screenshots: <a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/02-azure-vnet-peering" rel="noopener">azure-basic-labs/02-azure-vnet-peering</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-network-security-group/"><span>Previous</span>Azure Network Security Group</a><a href="/projects/azure-private-dns/" style="text-align:right"><span>Next</span>Azure Private DNS</a></nav></article>
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I set up peering between two Azure virtual networks so that resources in them can reach each other privately over Microsoft&#x27;s backbone, without a VPN or the public internet.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Connect two virtual networks privately.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I configured the peering on both virtual networks.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><p class="small-note">On these copies I have covered my sign-in email, tenant name and subscription ID in grey. The originals are in the repository.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected.webp" data-caption="VNet Cloud Connected. Shows the first virtual network successfully configured with VNet peering." aria-label="Open screenshot 1: VNet Cloud Connected"><img src="/assets/images/projects/azure-vnet-peering/01-vnet-peering-01-vnet-cloud-connected-thumb.webp" alt="VNet Cloud Connected" width="720" height="348" loading="lazy" decoding="async"></button><figcaption><strong>1. VNet Cloud Connected</strong>Shows the first virtual network successfully configured with VNet peering.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected.webp" data-caption="VNet UAE North Connected. Shows the second virtual network successfully connected through Azure VNet Peering." aria-label="Open screenshot 2: VNet UAE North Connected"><img src="/assets/images/projects/azure-vnet-peering/02-vnet-peering-02vnet-uaenorth-connected-thumb.webp" alt="VNet UAE North Connected" width="720" height="348" loading="lazy" decoding="async"></button><figcaption><strong>2. VNet UAE North Connected</strong>Shows the second virtual network successfully connected through Azure VNet Peering.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>Both networks show the peering as Connected.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/02-azure-vnet-peering" rel="noopener">azure-basic-labs/02-azure-vnet-peering</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-network-security-group/"><span>Previous</span>Azure Network Security Group</a><a href="/projects/azure-private-dns/" style="text-align:right"><span>Next</span>Azure Private DNS</a></nav></article>
     <aside class="facts" aria-label="Project details">
       <dl>
         <dt>Area</dt><dd>Azure Networking</dd>
         <dt>Status</dt><dd>Completed</dd>
-        <dt>Technologies</dt><dd>Microsoft Azure, Virtual Networks, VNet Peering</dd>
+        <dt>Tools and services</dt><dd>Microsoft Azure, Virtual Networks, VNet Peering</dd>
         <dt>Screenshots</dt><dd>2</dd>
         <dt>Repository</dt><dd>azure-basic-labs</dd>
       </dl>
       <a class="btn btn-primary" href="https://github.com/innocent-mbele/azure-basic-labs/tree/main/02-azure-vnet-peering" rel="noopener">View on GitHub</a>
-      <a class="btn btn-secondary" href="/projects/">All projects</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
     </aside>
   </div>
 </div>
@@ -65,10 +66,10 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
-    <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
   </div>
 </footer>
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=3" defer></script>
 </body>
 </html>
