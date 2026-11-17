@@ -25,7 +25,7 @@
     {
       "slug": "azure-manage-virtual-networking",
       "repo": "azure-administrator-labs",
-      "folder": "05-manage-virtual-networking",
+      "folder": "05-virtual-networking",
       "title": "Implement and Manage Virtual Networking",
       "category": "azure-networking",
       "featured": true,
@@ -2915,7 +2915,7 @@
     {
       "slug": "azure-enterprise-compute-app-infrastructure",
       "repo": "azure-administrator-labs",
-      "folder": "06-azure-enterprise-compute-and-app-infra",
+      "folder": "06-azure-compute-and-app-infra",
       "title": "Enterprise Compute and Application Infrastructure",
       "category": "azure-compute-storage",
       "featured": false,
