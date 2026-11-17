@@ -1,4 +1,4 @@
-/* Navigation, project filters, screenshot lightbox and subtle reveal. No dependencies. */
+/* Navigation, project filters and screenshot viewer. No dependencies. */
 (function () {
   "use strict";
   document.documentElement.classList.remove("no-js");
@@ -38,10 +38,9 @@
       cards.forEach(function (c) {
         var show = cat === "all" || c.getAttribute("data-category") === cat;
         c.hidden = !show;
-        if (show) c.classList.add("in");
         if (show) shown++;
       });
-      if (counter) counter.textContent = shown + (shown === 1 ? " project" : " projects") + " shown";
+      if (counter) counter.textContent = shown + (shown === 1 ? " project" : " projects");
       if (updateUrl) {
         var url = new URL(window.location.href);
         if (cat === "all") url.searchParams.delete("category"); else url.searchParams.set("category", cat);
@@ -66,7 +65,7 @@
       var t = triggers[idx];
       img.src = t.getAttribute("data-full");
       img.alt = t.querySelector("img").alt;
-      cap.textContent = (idx + 1) + " / " + triggers.length + " — " + t.getAttribute("data-caption");
+      cap.textContent = "Screenshot " + (idx + 1) + " of " + triggers.length + ". " + t.getAttribute("data-caption");
     };
     triggers.forEach(function (t, i) {
       t.addEventListener("click", function () { show(i); dialog.showModal(); });
@@ -87,16 +86,4 @@
     });
   }
 
-  // Reveal on scroll
-  var items = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-      });
-    }, { rootMargin: "0px 0px -40px 0px" });
-    items.forEach(function (el) { io.observe(el); });
-  } else {
-    items.forEach(function (el) { el.classList.add("in"); });
-  }
 })();

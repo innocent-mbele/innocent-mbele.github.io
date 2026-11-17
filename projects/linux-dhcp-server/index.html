@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
 <meta name="description" content="ISC DHCP server leasing addresses to an Alpine Linux client.">
 <link rel="canonical" href="https://innocent-mbele.github.io/projects/linux-dhcp-server/">
 <meta name="author" content="Innocent Mbele">
-<meta name="theme-color" content="#0b1626">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="DHCP Server | Innocent Mbele">
@@ -24,7 +24,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
   </div>
@@ -33,24 +33,23 @@
 <section class="page-head">
   <div class="container">
     <p class="breadcrumb"><a href="/projects/">Projects</a> / <a href="/projects/?category=linux-administration">Linux Administration</a></p>
-    <div class="card-meta"><span class="badge">Linux Administration</span><span class="status">Completed</span></div>
     <h1>DHCP Server</h1>
     <p>ISC DHCP server leasing addresses to an Alpine Linux client.</p>
   </div>
 </section>
 <div class="section">
   <div class="container detail">
-    <article><section aria-labelledby="s0"><h2 id="s0">Project overview</h2><p>An ISC DHCP server was installed on Ubuntu and configured with a subnet, address pool, broadcast address, domain name and DNS server.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Assign client addresses automatically.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">Implementation</h2><ul class="list"><li>Installed and configured the DHCP service and scope.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots and evidence</h2><p>4 screenshots from the repository, in the order documented. Select an image to view it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running.webp" data-caption="DHCP Server Installation and Service: Shows the ISC DHCP server installed and running on the Ubuntu server." aria-label="Enlarge screenshot 1: DHCP Server Installation and Service"><img src="/assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running-thumb.webp" alt="DHCP Server Installation and Service — Shows the ISC DHCP server installed and running on the Ubuntu server." width="720" height="441" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">1.</span>DHCP Server Installation and Service</strong>Shows the ISC DHCP server installed and running on the Ubuntu server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned.webp" data-caption="DHCP Client IP Assignment: Shows the Alpine client receiving `192.168.150.100` from the DHCP server." aria-label="Enlarge screenshot 2: DHCP Client IP Assignment"><img src="/assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned-thumb.webp" alt="DHCP Client IP Assignment — Shows the Alpine client receiving `192.168.150.100` from the DHCP server." width="720" height="451" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">2.</span>DHCP Client IP Assignment</strong>Shows the Alpine client receiving `192.168.150.100` from the DHCP server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database.webp" data-caption="DHCP Lease Database: Shows the DHCP server recording an active lease for `192.168.150.100`." aria-label="Enlarge screenshot 3: DHCP Lease Database"><img src="/assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database-thumb.webp" alt="DHCP Lease Database — Shows the DHCP server recording an active lease for `192.168.150.100`." width="720" height="448" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">3.</span>DHCP Lease Database</strong>Shows the DHCP server recording an active lease for `192.168.150.100`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration.webp" data-caption="DHCP Server Configuration: Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server." aria-label="Enlarge screenshot 4: DHCP Server Configuration"><img src="/assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration-thumb.webp" alt="DHCP Server Configuration — Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server." width="720" height="444" loading="lazy" decoding="async"></button><figcaption><strong><span class="num">4.</span>DHCP Server Configuration</strong>Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>The Alpine client received 192.168.150.100.</li><li>The lease database recorded the active lease.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Original GitHub repository</h2><p>The full documentation and original screenshots are in <a href="https://github.com/innocent-mbele/linux-projects/tree/main/08-dhcp-server" rel="noopener">linux-projects/08-dhcp-server</a>.</p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-dns-server/"><span>Previous</span>DNS Server (BIND)</a><a href="/projects/linux-ufw-firewall/" style="text-align:right"><span>Next</span>UFW Firewall</a></nav></article>
-    <aside class="facts" aria-label="Project facts">
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>An ISC DHCP server was installed on Ubuntu and configured with a subnet, address pool, broadcast address, domain name and DNS server.</p></section><section aria-labelledby="s1"><h2 id="s1">Objectives</h2><ul class="list"><li>Assign client addresses automatically.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What was done</h2><ul class="list"><li>Installed and configured the DHCP service and scope.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">In the order they appear in the repository. Click one to see it full size.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running.webp" data-caption="DHCP Server Installation and Service. Shows the ISC DHCP server installed and running on the Ubuntu server." aria-label="Open screenshot 1: DHCP Server Installation and Service"><img src="/assets/images/projects/linux-dhcp-server/01-01-lnx-dhcp-server-installed-service-running-thumb.webp" alt="DHCP Server Installation and Service. Shows the ISC DHCP server installed and running on the Ubuntu server." width="720" height="441" loading="lazy" decoding="async"></button><figcaption><strong>1. DHCP Server Installation and Service</strong>Shows the ISC DHCP server installed and running on the Ubuntu server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned.webp" data-caption="DHCP Client IP Assignment. Shows the Alpine client receiving `192.168.150.100` from the DHCP server." aria-label="Open screenshot 2: DHCP Client IP Assignment"><img src="/assets/images/projects/linux-dhcp-server/02-02-lnx-dhcp-server-alpine-client-ip-assigned-thumb.webp" alt="DHCP Client IP Assignment. Shows the Alpine client receiving `192.168.150.100` from the DHCP server." width="720" height="451" loading="lazy" decoding="async"></button><figcaption><strong>2. DHCP Client IP Assignment</strong>Shows the Alpine client receiving `192.168.150.100` from the DHCP server.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database.webp" data-caption="DHCP Lease Database. Shows the DHCP server recording an active lease for `192.168.150.100`." aria-label="Open screenshot 3: DHCP Lease Database"><img src="/assets/images/projects/linux-dhcp-server/03-03-lnx-dhcp-server-lease-database-thumb.webp" alt="DHCP Lease Database. Shows the DHCP server recording an active lease for `192.168.150.100`." width="720" height="448" loading="lazy" decoding="async"></button><figcaption><strong>3. DHCP Lease Database</strong>Shows the DHCP server recording an active lease for `192.168.150.100`.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration.webp" data-caption="DHCP Server Configuration. Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server." aria-label="Open screenshot 4: DHCP Server Configuration"><img src="/assets/images/projects/linux-dhcp-server/04-04-lnx-dhcp-server-configuration-thumb.webp" alt="DHCP Server Configuration. Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server." width="720" height="444" loading="lazy" decoding="async"></button><figcaption><strong>4. DHCP Server Configuration</strong>Shows the configured DHCP subnet, address pool, broadcast address, domain name, and DNS server.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">Testing and verification</h2><ul class="list"><li>The Alpine client received 192.168.150.100.</li><li>The lease database recorded the active lease.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>Full write-up and original screenshots: <a href="https://github.com/innocent-mbele/linux-projects/tree/main/08-dhcp-server" rel="noopener">linux-projects/08-dhcp-server</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/linux-dns-server/"><span>Previous</span>DNS Server (BIND)</a><a href="/projects/linux-ufw-firewall/" style="text-align:right"><span>Next</span>UFW Firewall</a></nav></article>
+    <aside class="facts" aria-label="Project details">
       <dl>
-        <dt>Category</dt><dd>Linux Administration</dd>
+        <dt>Area</dt><dd>Linux Administration</dd>
         <dt>Status</dt><dd>Completed</dd>
-        <dt>Technologies used</dt><dd><ul class="card-tech" aria-label="Technologies"><li class="tag">Ubuntu Linux</li><li class="tag">ISC DHCP Server</li><li class="tag">Alpine Linux</li></ul></dd>
-        <dt>Evidence</dt><dd>4 screenshots</dd>
+        <dt>Technologies</dt><dd>Ubuntu Linux, ISC DHCP Server, Alpine Linux</dd>
+        <dt>Screenshots</dt><dd>4</dd>
         <dt>Repository</dt><dd>linux-projects</dd>
       </dl>
       <a class="btn btn-primary" href="https://github.com/innocent-mbele/linux-projects/tree/main/08-dhcp-server" rel="noopener">View on GitHub</a>
-      <a class="btn btn-outline" href="/projects/">All projects</a>
+      <a class="btn btn-secondary" href="/projects/">All projects</a>
     </aside>
   </div>
 </div>
@@ -66,7 +65,7 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
     <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
   </div>
 </footer>

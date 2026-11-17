@@ -2,14 +2,31 @@
   "name": "Innocent Mbele",
   "role": "Technology & Digital Innovation",
   "tagline": "Technology. Innovation. Digital Transformation.",
-  "intro": "Selected technology projects with practical implementations and verification evidence across Microsoft Azure, Linux server administration and network automation. Each project links to its original public GitHub repository.",
+  "intro": "Hands-on projects I have built and documented while developing my skills in Microsoft Azure, Linux server administration and network automation. Each one has screenshots of the work, the checks I ran, and a link to the original repository on GitHub.",
   "base_url": "https://innocent-mbele.github.io",
   "github_user": "innocent-mbele",
   "web3forms_access_key": "",
   "repositories": [
-    {"name": "azure-basic-labs", "title": "Azure Basic Labs", "description": "Azure networking, compute and storage labs."},
-    {"name": "azure-administrator-labs", "title": "Azure Administrator Labs", "description": "Identity, governance, networking and compute administration in Azure."},
-    {"name": "linux-projects", "title": "Linux Projects", "description": "Ubuntu server administration and network services."},
-    {"name": "network-infrastructure-and-automation", "title": "Network Infrastructure & Automation", "description": "Python network automation against Cisco IOS."}
-  ]
+    {
+      "name": "azure-basic-labs",
+      "title": "Azure Basic Labs",
+      "description": "Azure networking, compute and storage labs."
+    },
+    {
+      "name": "azure-administrator-labs",
+      "title": "Azure Administrator Labs",
+      "description": "Identity, governance, networking and compute administration in Azure."
+    },
+    {
+      "name": "linux-projects",
+      "title": "Linux Projects",
+      "description": "Ubuntu server administration and network services."
+    },
+    {
+      "name": "network-infrastructure-and-automation",
+      "title": "Network Infrastructure & Automation",
+      "description": "Python network automation against Cisco IOS."
+    }
+  ],
+  "footer": "Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development."
 }

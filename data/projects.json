@@ -892,7 +892,7 @@
       "title": "Network Automation with Python and Netmiko",
       "category": "network-automation",
       "featured": true,
-      "status": "In progress: Python / Netmiko stage documented",
+      "status": "In progress. The Python and Netmiko stage is published; later stages are not yet.",
       "summary": "Inventory-driven Python scripts that connect to a Cisco IOS router with Netmiko, parse output with TextFSM and write a JSON device report.",
       "overview": "Python scripts connect to a Cisco IOS router (R1) with Netmiko, collect show version and show ip interface brief output, parse the interface table with TextFSM and save a structured JSON report. A later version reads connection details from a JSON device inventory. The repository describes a wider plan (Ansible, APIs, NETCONF/RESTCONF); only the Python stage is published so far.",
       "objectives": [

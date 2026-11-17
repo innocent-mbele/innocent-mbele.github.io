@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact | Innocent Mbele</title>
-<meta name="description" content="Contact Innocent Mbele through the portfolio contact form.">
+<meta name="description" content="Contact Innocent Mbele through the website contact form.">
 <link rel="canonical" href="https://innocent-mbele.github.io/contact/">
 <meta name="author" content="Innocent Mbele">
-<meta name="theme-color" content="#0b1626">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Innocent Mbele">
 <meta property="og:title" content="Contact | Innocent Mbele">
-<meta property="og:description" content="Contact Innocent Mbele through the portfolio contact form.">
+<meta property="og:description" content="Contact Innocent Mbele through the website contact form.">
 <meta property="og:url" content="https://innocent-mbele.github.io/contact/">
 <meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,31 +24,29 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/" aria-label="Innocent Mbele, home"><span class="brand-mark" aria-hidden="true">IM</span><span>Innocent Mbele</span></a>
+    <a class="brand" href="/">Innocent Mbele</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/contact/" aria-current="page">Contact</a></li></ul></nav>
   </div>
 </header>
 <main id="main">
-<section class="page-head">
+<section class="contact-page">
   <div class="container">
     <h1>Contact</h1>
-    <p>Questions about a project or an opportunity? Send a message and I will reply by email.</p>
-  </div>
-</section>
-<section class="section">
-  <div class="container contact-wrap">
+    <p class="intro-text">Send me a message about a project or an opportunity and I will reply by email.</p>
     <div class="form-card">
       <form id="contact-form" novalidate data-access-key="" action="https://api.web3forms.com/submit" method="post">
-        <div class="field">
-          <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="name-error">
-          <p class="error" id="name-error" aria-live="polite"></p>
-        </div>
-        <div class="field">
-          <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150" aria-describedby="email-error">
-          <p class="error" id="email-error" aria-live="polite"></p>
+        <div class="row-2">
+          <div class="field">
+            <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="name-error">
+            <p class="error" id="name-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150" aria-describedby="email-error">
+            <p class="error" id="email-error" aria-live="polite"></p>
+          </div>
         </div>
         <div class="field">
           <label for="subject">Subject <span class="req" aria-hidden="true">*</span></label>
@@ -65,22 +63,19 @@
           <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
           <input type="checkbox" name="botcheck" tabindex="-1">
         </div>
-        <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span><span class="label">Send message</span></button>
-        <p class="field hint" style="margin-top:.75rem">All fields are required. Your details are used only to reply to your message.</p>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span><span class="label">Send message</span></button>
+          <p class="small-note">All fields are required. Your details are only used to reply to you.</p>
+        </div>
         <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
       </form>
-    </div>
-    <div class="side-note">
-      <h2>Before you write</h2>
-      <p>Every project on this site links to its public GitHub repository, where the full documentation and original screenshots can be reviewed.</p>
-      <p><a href="/projects/">Browse the projects</a></p>
     </div>
   </div>
 </section>
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; 2026 Innocent Mbele. Project evidence is drawn from public GitHub repositories.</p>
+    <p>&copy; 2026 Innocent Mbele. Projects on this site come from my personal GitHub repositories, built and documented as practice for skills development.</p>
     <ul><li><a href="/projects/">Projects</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li></ul>
   </div>
 </footer>
