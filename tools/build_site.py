@@ -117,7 +117,7 @@ def page(title, description, path, body, active="", scripts=("main.js",), extra_
 def redirect_page(target, title, js_target=None):
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><title>{e(title)} | {e(SITE['name'])}</title>
-<meta name="robots" content="noindex"><link rel="canonical" href="{e(BASE + target)}">
+<meta name="robots" content="noindex"><link rel="canonical" href="{e(target if target.startswith('http') else BASE + target)}">
 <meta http-equiv="refresh" content="0; url={e(target)}"><script>location.replace({js_target or json.dumps(target)})</script></head>
 <body><p><a href="{e(target)}">Continue to {e(title)}</a></p></body></html>
 """

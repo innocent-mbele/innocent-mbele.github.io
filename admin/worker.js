@@ -13,7 +13,10 @@
 // Access checks at sign-in (all must pass):
 //   1. Microsoft's ID token is genuine: RS256 signature from the tenant's keys, issuer, audience,
 //      expiry, nonce, state and PKCE.
-//   2. The user's Entra Object ID is on ENTRA_ALLOWED_USERS.
+//   2. The account is on the allow-list: its Object ID is on ENTRA_ALLOWED_USERS and/or its
+//      sign-in address is on ENTRA_ALLOWED_EMAILS (every list that is set must match).
+//      ENTRA_TENANT_ID can be a tenant ID (work account) or "consumers" (personal Microsoft
+//      account such as outlook.com; the app registration must then allow personal accounts).
 //   3. Multifactor authentication was used: the token's amr claim contains "mfa"
 //      (turn off only by setting REQUIRE_MFA=false, not recommended).
 //   4. The request comes from an allowed country (ADMIN_ALLOWED_COUNTRIES, e.g. "AE,ZW").
@@ -153,14 +156,29 @@ async function readSession(request, env) {
   if (!s) return null;
   if (s.ctry !== country(request)) return null;
   if (s.ua !== (await browserTag(request))) return null;
-  if (!list(env.ENTRA_ALLOWED_USERS).map((x) => x.toLowerCase()).includes(String(s.oid).toLowerCase())) return null;
+  if (!isAllowedAccount(env, s.oid, s.email)) return null;
   return s;
 }
 
 // ------------------------------------------------------------------ Microsoft Entra ID
 
+// Personal Microsoft accounts (outlook.com, hotmail.com, live.com) all sign in through this tenant.
+const MSA_TENANT = "9188040d-6c67-4c5b-b112-36a304b66dad";
+const isConsumers = (env) => String(env.ENTRA_TENANT_ID || "").trim().toLowerCase() === "consumers";
+
+/** Every allow-list that is set must match; at least one must be set. */
+function isAllowedAccount(env, oid, email) {
+  const oids = list(env.ENTRA_ALLOWED_USERS).map((x) => x.toLowerCase());
+  const emails = list(env.ENTRA_ALLOWED_EMAILS).map((x) => x.toLowerCase());
+  if (!oids.length && !emails.length) return false;
+  if (oids.length && !oids.includes(String(oid || "").toLowerCase())) return false;
+  if (emails.length && !emails.includes(String(email || "").toLowerCase())) return false;
+  return true;
+}
+
 function configured(env) {
-  return !!(env.ENTRA_TENANT_ID && env.ENTRA_CLIENT_ID && env.ENTRA_CLIENT_SECRET && env.ENTRA_ALLOWED_USERS &&
+  return !!(env.ENTRA_TENANT_ID && env.ENTRA_CLIENT_ID && env.ENTRA_CLIENT_SECRET &&
+    (list(env.ENTRA_ALLOWED_USERS).length || list(env.ENTRA_ALLOWED_EMAILS).length) &&
     env.SESSION_SECRET && env.SESSION_SECRET.length >= 32 && env.GITHUB_TOKEN);
 }
 
@@ -171,12 +189,15 @@ function authorityHost(env) {
 }
 
 function entraUrls(env) {
-  const base = `${authorityHost(env)}/${encodeURIComponent(env.ENTRA_TENANT_ID || "")}`;
+  const tenant = isConsumers(env) ? "consumers" : String(env.ENTRA_TENANT_ID || "").trim();
+  const base = `${authorityHost(env)}/${encodeURIComponent(tenant)}`;
+  const tid = isConsumers(env) ? MSA_TENANT : tenant;
   return {
     authorize: `${base}/oauth2/v2.0/authorize`,
     token: `${base}/oauth2/v2.0/token`,
     keys: `${base}/discovery/v2.0/keys`,
-    issuer: `${base}/v2.0`,
+    issuer: `${authorityHost(env)}/${tid}/v2.0`,
+    tid,
   };
 }
 
@@ -222,28 +243,31 @@ async function signingKeys(env, refresh = false) {
 }
 
 async function verifyIdToken(idToken, nonce, env, now = Date.now()) {
+  const fail = (why) => { console.log("admin: id token rejected:", why); return null; };
   const parts = String(idToken).split(".");
-  if (parts.length !== 3) return null;
+  if (parts.length !== 3) return fail("not a JWT");
   try {
     const header = JSON.parse(dec.decode(fromB64url(parts[0])));
     const claims = JSON.parse(dec.decode(fromB64url(parts[1])));
-    if (header.alg !== "RS256" || !header.kid) return null;
+    if (header.alg !== "RS256" || !header.kid) return fail("algorithm");
     let jwk = (await signingKeys(env)).find((k) => k.kid === header.kid);
     if (!jwk) jwk = (await signingKeys(env, true)).find((k) => k.kid === header.kid);
-    if (!jwk) return null;
+    if (!jwk) return fail("unknown signing key");
     const key = await crypto.subtle.importKey("jwk", { kty: jwk.kty, n: jwk.n, e: jwk.e }, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
     const ok = await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, fromB64url(parts[2]), enc.encode(`${parts[0]}.${parts[1]}`));
-    if (!ok) return null;
+    if (!ok) return fail("signature");
     const skew = 120;
     const nowS = Math.floor(now / 1000);
-    if (claims.iss !== entraUrls(env).issuer) return null;
-    if (claims.aud !== env.ENTRA_CLIENT_ID) return null;
-    if (!claims.exp || claims.exp + skew < nowS) return null;
-    if (claims.nbf && claims.nbf - skew > nowS) return null;
-    if (!claims.nonce || claims.nonce !== nonce) return null;
+    const urls = entraUrls(env);
+    if (claims.iss !== urls.issuer) return fail(`issuer ${String(claims.iss).slice(0, 120)}`);
+    if (claims.tid && String(claims.tid).toLowerCase() !== urls.tid.toLowerCase()) return fail("tenant");
+    if (claims.aud !== env.ENTRA_CLIENT_ID) return fail("audience");
+    if (!claims.exp || claims.exp + skew < nowS) return fail("expired");
+    if (claims.nbf && claims.nbf - skew > nowS) return fail("not yet valid");
+    if (!claims.nonce || claims.nonce !== nonce) return fail("nonce");
     return claims;
-  } catch {
-    return null;
+  } catch (e) {
+    return fail(`unreadable (${e && e.message})`);
   }
 }
 
@@ -262,16 +286,20 @@ async function redeemCode(code, verifier, request, env) {
     }),
   });
   if (!res.ok) {
-    console.log("admin: token request failed", res.status);
+    // Microsoft's error code (for example AADSTS7000215 = wrong client secret). No secrets are logged.
+    const err = await res.json().catch(() => ({}));
+    console.log("admin: token request failed", res.status, err.error || "-", (err.error_codes || []).join(","),
+      String(err.error_description || "").split("\n")[0].slice(0, 200));
     return null;
   }
   return (await res.json()).id_token || null;
 }
 
 /** The access checks. Returns null when allowed, or a reason when not. */
+const accountEmail = (claims) => String(claims.preferred_username || claims.email || "").toLowerCase();
+
 function accessDecision(claims, request, env) {
-  const allowed = list(env.ENTRA_ALLOWED_USERS).map((x) => x.toLowerCase());
-  if (!claims.oid || !allowed.includes(String(claims.oid).toLowerCase())) return "user";
+  if (!claims.oid || !isAllowedAccount(env, claims.oid, accountEmail(claims))) return "user";
   if (String(env.REQUIRE_MFA || "true").toLowerCase() !== "false") {
     const amr = Array.isArray(claims.amr) ? claims.amr : [];
     if (!amr.includes("mfa")) return "mfa";
@@ -291,7 +319,10 @@ async function finishSignIn(request, env) {
   const url = new URL(request.url);
   const clearFlow = cookie(FLOW_COOKIE, "", { path: `${BASE}/auth`, maxAge: 0, sameSite: "Lax" });
   if (url.searchParams.get("error")) {
-    return messagePage("Sign-in stopped", "Microsoft did not complete the sign-in. Please try again.");
+    const code = String(url.searchParams.get("error")).replace(/[^\w.-]/g, "").slice(0, 60);
+    const aadsts = (String(url.searchParams.get("error_description") || "").match(/AADSTS\d+/) || [""])[0];
+    console.log("admin: Microsoft returned an error", code, aadsts, String(url.searchParams.get("error_description") || "").split("\n")[0].slice(0, 200));
+    return messagePage("Sign-in stopped", `Microsoft did not complete the sign-in (${[code, aadsts].filter(Boolean).join(" ")}). Please try again.`);
   }
   const flow = await verifyValue("flow", readCookie(request, FLOW_COOKIE), env);
   const code = url.searchParams.get("code");
@@ -303,19 +334,22 @@ async function finishSignIn(request, env) {
   if (!claims) return messagePage("Sign-in failed", "The sign-in could not be verified. Please try again.");
   const reason = accessDecision(claims, request, env);
   if (reason) {
-    console.log("admin: access denied", reason, claims.oid || "-", country(request));
-    const res = messagePage("Access denied", DENIED[reason]);
+    console.log("admin: access denied", reason, claims.oid || "-", accountEmail(claims) || "-", country(request),
+      "amr=" + (Array.isArray(claims.amr) ? claims.amr.join("+") : "none"));
+    let text = DENIED[reason];
+    if (reason === "mfa") text += ` (Microsoft reported: ${Array.isArray(claims.amr) && claims.amr.length ? claims.amr.join(", ") : "no sign-in methods"}.)`;
+    const res = messagePage("Access denied", text);
     res.headers.append("Set-Cookie", clearFlow);
     return res;
   }
   const session = await signValue("session", {
     oid: claims.oid,
     name: claims.name || "",
-    email: claims.preferred_username || claims.email || "",
+    email: accountEmail(claims),
     ctry: country(request),
     ua: await browserTag(request),
   }, sessionHours(env) * 3600_000, env);
-  console.log("admin: signed in", claims.oid, country(request));
+  console.log("admin: signed in", claims.oid, accountEmail(claims), country(request), "amr=" + (claims.amr || []).join("+"));
   const headers = new Headers({ Location: BASE, "Cache-Control": "no-store" });
   headers.append("Set-Cookie", clearFlow);
   headers.append("Set-Cookie", cookie(SESSION_COOKIE, session, { path: BASE, maxAge: Math.round(sessionHours(env) * 3600), sameSite: "Strict" }));

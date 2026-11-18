@@ -252,3 +252,57 @@ test("adding a project with an uploaded screenshot works", async () => {
   const saved = JSON.parse(repo.files["data/projects.json"]);
   assert.equal(saved.projects.at(-1).slug, "new-lab");
 });
+
+// ---------------------------------------------------------------- personal Microsoft account (outlook.com)
+const MSA = "9188040d-6c67-4c5b-b112-36a304b66dad";
+const MSA_OID = "00000000-0000-0000-1234-56789abcdef0";
+const msaEnv = { ...env, ENTRA_TENANT_ID: "consumers", ENTRA_ALLOWED_USERS: "", ENTRA_ALLOWED_EMAILS: "Owner@Outlook.com" };
+const msaClaims = { iss: `https://login.microsoftonline.com/${MSA}/v2.0`, tid: MSA, oid: MSA_OID, preferred_username: "owner@outlook.com" };
+async function signInWith(e, claims, country = "AE") {
+  const start = await worker.fetch(req("/inno/auth/login", { country }), e);
+  const loc = new URL(start.headers.get("Location"));
+  lastNonce = loc.searchParams.get("nonce");
+  nextClaims = claims;
+  const res = await worker.fetch(req(`/inno/auth/callback?code=abc&state=${loc.searchParams.get("state")}`, { headers: { Cookie: cookieValue(start, "inno_flow") }, country }), e);
+  return { start, res, session: cookieValue(res, "inno_session") };
+}
+
+test("personal account: sign-in goes to the consumers endpoint and an allowed address gets a session", async () => {
+  const { start, res, session } = await signInWith(msaEnv, msaClaims);
+  assert.equal(new URL(start.headers.get("Location")).pathname, "/consumers/oauth2/v2.0/authorize");
+  assert.equal(res.status, 302);
+  assert.ok(session);
+  const who = await worker.fetch(req("/inno/api/session", { headers: { Cookie: session } }), msaEnv);
+  assert.equal((await who.json()).email, "owner@outlook.com");
+});
+
+test("personal account: another address, a work-tenant token or a missing MFA claim is refused", async () => {
+  for (const claims of [{ ...msaClaims, preferred_username: "someone@outlook.com" },
+    { ...msaClaims, iss: `https://login.microsoftonline.com/${TENANT}/v2.0`, tid: TENANT },
+    { ...msaClaims, tid: TENANT },
+    { ...msaClaims, amr: ["pwd"] }]) {
+    const { session } = await signInWith(msaEnv, claims);
+    assert.equal(session, null, JSON.stringify(claims));
+  }
+});
+
+test("personal account: when both lists are set, both must match", async () => {
+  const e = { ...msaEnv, ENTRA_ALLOWED_USERS: MSA_OID };
+  assert.ok((await signInWith(e, msaClaims)).session);
+  assert.equal((await signInWith(e, { ...msaClaims, oid: "00000000-0000-0000-9999-000000000000" })).session, null);
+});
+
+test("the MFA refusal says which sign-in methods Microsoft reported", async () => {
+  const { res } = await signIn({ claims: { amr: ["pwd"] } });
+  assert.match(await res.text(), /Microsoft reported: pwd/);
+});
+
+test("Microsoft errors are shown with their code", async () => {
+  const res = await worker.fetch(req("/inno/auth/callback?error=invalid_request&error_description=AADSTS700016%3A+Application+not+found"), env);
+  assert.match(await res.text(), /invalid_request AADSTS700016/);
+});
+
+test("no allow-list at all means not set up", async () => {
+  const res = await worker.fetch(req("/inno"), { ...env, ENTRA_ALLOWED_USERS: "" });
+  assert.equal(res.status, 503);
+});

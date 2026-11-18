@@ -33,7 +33,7 @@ Microsoft checks first:
 
 Then the admin service checks again on its own:
 1. The sign-in token is genuine: Microsoft's signature, your tenant, this app, not expired, plus state, nonce and PKCE.
-2. Your Object ID is on `ENTRA_ALLOWED_USERS`.
+2. Your Object ID is on `ENTRA_ALLOWED_USERS` and/or your sign-in address is on `ENTRA_ALLOWED_EMAILS`.
 3. **MFA was used**: the token's `amr` claim must contain `mfa`. Otherwise sign-in is refused.
 4. **You are in an allowed country** (`ADMIN_ALLOWED_COUNTRIES`, for example `AE,ZW`). Otherwise sign-in is refused.
 5. The session lasts 2 hours. It is tied to the country and the browser you signed in from, so a copied cookie does not work anywhere else.
@@ -41,6 +41,19 @@ Then the admin service checks again on its own:
 7. Changes are only accepted from the admin page itself. The service only writes to `data/` and image folders, only takes WebP images and checks every field.
 
 The service keeps no passwords. Its secrets live only in Cloudflare.
+
+## Personal Microsoft account option (outlook.com)
+
+Instead of a tenant user you can sign in with a personal Microsoft account such as `you@outlook.com`. This is what the site uses now.
+
+1. Entra → **App registrations** → **New registration**. Supported account types: **Personal Microsoft accounts only**. Redirect URI: **Web**, `https://inno-admin.<your-subdomain>.workers.dev/inno/auth/callback`.
+2. **Certificates & secrets** → new client secret. Copy the **Value**, not the Secret ID.
+3. **Manifest**: set `"optionalClaims"` to `{ "idToken": [ { "name": "amr", "essential": false } ], "accessToken": [], "saml2Token": [] }`.
+4. In Cloudflare set `ENTRA_TENANT_ID` = `consumers`, `ENTRA_CLIENT_ID` = the new app's client ID, `ENTRA_CLIENT_SECRET` = the new value, and `ENTRA_ALLOWED_EMAILS` = your address. Delete `ENTRA_ALLOWED_USERS`, because the tenant user's Object ID no longer applies.
+5. After the first sign-in, the Worker log shows `admin: signed in <id> <address> …`. Add that ID as `ENTRA_ALLOWED_USERS`. From then on both the ID and the address must match.
+6. Turn on two-step verification at https://account.microsoft.com/security. If Microsoft does not report MFA for personal accounts, the refusal page lists what it did report. Only then set `REQUIRE_MFA` = `false`, and rely on the account's own two-step verification.
+
+There is no admin consent, app assignment or Conditional Access for personal accounts. The allow-list in the Worker is what keeps everyone else out.
 
 ## What you need
 
@@ -128,6 +141,7 @@ Copy the `github_pat_…` value → `GITHUB_TOKEN`. This token only lets the adm
 | `ENTRA_CLIENT_ID` | Text | Application (client) ID |
 | `ENTRA_CLIENT_SECRET` | **Secret** | Client secret value |
 | `ENTRA_ALLOWED_USERS` | Text | Your admin user's Object ID |
+| `ENTRA_ALLOWED_EMAILS` | Text | Optional: your sign-in address. If both lists are set, both must match |
 | `SESSION_SECRET` | **Secret** | 64 random characters (see below) |
 | `GITHUB_TOKEN` | **Secret** | `github_pat_…` |
 | `GITHUB_REPO` | Text | `innocent-mbele/innocent-mbele.github.io` |
