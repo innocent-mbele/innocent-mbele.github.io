@@ -1,4 +1,4 @@
-"""Paint over Azure subscription IDs with a natural red marker stroke.
+"""Paint over Azure subscription IDs (and the owner's home IP address) with a natural red marker stroke.
 
 Each ID gets one solid marker stroke that covers the whole ID (including short
 leftover characters at its ends), then one or two shorter passes on top, as if
@@ -13,7 +13,7 @@ usage: python3 -I tools/paint_subscription_ids.py SRC_ROOT LIST_FILE OUT_ROOT RE
   OUT_ROOT     where painted copies are written (same relative paths)
   REPORT_JSON  which OCR words were painted in each image
 Used for all screenshot redaction, by hand and by the weekly task. Add any new
-subscription ID to SUBS below. Needs tesseract, pytesseract and Pillow.
+subscription ID to SUBS and any other private text to PRIVATE_TEXT below. Needs tesseract, pytesseract and Pillow.
 """
 import json
 import math
@@ -27,7 +27,9 @@ from PIL import Image, ImageDraw, ImageFilter
 
 SUBS = ["da5a388d-549c-4eff-9d56-e27896817af3", "d92ad34f-cbb2-4fb1-867a-2a655ef705ed"]
 PIECES = sorted({p for s in SUBS for p in s.split("-")} | {s.replace("-", "")[i:i + 8] for s in SUBS for i in range(0, 25, 4)}, key=len, reverse=True)
-PIECE_RE = re.compile("|".join(re.escape(p) for p in PIECES if len(p) >= 4), re.I)
+# Other private details painted the same way: the owner's home internet IP address.
+PRIVATE_TEXT = [r"5\.195\.218\.90", r"195\.218\.9"]
+PIECE_RE = re.compile("|".join([re.escape(p) for p in PIECES if len(p) >= 4] + PRIVATE_TEXT), re.I)
 HEXISH = re.compile(r"^[0-9a-fA-F%/\-_.]{2,}$")
 SS = 4  # supersampling
 
