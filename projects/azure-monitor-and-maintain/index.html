@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor and Maintain Azure | Innocent Mbele</title>
+<meta name="description" content="I used the Activity Log to find failed operations, fixed a resource provider that was not registered and found an unused public IP.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/azure-monitor-and-maintain/">
+
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Monitor and Maintain Azure | Innocent Mbele">
+<meta property="og:description" content="I used the Activity Log to find failed operations, fixed a resource provider that was not registered and found an unused public IP.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/azure-monitor-and-maintain/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg?v=9" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=9" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=9">
+<link rel="stylesheet" href="/assets/css/main.css?v=9">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">Innocent Mbele</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Azure Identity &amp; Governance</p>
+    <h1>Monitor and Maintain Azure</h1>
+    <p>I used the Activity Log to find failed operations, fixed a resource provider that was not registered and found an unused public IP.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I used Azure Monitor to check what was happening in my subscription. In the Activity Log I filtered the last seven days and looked at the failed operations. One failure came from the Microsoft.RecoveryServices provider, which was not registered. I registered it and checked the result. I also looked into a failed DDoS protection status operation and found a public IP that was not attached to anything. I also explored Azure Monitor Metrics on an existing virtual machine.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Find failed operations in the subscription.</li><li>Fix the cause and confirm the fix.</li><li>Find resources that are not in use.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I filtered the subscription Activity Log to the last seven days and reviewed successful and failed operations.</li><li>I found that Microsoft.RecoveryServices was NotRegistered, which caused a failed backup status operation.</li><li>I registered the provider at subscription level.</li><li>I investigated the failed DDoS protection status operation and the PublicIpNotConnectedToBackend error.</li><li>I found the public IP vnet-eastasia-1-IPv4 (Standard SKU, East Asia) with no backend resource.</li><li>I explored Azure Monitor Metrics on an existing virtual machine.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><p class="small-note">I painted over my Azure subscription ID in red. Everything else is as I captured it.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/01-01-monitor-maintain-azure-activity-log.webp" data-caption="Azure Activity Log Investigation. Shows subscription-level Activity Log records filtered to the last seven days, including successful and failed Azure operations." aria-label="Open screenshot 1: Azure Activity Log Investigation"><img src="/assets/images/projects/azure-monitor-and-maintain/01-01-monitor-maintain-azure-activity-log-thumb.webp" alt="Azure Activity Log Investigation" width="720" height="411" loading="lazy" decoding="async"></button><figcaption><strong>1. Azure Activity Log Investigation</strong>Shows subscription-level Activity Log records filtered to the last seven days, including successful and failed Azure operations.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/02-02-monitor-maintain-azure-recovery-services-provider-status.webp" data-caption="Recovery Services Provider Registration Status. Shows Microsoft.RecoveryServices in the NotRegistered state under Azure subscription 1, identifying the cause of the failed backup-status operation." aria-label="Open screenshot 2: Recovery Services Provider Registration Status"><img src="/assets/images/projects/azure-monitor-and-maintain/02-02-monitor-maintain-azure-recovery-services-provider-status-thumb.webp" alt="Recovery Services Provider Status" width="720" height="409" loading="lazy" decoding="async"></button><figcaption><strong>2. Recovery Services Provider Registration Status</strong>Shows Microsoft.RecoveryServices in the NotRegistered state under Azure subscription 1, identifying the cause of the failed backup-status operation.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/03-03-monitor-maintain-azure-recovery-services-provider-registered.webp" data-caption="Recovery Services Provider Registration. Shows the successful registration of Microsoft.RecoveryServices at subscription level." aria-label="Open screenshot 3: Recovery Services Provider Registration"><img src="/assets/images/projects/azure-monitor-and-maintain/03-03-monitor-maintain-azure-recovery-services-provider-registered-thumb.webp" alt="Recovery Services Provider Registered" width="720" height="416" loading="lazy" decoding="async"></button><figcaption><strong>3. Recovery Services Provider Registration</strong>Shows the successful registration of Microsoft.RecoveryServices at subscription level.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/04-04-monitor-maintain-azure-provider-registration-activity.webp" data-caption="Provider Registration Activity Log Verification. Shows the successful Register Resource Provider operation recorded in Azure Activity Log after the corrective action." aria-label="Open screenshot 4: Provider Registration Activity Log Verification"><img src="/assets/images/projects/azure-monitor-and-maintain/04-04-monitor-maintain-azure-provider-registration-activity-thumb.webp" alt="Provider Registration Activity" width="720" height="411" loading="lazy" decoding="async"></button><figcaption><strong>4. Provider Registration Activity Log Verification</strong>Shows the successful Register Resource Provider operation recorded in Azure Activity Log after the corrective action.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/05-05-monitor-maintain-azure-ddos-public-ip-error-investigation.webp" data-caption="DDoS Public IP Error Investigation. Shows the investigation of a failed DDoS protection status operation and the PublicIpNotConnectedToBackend error reported by Azure" aria-label="Open screenshot 5: DDoS Public IP Error Investigation"><img src="/assets/images/projects/azure-monitor-and-maintain/05-05-monitor-maintain-azure-ddos-public-ip-error-investigation-thumb.webp" alt="DDoS Public IP Error Investigation" width="720" height="407" loading="lazy" decoding="async"></button><figcaption><strong>5. DDoS Public IP Error Investigation</strong>Shows the investigation of a failed DDoS protection status operation and the PublicIpNotConnectedToBackend error reported by Azure</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-monitor-and-maintain/06-06-monitor-maintain-azure-public-ip-unassociated-resource.webp" data-caption="Unassociated Public IP Resource. Shows the configuration of the vnet-eastasia-1-IPv4 Public IP address, including its Standard SKU, East Asia region and lack of an associated backend resource." aria-label="Open screenshot 6: Unassociated Public IP Resource"><img src="/assets/images/projects/azure-monitor-and-maintain/06-06-monitor-maintain-azure-public-ip-unassociated-resource-thumb.webp" alt="Unassociated Public IP Resource" width="720" height="406" loading="lazy" decoding="async"></button><figcaption><strong>6. Unassociated Public IP Resource</strong>Shows the configuration of the vnet-eastasia-1-IPv4 Public IP address, including its Standard SKU, East Asia region and lack of an associated backend resource.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>The Resource providers page shows Microsoft.RecoveryServices as Registered.</li><li>The Activity Log shows the Register Resource Provider operation succeeded.</li><li>The public IP page shows it is not connected to any resource.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/08-monitor-maintain-azure" rel="noopener">azure-administrator-labs/08-monitor-maintain-azure</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-subscription-governance/"><span>Previous</span>Azure Subscription Governance</a><a href="/projects/azure-rbac/" style="text-align:right"><span>Next</span>Azure Role-Based Access Control (RBAC)</a></nav></article>
+    <aside class="facts" aria-label="Project details">
+      <dl>
+        <dt>Area</dt><dd>Azure Identity &amp; Governance</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Tools and services</dt><dd>Microsoft Azure, Azure Monitor, Activity Log, Resource providers, Public IP address, Azure Monitor Metrics</dd>
+        <dt>Screenshots</dt><dd>6</dd>
+        <dt>Repository</dt><dd>azure-administrator-labs</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/08-monitor-maintain-azure" rel="noopener">View on GitHub</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js?v=9" defer></script>
+</body>
+</html>

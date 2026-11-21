@@ -885,6 +885,102 @@
       ]
     },
     {
+      "slug": "azure-storage-blob-and-files",
+      "repo": "azure-administrator-labs",
+      "folder": "07-azure-storage",
+      "title": "Implement and Manage Azure Storage",
+      "category": "azure-compute-storage",
+      "featured": false,
+      "status": "Completed",
+      "summary": "I built storage for a finance team with a blob container and an Azure file share with a folder for each department.",
+      "overview": "I deployed a StorageV2 account in UAE North with Standard performance and locally redundant storage (LRS). I created a finance blob container and uploaded sample documents. Then I set up Azure Files with a finance-shared file share and folders for each finance department. I gave access with Azure RBAC and tested the file share from the Azure portal and from Windows over SMB.",
+      "objectives": [
+        "Store finance documents in Azure Blob Storage.",
+        "Give the finance departments a shared file share with their own folders.",
+        "Protect the data against accidental deletion."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Storage Account (StorageV2)",
+        "Blob Storage",
+        "Azure Files",
+        "SMB",
+        "Azure RBAC",
+        "Azure Monitor"
+      ],
+      "implementation": [
+        "I deployed the storage account innocentstorage07 in UAE North with Standard performance and LRS.",
+        "I created a finance blob container and uploaded sample documents.",
+        "I created the finance-shared file share with folders for Accounts Payable, Accounts Receivable, Financial Reports and Payroll.",
+        "I gave access through Azure RBAC.",
+        "I turned on blob soft delete, container soft delete and blob versioning.",
+        "I used Azure Monitor to look at storage transactions and availability."
+      ],
+      "verification": [
+        "The storage account, container and file share pages show the setup.",
+        "The uploaded documents are listed in the finance container.",
+        "The four department folders are listed in the file share.",
+        "I opened the file share from the Azure portal and from Windows over SMB."
+      ],
+      "screenshots": [
+        {
+          "title": "Azure Storage Account Deployment",
+          "caption": "Shows the deployed `innocentstorage07` storage account and its configuration.",
+          "alt": "Azure Storage Account",
+          "src": "assets/images/projects/azure-storage-blob-and-files/01-01-azure-storage-account-deployment.webp",
+          "thumb": "assets/images/projects/azure-storage-blob-and-files/01-01-azure-storage-account-deployment-thumb.webp",
+          "width": 1600,
+          "height": 965,
+          "thumb_width": 720,
+          "thumb_height": 434
+        },
+        {
+          "title": "Finance Blob Container",
+          "caption": "Shows the finance blob container created in the storage account.",
+          "alt": "Finance Blob Container",
+          "src": "assets/images/projects/azure-storage-blob-and-files/02-02-azure-storage-finance-container.webp",
+          "thumb": "assets/images/projects/azure-storage-blob-and-files/02-02-azure-storage-finance-container-thumb.webp",
+          "width": 1600,
+          "height": 967,
+          "thumb_width": 720,
+          "thumb_height": 435
+        },
+        {
+          "title": "Finance Blob Uploads",
+          "caption": "Shows the sample documents uploaded to the finance blob container.",
+          "alt": "Finance Blob Uploads",
+          "src": "assets/images/projects/azure-storage-blob-and-files/03-03-azure-storage-finance-blob-uploads.webp",
+          "thumb": "assets/images/projects/azure-storage-blob-and-files/03-03-azure-storage-finance-blob-uploads-thumb.webp",
+          "width": 1600,
+          "height": 979,
+          "thumb_width": 720,
+          "thumb_height": 440
+        },
+        {
+          "title": "Finance Azure File Share Deployment",
+          "caption": "Shows the deployed `finance-shared` Azure file share and its configuration.",
+          "alt": "Finance File Share",
+          "src": "assets/images/projects/azure-storage-blob-and-files/04-04-azure-storage-finance-file-share-deployment.webp",
+          "thumb": "assets/images/projects/azure-storage-blob-and-files/04-04-azure-storage-finance-file-share-deployment-thumb.webp",
+          "width": 1600,
+          "height": 952,
+          "thumb_width": 720,
+          "thumb_height": 429
+        },
+        {
+          "title": "Finance Departmental Directories",
+          "caption": "Shows the departmental directories created within the finance file share: Accounts-Payable, Accounts-Receivable, Financial-Reports and Payroll.",
+          "alt": "Finance Department Directories",
+          "src": "assets/images/projects/azure-storage-blob-and-files/05-05-azure-storage-finance-department-directories.webp",
+          "thumb": "assets/images/projects/azure-storage-blob-and-files/05-05-azure-storage-finance-department-directories-thumb.webp",
+          "width": 1600,
+          "height": 926,
+          "thumb_width": 720,
+          "thumb_height": 417
+        }
+      ]
+    },
+    {
       "slug": "azure-linux-vm-deployment",
       "repo": "azure-basic-labs",
       "folder": "04-azure-linux-vm-deployment",
@@ -1372,6 +1468,111 @@
         }
       ],
       "cover": 7
+    },
+    {
+      "slug": "azure-monitor-and-maintain",
+      "repo": "azure-administrator-labs",
+      "folder": "08-monitor-maintain-azure",
+      "title": "Monitor and Maintain Azure",
+      "category": "identity-governance",
+      "featured": false,
+      "status": "Completed",
+      "summary": "I used the Activity Log to find failed operations, fixed a resource provider that was not registered and found an unused public IP.",
+      "overview": "I used Azure Monitor to check what was happening in my subscription. In the Activity Log I filtered the last seven days and looked at the failed operations. One failure came from the Microsoft.RecoveryServices provider, which was not registered. I registered it and checked the result. I also looked into a failed DDoS protection status operation and found a public IP that was not attached to anything. I also explored Azure Monitor Metrics on an existing virtual machine.",
+      "objectives": [
+        "Find failed operations in the subscription.",
+        "Fix the cause and confirm the fix.",
+        "Find resources that are not in use."
+      ],
+      "technologies": [
+        "Microsoft Azure",
+        "Azure Monitor",
+        "Activity Log",
+        "Resource providers",
+        "Public IP address",
+        "Azure Monitor Metrics"
+      ],
+      "implementation": [
+        "I filtered the subscription Activity Log to the last seven days and reviewed successful and failed operations.",
+        "I found that Microsoft.RecoveryServices was NotRegistered, which caused a failed backup status operation.",
+        "I registered the provider at subscription level.",
+        "I investigated the failed DDoS protection status operation and the PublicIpNotConnectedToBackend error.",
+        "I found the public IP vnet-eastasia-1-IPv4 (Standard SKU, East Asia) with no backend resource.",
+        "I explored Azure Monitor Metrics on an existing virtual machine."
+      ],
+      "verification": [
+        "The Resource providers page shows Microsoft.RecoveryServices as Registered.",
+        "The Activity Log shows the Register Resource Provider operation succeeded.",
+        "The public IP page shows it is not connected to any resource."
+      ],
+      "screenshots": [
+        {
+          "title": "Azure Activity Log Investigation",
+          "caption": "Shows subscription-level Activity Log records filtered to the last seven days, including successful and failed Azure operations.",
+          "alt": "Azure Activity Log Investigation",
+          "src": "assets/images/projects/azure-monitor-and-maintain/01-01-monitor-maintain-azure-activity-log.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/01-01-monitor-maintain-azure-activity-log-thumb.webp",
+          "width": 1600,
+          "height": 914,
+          "thumb_width": 720,
+          "thumb_height": 411
+        },
+        {
+          "title": "Recovery Services Provider Registration Status",
+          "caption": "Shows Microsoft.RecoveryServices in the NotRegistered state under Azure subscription 1, identifying the cause of the failed backup-status operation.",
+          "alt": "Recovery Services Provider Status",
+          "src": "assets/images/projects/azure-monitor-and-maintain/02-02-monitor-maintain-azure-recovery-services-provider-status.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/02-02-monitor-maintain-azure-recovery-services-provider-status-thumb.webp",
+          "width": 1600,
+          "height": 909,
+          "thumb_width": 720,
+          "thumb_height": 409
+        },
+        {
+          "title": "Recovery Services Provider Registration",
+          "caption": "Shows the successful registration of Microsoft.RecoveryServices at subscription level.",
+          "alt": "Recovery Services Provider Registered",
+          "src": "assets/images/projects/azure-monitor-and-maintain/03-03-monitor-maintain-azure-recovery-services-provider-registered.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/03-03-monitor-maintain-azure-recovery-services-provider-registered-thumb.webp",
+          "width": 1600,
+          "height": 924,
+          "thumb_width": 720,
+          "thumb_height": 416
+        },
+        {
+          "title": "Provider Registration Activity Log Verification",
+          "caption": "Shows the successful Register Resource Provider operation recorded in Azure Activity Log after the corrective action.",
+          "alt": "Provider Registration Activity",
+          "src": "assets/images/projects/azure-monitor-and-maintain/04-04-monitor-maintain-azure-provider-registration-activity.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/04-04-monitor-maintain-azure-provider-registration-activity-thumb.webp",
+          "width": 1600,
+          "height": 912,
+          "thumb_width": 720,
+          "thumb_height": 411
+        },
+        {
+          "title": "DDoS Public IP Error Investigation",
+          "caption": "Shows the investigation of a failed DDoS protection status operation and the PublicIpNotConnectedToBackend error reported by Azure",
+          "alt": "DDoS Public IP Error Investigation",
+          "src": "assets/images/projects/azure-monitor-and-maintain/05-05-monitor-maintain-azure-ddos-public-ip-error-investigation.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/05-05-monitor-maintain-azure-ddos-public-ip-error-investigation-thumb.webp",
+          "width": 1600,
+          "height": 905,
+          "thumb_width": 720,
+          "thumb_height": 407
+        },
+        {
+          "title": "Unassociated Public IP Resource",
+          "caption": "Shows the configuration of the vnet-eastasia-1-IPv4 Public IP address, including its Standard SKU, East Asia region and lack of an associated backend resource.",
+          "alt": "Unassociated Public IP Resource",
+          "src": "assets/images/projects/azure-monitor-and-maintain/06-06-monitor-maintain-azure-public-ip-unassociated-resource.webp",
+          "thumb": "assets/images/projects/azure-monitor-and-maintain/06-06-monitor-maintain-azure-public-ip-unassociated-resource-thumb.webp",
+          "width": 1600,
+          "height": 901,
+          "thumb_width": 720,
+          "thumb_height": 406
+        }
+      ]
     },
     {
       "slug": "azure-rbac",

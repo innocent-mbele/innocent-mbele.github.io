@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implement and Manage Azure Storage | Innocent Mbele</title>
+<meta name="description" content="I built storage for a finance team with a blob container and an Azure file share with a folder for each department.">
+<link rel="canonical" href="https://innocent-mbele.github.io/projects/azure-storage-blob-and-files/">
+
+<meta name="author" content="Innocent Mbele">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Innocent Mbele">
+<meta property="og:title" content="Implement and Manage Azure Storage | Innocent Mbele">
+<meta property="og:description" content="I built storage for a finance team with a blob container and an Azure file share with a folder for each department.">
+<meta property="og:url" content="https://innocent-mbele.github.io/projects/azure-storage-blob-and-files/">
+<meta property="og:image" content="https://innocent-mbele.github.io/assets/icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icons/favicon.svg?v=9" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png?v=9" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=9">
+<link rel="stylesheet" href="/assets/css/main.css?v=9">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">Innocent Mbele</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main"><ul><li><a href="/#home" data-nav="home">Home</a></li><li><a href="/#projects" data-nav="projects" aria-current="page">Projects</a></li><li><a href="/#contact" data-nav="contact">Contact me</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="container">
+    <p class="breadcrumb"><a href="/#projects">My projects</a> / Azure Compute &amp; Storage</p>
+    <h1>Implement and Manage Azure Storage</h1>
+    <p>I built storage for a finance team with a blob container and an Azure file share with a folder for each department.</p>
+  </div>
+</section>
+<div class="section">
+  <div class="container detail">
+    <article><section aria-labelledby="s0"><h2 id="s0">Overview</h2><p>I deployed a StorageV2 account in UAE North with Standard performance and locally redundant storage (LRS). I created a finance blob container and uploaded sample documents. Then I set up Azure Files with a finance-shared file share and folders for each finance department. I gave access with Azure RBAC and tested the file share from the Azure portal and from Windows over SMB.</p></section><section aria-labelledby="s1"><h2 id="s1">What I set out to do</h2><ul class="list"><li>Store finance documents in Azure Blob Storage.</li><li>Give the finance departments a shared file share with their own folders.</li><li>Protect the data against accidental deletion.</li></ul></section><section aria-labelledby="s2"><h2 id="s2">What I did</h2><ul class="list"><li>I deployed the storage account innocentstorage07 in UAE North with Standard performance and LRS.</li><li>I created a finance blob container and uploaded sample documents.</li><li>I created the finance-shared file share with folders for Accounts Payable, Accounts Receivable, Financial Reports and Payroll.</li><li>I gave access through Azure RBAC.</li><li>I turned on blob soft delete, container soft delete and blob versioning.</li><li>I used Azure Monitor to look at storage transactions and availability.</li></ul></section><section aria-labelledby="s3"><h2 id="s3">Screenshots</h2><p class="small-note">They are in the same order as in my repository. Click one to see it full size.</p><p class="small-note">I painted over my Azure subscription ID in red. Everything else is as I captured it.</p><ul class="gallery"><li><figure><button type="button" data-full="/assets/images/projects/azure-storage-blob-and-files/01-01-azure-storage-account-deployment.webp" data-caption="Azure Storage Account Deployment. Shows the deployed `innocentstorage07` storage account and its configuration." aria-label="Open screenshot 1: Azure Storage Account Deployment"><img src="/assets/images/projects/azure-storage-blob-and-files/01-01-azure-storage-account-deployment-thumb.webp" alt="Azure Storage Account" width="720" height="434" loading="lazy" decoding="async"></button><figcaption><strong>1. Azure Storage Account Deployment</strong>Shows the deployed `innocentstorage07` storage account and its configuration.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-storage-blob-and-files/02-02-azure-storage-finance-container.webp" data-caption="Finance Blob Container. Shows the finance blob container created in the storage account." aria-label="Open screenshot 2: Finance Blob Container"><img src="/assets/images/projects/azure-storage-blob-and-files/02-02-azure-storage-finance-container-thumb.webp" alt="Finance Blob Container" width="720" height="435" loading="lazy" decoding="async"></button><figcaption><strong>2. Finance Blob Container</strong>Shows the finance blob container created in the storage account.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-storage-blob-and-files/03-03-azure-storage-finance-blob-uploads.webp" data-caption="Finance Blob Uploads. Shows the sample documents uploaded to the finance blob container." aria-label="Open screenshot 3: Finance Blob Uploads"><img src="/assets/images/projects/azure-storage-blob-and-files/03-03-azure-storage-finance-blob-uploads-thumb.webp" alt="Finance Blob Uploads" width="720" height="440" loading="lazy" decoding="async"></button><figcaption><strong>3. Finance Blob Uploads</strong>Shows the sample documents uploaded to the finance blob container.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-storage-blob-and-files/04-04-azure-storage-finance-file-share-deployment.webp" data-caption="Finance Azure File Share Deployment. Shows the deployed `finance-shared` Azure file share and its configuration." aria-label="Open screenshot 4: Finance Azure File Share Deployment"><img src="/assets/images/projects/azure-storage-blob-and-files/04-04-azure-storage-finance-file-share-deployment-thumb.webp" alt="Finance File Share" width="720" height="429" loading="lazy" decoding="async"></button><figcaption><strong>4. Finance Azure File Share Deployment</strong>Shows the deployed `finance-shared` Azure file share and its configuration.</figcaption></figure></li><li><figure><button type="button" data-full="/assets/images/projects/azure-storage-blob-and-files/05-05-azure-storage-finance-department-directories.webp" data-caption="Finance Departmental Directories. Shows the departmental directories created within the finance file share: Accounts-Payable, Accounts-Receivable, Financial-Reports and Payroll." aria-label="Open screenshot 5: Finance Departmental Directories"><img src="/assets/images/projects/azure-storage-blob-and-files/05-05-azure-storage-finance-department-directories-thumb.webp" alt="Finance Department Directories" width="720" height="417" loading="lazy" decoding="async"></button><figcaption><strong>5. Finance Departmental Directories</strong>Shows the departmental directories created within the finance file share: Accounts-Payable, Accounts-Receivable, Financial-Reports and Payroll.</figcaption></figure></li></ul></section><section aria-labelledby="s4"><h2 id="s4">How I tested it</h2><ul class="list"><li>The storage account, container and file share pages show the setup.</li><li>The uploaded documents are listed in the finance container.</li><li>The four department folders are listed in the file share.</li><li>I opened the file share from the Azure portal and from Windows over SMB.</li></ul></section><section aria-labelledby="s5"><h2 id="s5">Repository</h2><p>My full notes and the original screenshots are on GitHub: <a href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/07-azure-storage" rel="noopener">azure-administrator-labs/07-azure-storage</a></p></section><nav class="pager" aria-label="More projects"><a href="/projects/azure-vnet-deployment/"><span>Previous</span>Azure Virtual Network Deployment</a><a href="/projects/azure-linux-vm-deployment/" style="text-align:right"><span>Next</span>Azure Linux VM Deployment</a></nav></article>
+    <aside class="facts" aria-label="Project details">
+      <dl>
+        <dt>Area</dt><dd>Azure Compute &amp; Storage</dd>
+        <dt>Status</dt><dd>Completed</dd>
+        <dt>Tools and services</dt><dd>Microsoft Azure, Azure Storage Account (StorageV2), Blob Storage, Azure Files, SMB, Azure RBAC, Azure Monitor</dd>
+        <dt>Screenshots</dt><dd>5</dd>
+        <dt>Repository</dt><dd>azure-administrator-labs</dd>
+      </dl>
+      <a class="btn btn-primary" href="https://github.com/innocent-mbele/azure-administrator-labs/tree/main/07-azure-storage" rel="noopener">View on GitHub</a>
+      <a class="btn btn-secondary" href="/#projects">Back to my projects</a>
+    </aside>
+  </div>
+</div>
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous screenshot">‹</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p></p>
+    <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
+  </div>
+</dialog>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Innocent Mbele. The projects on this site come from my personal GitHub repositories. I practised and compiled them for my own skills development.</p>
+    <ul><li><a href="https://github.com/innocent-mbele" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/innocent-mbele/" rel="noopener">LinkedIn</a></li></ul>
+  </div>
+</footer>
+<script src="/assets/js/main.js?v=9" defer></script>
+</body>
+</html>
