@@ -70,7 +70,7 @@ function html(status, body, headers = {}, env = {}) {
 function messagePage(title, text, status = 403) {
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   return html(status, `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${esc(title)}</title>
-<style>body{font:15px/1.5 "Segoe UI",system-ui,sans-serif;color:#201f1e;background:#faf9f8;margin:0;padding:48px 20px}main{max-width:520px;margin:auto;background:#fff;border:1px solid #e1dfdd;padding:24px}a{color:#643098}</style></head>
+<style>body{font:15px/1.5 "Segoe UI",system-ui,sans-serif;color:#201f1e;background:#faf9f8;margin:0;padding:48px 20px}main{max-width:520px;margin:auto;background:#fff;border:1px solid #e1dfdd;padding:24px}a{color:#7a45b5}</style></head>
 <body><main><h1 style="font-size:20px;font-weight:600">${esc(title)}</h1><p>${esc(text)}</p><p><a href="${BASE}">Back to sign in</a></p></main></body></html>`);
 }
 
