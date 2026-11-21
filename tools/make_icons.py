@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/icons"
-BLUE, NAVY, WHITE, MUTED = "#7a45b5", "#faf9f8", "#ffffff", "#605e5c"
+BLUE, NAVY, WHITE, MUTED = "#0e7a6d", "#faf9f8", "#ffffff", "#605e5c"
 
 
 def font(size, weight="ExtraBold"):
