@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/icons"
-BLUE, NAVY, WHITE, MUTED = "#0e7a6d", "#faf9f8", "#ffffff", "#605e5c"
+BLUE, NAVY, WHITE, MUTED = "#643098", "#faf9f8", "#ffffff", "#605e5c"
 
 
 def font(size, weight="ExtraBold"):
@@ -34,7 +34,7 @@ og = Image.new("RGB", (1200, 630), NAVY)
 d = ImageDraw.Draw(og)
 og.paste(mark(120), (90, 90), mark(120))
 d.text((90, 280), "Innocent Mbele", font=font(84), fill="#201f1e")
-d.text((90, 385), "Technology & Digital Innovation", font=font(40, "SemiBold"), fill="#323130")
+d.text((90, 385), "Technology | Innovation | Digital Transformation", font=font(40, "SemiBold"), fill="#323130")
 d.text((90, 450), "Azure · Linux · Network Automation projects", font=font(32, "Medium"), fill=MUTED)
 d.rectangle([0, 0, 1200, 630], outline="#e1dfdd", width=2)
 d.rectangle([90, 540, 290, 544], fill=BLUE)

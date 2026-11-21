@@ -19,7 +19,7 @@ BASE = SITE["base_url"].rstrip("/")
 GH = f"https://github.com/{SITE['github_user']}"
 CATS = {c["id"]: c["label"] for c in DATA["categories"]}
 PROJECTS = DATA["projects"]
-ASSET_V = "6"  # bump to make browsers fetch changed CSS, JS and icons
+ASSET_V = "7"  # bump to make browsers fetch changed CSS, JS and icons
 MASK_NOTE = "I painted over my Azure subscription ID in red. Everything else is as I captured it."
 
 PHOTO_SHAPES = {"square": "1 / 1", "portrait": "4 / 5", "landscape": "4 / 3"}
