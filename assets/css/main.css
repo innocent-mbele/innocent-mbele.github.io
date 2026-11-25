@@ -103,6 +103,26 @@ p { margin: 0 0 1em; }
 .intro .lead { max-width: 640px; color: var(--ink-2); font-size: 16px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 
+/* Home page action buttons: white with a thin coloured border and a coloured icon.
+   Contact uses the site teal, GitHub charcoal and LinkedIn its own blue. */
+.intro .actions .btn { min-height: 42px; border-radius: 4px; }
+.btn-action {
+  --c: var(--ink-2); --c-line: var(--line-2); --c-tint: var(--bg-2); --c-text: var(--ink);
+  background: var(--white); border-color: var(--c-line); color: var(--ink-2); padding: 0 16px 0 14px;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn-action .btn-icon { flex: none; color: var(--c); }
+.btn-action:hover, .btn-action:focus-visible { background: var(--c-tint); border-color: var(--c); color: var(--c-text); }
+.btn-action:active { background: var(--c-line); }
+.btn-contact { --c: var(--green); --c-line: #9ccbc4; --c-tint: #eef6f5; --c-text: var(--green-dark); }
+.btn-github { --c: #24292f; --c-line: #b8bcc1; --c-tint: #f3f4f6; --c-text: #24292f; }
+.btn-linkedin { --c: #0a66c2; --c-line: #a8c7e8; --c-tint: #eef4fb; --c-text: #084e96; }
+@media (prefers-reduced-motion: reduce) { .btn-action { transition: none; } }
+@media (max-width: 560px) {
+  .intro .actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .intro .actions .btn { width: 100%; }
+}
+
 /* Sections */
 .section { padding: 32px 0; }
 .section + .section { padding-top: 0; }
