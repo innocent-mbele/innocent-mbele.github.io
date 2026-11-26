@@ -617,6 +617,79 @@ async function publish(request, env, user) {
   return json(200, { ok: true, commit, url: `https://github.com/${gh(env).repo}/commit/${commit}` });
 }
 
+// ------------------------------------------------------------------ visitor counts
+// The public site sends a tiny beacon to POST /inno/hit:
+//   {"visit": true}             one visit (once per browser tab session), counted by country
+//   {"project": "<slug>"}       someone opened that project page on the site
+//   {"project": "<slug>", "via": "github"}   someone clicked a project's GitHub link on the home page
+// Only totals are stored: no IP address, cookie or browser details. Storage is a Cloudflare D1
+// database bound as STATS (free plan). Without that binding the beacon is accepted and ignored.
+
+const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,79}$/;
+const BOT_RE = /bot|crawl|spider|slurp|preview|headless|lighthouse|monitor|curl|wget|python|httpclient/i;
+const statsReady = new WeakMap(); // tables are created once per database per Worker instance
+
+function ensureStats(db) {
+  if (!statsReady.has(db)) {
+    statsReady.set(db, db.batch([
+      db.prepare("CREATE TABLE IF NOT EXISTS visits (country TEXT PRIMARY KEY, n INTEGER NOT NULL DEFAULT 0)"),
+      db.prepare("CREATE TABLE IF NOT EXISTS project_visits (slug TEXT PRIMARY KEY, n INTEGER NOT NULL DEFAULT 0)"),
+      db.prepare("CREATE TABLE IF NOT EXISTS stats_meta (k TEXT PRIMARY KEY, v TEXT NOT NULL)"),
+      db.prepare("INSERT OR IGNORE INTO stats_meta (k, v) VALUES ('since', ?)").bind(new Date().toISOString().slice(0, 10)),
+    ]).catch((err) => { statsReady.delete(db); throw err; }));
+  }
+  return statsReady.get(db);
+}
+
+async function recordHit(request, env) {
+  const done = new Response(null, { status: 204, headers: { "Access-Control-Allow-Origin": siteOrigin(env), "Cache-Control": "no-store" } });
+  if (request.headers.get("Origin") !== siteOrigin(env)) return done;
+  if (BOT_RE.test(request.headers.get("User-Agent") || "")) return done;
+  if (!env.STATS) return done;
+  const text = await request.text();
+  if (text.length > 300) return done;
+  let body;
+  try { body = JSON.parse(text); } catch { return done; }
+  if (!body || typeof body !== "object") return done;
+  const db = env.STATS;
+  const writes = [];
+  if (body.visit === true) {
+    const c = country(request);
+    writes.push(db.prepare("INSERT INTO visits (country, n) VALUES (?, 1) ON CONFLICT(country) DO UPDATE SET n = n + 1")
+      .bind(/^[A-Z]{2}$/.test(c) ? c : "XX"));
+  }
+  if (typeof body.project === "string" && SLUG_RE.test(body.project)) {
+    writes.push(db.prepare("INSERT INTO project_visits (slug, n) VALUES (?, 1) ON CONFLICT(slug) DO UPDATE SET n = n + 1").bind(body.project));
+  }
+  if (!writes.length) return done;
+  try {
+    await ensureStats(db);
+    await db.batch(writes);
+  } catch (err) {
+    console.log("admin: could not record a visit", err && err.message);
+  }
+  return done;
+}
+
+async function readStats(env) {
+  if (!env.STATS) return { enabled: false };
+  const db = env.STATS;
+  await ensureStats(db);
+  const [countries, projects, since] = await db.batch([
+    db.prepare("SELECT country, n FROM visits ORDER BY n DESC, country"),
+    db.prepare("SELECT slug, n FROM project_visits ORDER BY n DESC, slug"),
+    db.prepare("SELECT v FROM stats_meta WHERE k = 'since'"),
+  ]);
+  const c = countries.results || [];
+  return {
+    enabled: true,
+    since: (since.results && since.results[0] && since.results[0].v) || "",
+    total: c.reduce((sum, r) => sum + Number(r.n || 0), 0),
+    countries: c.map((r) => ({ country: r.country, n: Number(r.n) })),
+    projects: (projects.results || []).map((r) => ({ slug: r.slug, n: Number(r.n) })),
+  };
+}
+
 // ------------------------------------------------------------------ router
 
 export default {
@@ -628,6 +701,8 @@ export default {
     if (!configured(env)) return messagePage("Admin not set up", "The admin service is missing its settings. See docs/ADMIN.md in the website repository.", 503);
 
     try {
+      if (path === `${BASE}/hit` && request.method === "POST") return await recordHit(request, env);
+      if (path === `${BASE}/hit` && request.method === "OPTIONS") return new Response(null, { status: 204 });
       if (path === BASE && request.method === "GET") return html(200, APP_HTML, {}, env);
       if (path === `${BASE}/auth/login` && request.method === "GET") return beginSignIn(request, env);
       if (path === `${BASE}/auth/callback` && request.method === "GET") return finishSignIn(request, env);
@@ -643,6 +718,7 @@ export default {
           return json(200, { name: user.name, email: user.email, expires: user.exp, site: siteOrigin(env) });
         }
         if (path === `${BASE}/api/content` && request.method === "GET") return json(200, await readContent(env));
+        if (path === `${BASE}/api/stats` && request.method === "GET") return json(200, await readStats(env));
         if (path === `${BASE}/api/publish` && request.method === "POST") return await publish(request, env, user);
       }
       return json(404, { error: "Not found" });
@@ -654,4 +730,4 @@ export default {
   },
 };
 
-export const _test = { validateSite, validateProjects, accessDecision, signValue, verifyValue, IMG_PATH };
+export const _test = { recordHit, validateSite, validateProjects, accessDecision, signValue, verifyValue, IMG_PATH };

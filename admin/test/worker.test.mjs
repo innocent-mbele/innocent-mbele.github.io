@@ -306,3 +306,65 @@ test("no allow-list at all means not set up", async () => {
   const res = await worker.fetch(req("/inno"), { ...env, ENTRA_ALLOWED_USERS: "" });
   assert.equal(res.status, 503);
 });
+
+// ---------------------------------------------------------------- visitor counts (fake D1)
+function fakeD1() {
+  const t = { visits: new Map(), project_visits: new Map(), stats_meta: new Map() };
+  const run = (sql, args) => {
+    if (/^CREATE TABLE/.test(sql)) return { results: [] };
+    if (/INSERT OR IGNORE INTO stats_meta/.test(sql)) { if (!t.stats_meta.has("since")) t.stats_meta.set("since", args[0]); return { results: [] }; }
+    let m = sql.match(/^INSERT INTO (visits|project_visits)/);
+    if (m) { const tb = t[m[1]]; tb.set(args[0], (tb.get(args[0]) || 0) + 1); return { results: [] }; }
+    if (/FROM visits/.test(sql)) return { results: [...t.visits].map(([country, n]) => ({ country, n })).sort((a, b) => b.n - a.n) };
+    if (/FROM project_visits/.test(sql)) return { results: [...t.project_visits].map(([slug, n]) => ({ slug, n })).sort((a, b) => b.n - a.n) };
+    if (/FROM stats_meta/.test(sql)) return { results: t.stats_meta.has("since") ? [{ v: t.stats_meta.get("since") }] : [] };
+    throw new Error("unexpected SQL " + sql);
+  };
+  const stmt = (sql, args = []) => ({ bind: (...a) => stmt(sql, a), run: async () => run(sql, args), all: async () => run(sql, args), _go: () => run(sql, args) });
+  return { tables: t, prepare: (sql) => stmt(sql), batch: async (list) => list.map((s) => s._go()) };
+}
+const SITE_ORIGIN = "https://innocent-mbele.github.io";
+const hit = (e, body, { origin = SITE_ORIGIN, country = "AE", ua = UA } = {}) =>
+  worker.fetch(req("/inno/hit", { method: "POST", headers: { Origin: origin, "Content-Type": "text/plain" }, body: JSON.stringify(body), country, ua }), e);
+
+test("visits are counted by country and project visits by project", async () => {
+  const db = fakeD1(); const e = { ...env, STATS: db };
+  assert.equal((await hit(e, { visit: true })).status, 204);
+  await hit(e, { visit: true }, { country: "ZW" });
+  await hit(e, { visit: true, project: "azure-load-balancer" }, { country: "AE" });
+  await hit(e, { project: "azure-load-balancer", via: "github" });
+  assert.equal(db.tables.visits.get("AE"), 2);
+  assert.equal(db.tables.visits.get("ZW"), 1);
+  assert.equal(db.tables.project_visits.get("azure-load-balancer"), 2);
+});
+
+test("visits from other sites, bots and bad data are ignored", async () => {
+  const db = fakeD1(); const e = { ...env, STATS: db };
+  await hit(e, { visit: true }, { origin: "https://evil.example" });
+  await hit(e, { visit: true }, { ua: "Googlebot/2.1" });
+  await hit(e, { project: "../../etc" });
+  await hit(e, { project: "x".repeat(200) });
+  await worker.fetch(req("/inno/hit", { method: "POST", headers: { Origin: SITE_ORIGIN }, body: "not json" }), e);
+  assert.equal(db.tables.visits.size, 0);
+  assert.equal(db.tables.project_visits.size, 0);
+});
+
+test("without the STATS database the site still works and the admin says it is not connected", async () => {
+  assert.equal((await hit(env, { visit: true })).status, 204);
+  const { session } = await signIn();
+  const res = await worker.fetch(req("/inno/api/stats", { headers: { Cookie: session } }), env);
+  assert.deepEqual(await res.json(), { enabled: false });
+});
+
+test("the signed-in admin sees totals; others do not", async () => {
+  const db = fakeD1(); const e = { ...env, STATS: db };
+  await hit(e, { visit: true }); await hit(e, { visit: true }, { country: "ZW" }); await hit(e, { visit: true, project: "linux-dns-server" });
+  assert.equal((await worker.fetch(req("/inno/api/stats"), e)).status, 401);
+  const { session } = await signIn();
+  const st = await (await worker.fetch(req("/inno/api/stats", { headers: { Cookie: session } }), e)).json();
+  assert.equal(st.enabled, true);
+  assert.equal(st.total, 3);
+  assert.deepEqual(st.countries[0], { country: "AE", n: 2 });
+  assert.deepEqual(st.projects, [{ slug: "linux-dns-server", n: 1 }]);
+  assert.match(st.since, /^\d{4}-\d{2}-\d{2}$/);
+});

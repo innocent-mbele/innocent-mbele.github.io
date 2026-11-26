@@ -20,7 +20,7 @@ BASE = SITE["base_url"].rstrip("/")
 GH = f"https://github.com/{SITE['github_user']}"
 CATS = {c["id"]: c["label"] for c in DATA["categories"]}
 PROJECTS = DATA["projects"]
-ASSET_V = "10"  # bump to make browsers fetch changed CSS, JS and icons
+ASSET_V = "11"  # bump to make browsers fetch changed CSS, JS and icons
 MASK_NOTE = "I painted over my Azure subscription ID in red. Everything else is as I captured it."
 
 PHOTO_SHAPES = {"square": "1 / 1", "portrait": "4 / 5", "landscape": "4 / 3"}
@@ -75,6 +75,15 @@ def in_progress(p):
     return p["status"].lower().startswith("in progress")
 
 
+
+def stats_endpoint():
+    """Where visit counts go: the admin service's /inno/hit, if the admin is connected."""
+    url = SITE.get("admin_url", "").strip()
+    if not url.startswith("https://"):
+        return ""
+    parts = urlsplit(url)
+    return f"{parts.scheme}://{parts.netloc}/inno/hit"
+
 def page(title, description, path, body, active="", scripts=("main.js",), extra_head="", noindex=False):
     canonical = f"{BASE}{path}"
     home = path == "/"
@@ -83,6 +92,10 @@ def page(title, description, path, body, active="", scripts=("main.js",), extra_
         for key, label in (("home", "Home"), ("projects", "Projects"), ("contact", "Contact me"))
     )
     js = "".join(f'<script src="/assets/js/{s}?v={ASSET_V}" defer></script>' for s in scripts)
+    stats = stats_endpoint()
+    if stats:
+        js += f'<script src="/assets/js/stats.js?v={ASSET_V}" defer></script>'
+        extra_head = f'<meta name="stats-endpoint" content="{e(stats)}">\n' + extra_head
     full_title = title if title.startswith(SITE["name"]) else f"{title} | {SITE['name']}"
     def short(l):  # footer keeps short names
         u = l["url"].lower()
@@ -156,7 +169,7 @@ def card(p, lazy=True):
     <h3><a href="{url}">{e(p['title'])}</a></h3>
     <p>{e(p['summary'])}</p>
     {note}<div class="tech">{e(tech)}</div>
-    <div class="card-links"><a href="{url}">View project<span class="visually-hidden">: {e(p['title'])}</span></a><a href="{repo_url(p)}" rel="noopener">GitHub repository<span class="visually-hidden"> for {e(p['title'])}</span></a></div>
+    <div class="card-links"><a href="{url}">View project<span class="visually-hidden">: {e(p['title'])}</span></a><a href="{repo_url(p)}" rel="noopener" data-stats-project="{e(p['slug'])}">GitHub repository<span class="visually-hidden"> for {e(p['title'])}</span></a></div>
   </div>
 </article>"""
 
@@ -336,7 +349,8 @@ def build_detail(i, p):
     <button type="button" class="lb-btn lb-next" aria-label="Next screenshot">›</button>
   </div>
 </dialog>"""
-    return page(p["title"], p["summary"], f"/projects/{p['slug']}/", body, active="projects")
+    return page(p["title"], p["summary"], f"/projects/{p['slug']}/", body, active="projects",
+                extra_head=f'<meta name="stats-project" content="{e(p["slug"])}">\n')
 
 
 def build_admin_redirect():

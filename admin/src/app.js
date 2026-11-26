@@ -383,13 +383,65 @@
     );
   }
 
+  // ---------------------------------------------------------------- visitors tab (read only)
+  var countryNames = null;
+  try { countryNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) { countryNames = null; }
+  function countryName(code) {
+    if (code === "XX" || !code) return "Unknown";
+    try { return (countryNames && countryNames.of(code)) || code; } catch (e) { return code; }
+  }
+  function num(n) { return Number(n || 0).toLocaleString("en"); }
+
+  function renderVisitors() {
+    var tab = $("tab-visitors");
+    tab.innerHTML = "";
+    tab.append(h("h2", { text: "Visitors" }), h("p", { class: "hint", text: "Loading…" }));
+    api("GET", "/stats").then(function (st) {
+      tab.innerHTML = "";
+      var refresh = h("button", { type: "button", class: "btn small", text: "Refresh", on: { click: renderVisitors } });
+      tab.append(h("div", { class: "stats-head" }, h("h2", { text: "Visitors" }), refresh));
+      if (!st.enabled) {
+        tab.append(h("p", { class: "warn", text: "Visitor counting is not connected yet. In Cloudflare, add a D1 database binding named STATS to this Worker (see docs/ADMIN.md)." }));
+        return;
+      }
+      tab.append(h("p", { class: "hint", text: "Counted since " + (st.since || "the start") + ". A visit is one browser session on the site. Only totals are kept: no IP addresses, cookies or personal details." }));
+      tab.append(h("p", { class: "stat-total" }, h("span", { text: "Total visits" }), h("strong", { text: num(st.total) })));
+
+      tab.append(h("h3", { text: "Visits by country" }));
+      if (!st.countries.length) tab.append(h("p", { class: "hint", text: "No visits yet." }));
+      else tab.append(h("table", { class: "rows stats" },
+        h("thead", {}, h("tr", {}, h("th", { text: "Country" }), h("th", { class: "num", text: "Visits" }))),
+        h("tbody", {}, st.countries.map(function (r) {
+          return h("tr", {}, h("td", { text: countryName(r.country) }), h("td", { class: "num", text: num(r.n) }));
+        }))));
+
+      tab.append(h("h3", { text: "Projects and labs visited" }),
+        h("p", { class: "hint", text: "Each time someone opened a project page on the site or went to its GitHub folder from the home page." }));
+      var titles = {};
+      (state.projects ? state.projects.projects : []).forEach(function (p) { titles[p.slug] = p.title; });
+      var rows = st.projects.filter(function (r) { return titles[r.slug] && r.n > 0; });
+      if (!rows.length) tab.append(h("p", { class: "hint", text: "No project visits yet." }));
+      else tab.append(h("table", { class: "rows stats" },
+        h("thead", {}, h("tr", {}, h("th", { text: "Project or lab" }), h("th", { class: "num", text: "Total visits" }))),
+        h("tbody", {}, rows.map(function (r) {
+          return h("tr", {}, h("td", {}, h("a", { href: SITE_URL + "/projects/" + r.slug + "/", target: "_blank", rel: "noopener", text: titles[r.slug] })), h("td", { class: "num", text: num(r.n) }));
+        }))));
+    }).catch(function (e) {
+      tab.innerHTML = "";
+      tab.append(h("h2", { text: "Visitors" }), h("p", { class: "warn", text: "Could not load the visitor counts: " + e.message }));
+    });
+  }
+
   // ---------------------------------------------------------------- tabs, load, publish
   function renderAll() { renderProfile(); renderLinks(); renderProjects(); renderSettings(); changed(); }
 
   document.querySelectorAll(".tabs button").forEach(function (b) {
     b.addEventListener("click", function () {
       document.querySelectorAll(".tabs button").forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
-      ["profile", "links", "projects", "settings"].forEach(function (t) { $("tab-" + t).hidden = t !== b.getAttribute("data-tab"); });
+      ["profile", "links", "projects", "settings", "visitors"].forEach(function (t) { $("tab-" + t).hidden = t !== b.getAttribute("data-tab"); });
+      var visitors = b.getAttribute("data-tab") === "visitors";
+      document.querySelector(".publish-bar").hidden = visitors;
+      if (visitors) renderVisitors();
     });
   });
 

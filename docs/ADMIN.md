@@ -180,3 +180,19 @@ python tools/bundle_admin.py
 node --test admin/test/worker.test.mjs
 ```
 Paste the new `admin/worker.js` into the Cloudflare editor and deploy.
+
+## Visitor counts (Visitors tab)
+
+The site sends a tiny anonymous message to `POST /inno/hit` on the admin Worker:
+- one **visit** per browser tab session, counted by country (Cloudflare's country of the request)
+- a **project visit** when someone opens a project page, or clicks a project's GitHub link on the home page
+
+Only totals are stored: no IP address, cookie or browser details. The data lives in a Cloudflare **D1** database (free plan: 100,000 writes and 5 million reads a day, far more than a portfolio needs; on the Free plan going over the limit stops counting for the day, it never costs money).
+
+Setup, once:
+1. Cloudflare → **Storage & databases → D1 SQL database → Create** → name `portfolio-stats` → Create. The tables are created automatically on the first visit.
+2. Workers & Pages → **inno-admin → Settings → Bindings → Add → D1 database** → Variable name `STATS` → database `portfolio-stats` → Deploy.
+3. Paste the latest `admin/worker.js` into the Worker (Edit code → Deploy).
+
+Without the `STATS` binding the site works normally and the Visitors tab says counting is not connected.
+To stop counting your own visits, open the site once with `?notrack=1` in each browser you use (`?notrack=0` turns it back on).
